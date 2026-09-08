@@ -21,7 +21,7 @@ module CharacterGroup
       .ordered
       .distinct
 
-    unless @collection.match('record')
+    unless @collection.match(/spell|beast|record/)
       @collectables = @collectables.reverse_order
     end
 

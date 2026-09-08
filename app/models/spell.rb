@@ -36,7 +36,7 @@ class Spell < ApplicationRecord
   belongs_to :aspect, class_name: 'SpellAspect'
 
   scope :include_related, -> { include_sources.includes(:type, :aspect) }
-  scope :ordered, -> { order(order: :desc) }
+  scope :ordered, -> { order(:order) }
 
   def self.available_filters
     %i(owned)

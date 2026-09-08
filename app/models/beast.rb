@@ -32,7 +32,7 @@ class Beast < ApplicationRecord
   alias_attribute :large_image_url, :image_url
 
   scope :include_related, -> { include_sources.includes(:trick, :tempered_release) }
-  scope :ordered, -> { order(id: :desc) }
+  scope :ordered, -> { order(:id) }
 
   def self.available_filters
     %i(owned)
