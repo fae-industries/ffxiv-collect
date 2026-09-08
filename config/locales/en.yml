@@ -680,3 +680,8 @@ en:
     title: "Yo-kai Watch"
     weapon: "Weapon"
     zone: "Zone"
+  beasts:
+    one: "Beast"
+    title: "Beasts"
+    trick: "Trick"
+    tempered_release: "Tempered Release"

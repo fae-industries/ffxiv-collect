@@ -9,6 +9,7 @@ module Typeable
       { model: Emote, label: I18n.t('emotes.title'), value: 'Emote' },
       { model: Orchestrion, label: I18n.t('orchestrions.title'), value: 'Orchestrion' },
       dashboard ? { model: Spell, label: I18n.t('spells.title'), value: 'Spell' } : nil,
+      dashboard ? { model: Beast, label: I18n.t('beasts.title'), value: 'Beast' } : nil,
       { model: Frame, label: I18n.t('frames.title'), value: 'Frame' },
       { model: Barding, label: I18n.t('bardings.title'), value: 'Barding' },
       { model: Fashion, label: I18n.t('fashions.title_short'), value: 'Fashion' },

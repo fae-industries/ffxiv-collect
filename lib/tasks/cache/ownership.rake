@@ -6,7 +6,7 @@ namespace :cache do
     manual_collection_characters = Character.visible.verified
 
     [
-      Orchestrion, Emote, Barding, Hairstyle, Armoire, Outfit, Spell, Relic, Fashion, Facewear,
+      Orchestrion, Emote, Barding, Hairstyle, Armoire, Outfit, Spell, Beast, Relic, Fashion, Facewear,
       FieldRecord, SurveyRecord, OccultRecord, Frame, Card
     ].each do |model|
       cache_ownership(model, manual_collection_characters)

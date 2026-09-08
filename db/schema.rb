@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_11_173507) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_08_145038) do
   create_table "achievement_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.string "name_de", null: false
@@ -152,6 +152,46 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_173507) do
     t.index ["patch"], name: "index_bardings_on_patch"
   end
 
+  create_table "beast_actions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description_de"
+    t.text "description_en"
+    t.text "description_fr"
+    t.text "description_ja"
+    t.text "description_tc"
+    t.string "image_url"
+    t.string "name_de"
+    t.string "name_en"
+    t.string "name_fr"
+    t.string "name_ja"
+    t.string "name_tc"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "beasts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description_de"
+    t.text "description_en"
+    t.text "description_fr"
+    t.text "description_ja"
+    t.text "description_tc"
+    t.string "image_url"
+    t.string "name_de"
+    t.string "name_en"
+    t.string "name_fr"
+    t.string "name_ja"
+    t.string "name_tc"
+    t.string "patch"
+    t.integer "tempered_release_id"
+    t.integer "trick_id"
+    t.datetime "updated_at", null: false
+    t.index ["name_de"], name: "index_beasts_on_name_de"
+    t.index ["name_en"], name: "index_beasts_on_name_en"
+    t.index ["name_fr"], name: "index_beasts_on_name_fr"
+    t.index ["name_ja"], name: "index_beasts_on_name_ja"
+    t.index ["name_tc"], name: "index_beasts_on_name_tc"
+  end
+
   create_table "card_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.string "name_de", null: false
@@ -238,6 +278,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_173507) do
     t.index ["barding_id"], name: "index_character_bardings_on_barding_id"
     t.index ["character_id", "barding_id"], name: "index_character_bardings_on_character_id_and_barding_id", unique: true
     t.index ["character_id"], name: "index_character_bardings_on_character_id"
+  end
+
+  create_table "character_beasts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "beast_id"
+    t.integer "character_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beast_id"], name: "index_character_beasts_on_beast_id"
+    t.index ["character_id", "beast_id"], name: "index_character_beasts_on_character_id_and_beast_id", unique: true
+    t.index ["character_id"], name: "index_character_beasts_on_character_id"
   end
 
   create_table "character_cards", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
@@ -417,6 +467,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_173507) do
     t.string "avatar", null: false
     t.boolean "banned", default: false
     t.integer "bardings_count", default: 0
+    t.integer "beasts_count", default: 0
     t.integer "cards_count", default: 0
     t.datetime "created_at", precision: nil, null: false
     t.string "data_center"
@@ -463,6 +514,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_11_173507) do
     t.index ["achievements_count"], name: "index_characters_on_achievements_count"
     t.index ["armoires_count"], name: "index_characters_on_armoires_count"
     t.index ["bardings_count"], name: "index_characters_on_bardings_count"
+    t.index ["beasts_count"], name: "index_characters_on_beasts_count"
     t.index ["cards_count"], name: "index_characters_on_cards_count"
     t.index ["data_center"], name: "index_characters_on_data_center"
     t.index ["emotes_count"], name: "index_characters_on_emotes_count"

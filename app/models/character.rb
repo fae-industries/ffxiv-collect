@@ -9,6 +9,7 @@
 #  avatar                       :string(255)      not null
 #  banned                       :boolean          default(FALSE)
 #  bardings_count               :integer          default(0)
+#  beasts_count                 :integer          default(0)
 #  cards_count                  :integer          default(0)
 #  data_center                  :string(255)
 #  emotes_count                 :integer          default(0)
@@ -66,7 +67,7 @@ class Character < ApplicationRecord
   scope :visible,  -> { where(public: true, banned: false) }
   scope :with_public_achievements, -> { where(public_achievements: true) }
 
-  %i(achievements mounts minions orchestrions emotes bardings hairstyles armoires outfits spells relics
+  %i(achievements mounts minions orchestrions emotes bardings hairstyles armoires outfits spells beasts relics
   fashions facewear field_records survey_records occult_records frames leves cards npcs).each do |model|
     has_many "character_#{model}".to_sym, dependent: :delete_all
     has_many model, through: "character_#{model}".to_sym

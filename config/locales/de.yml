@@ -696,3 +696,8 @@ de:
     title: "Yo-kai Watch"
     weapon: "Waffe"
     zone: "Gebiet"
+  beasts:
+    one: "Bestie"
+    title: "Bestien"
+    trick: "Dressur"
+    tempered_release: "Entfesseln"

@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     get :battle, on: :collection
   end
 
-  %i(orchestrions emotes bardings hairstyles armoires outfits spells fashions facewear frames
+  %i(orchestrions emotes bardings hairstyles armoires outfits spells beasts fashions facewear frames
   field_records survey_records occult_records).each do |resource|
     resources resource, only: [:index, :show] do
       member do
@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     end
   end
 
-  %i(mounts minions hairstyles emotes orchestrions frames spells bardings fashions facewear
+  %i(mounts minions hairstyles emotes orchestrions frames spells beasts bardings fashions facewear
   field_records survey_records).each do |resource|
     resources resource, only: [] do
       get :tooltip
@@ -183,15 +183,15 @@ Rails.application.routes.draw do
 
   resources :free_companies, only: [:show], path: :fc do
     get :collections
+    post :refresh, on: :member
+
+    # Deprecated
     get :mounts
     get :spells
-    post :refresh, on: :member
   end
 
   resources :groups do
     get :collections
-    get :mounts
-    get :spells
 
     member do
       get :manage
@@ -200,6 +200,10 @@ Rails.application.routes.draw do
       post 'add/:character_id', action: :add_character, as: :add_character
       post 'remove/:character_id', action: :remove_character, as: :remove_character
     end
+
+    # Deprecated
+    get :mounts
+    get :spells
   end
 
   resources :titles, only: :index
@@ -282,7 +286,7 @@ Rails.application.routes.draw do
   end
 
   namespace :mod do
-    %i(mounts minions orchestrions emotes bardings hairstyles armoires outfits spells fashions facewear
+    %i(mounts minions orchestrions emotes bardings hairstyles armoires outfits spells beasts fashions facewear
     frames cards field_records survey_records occult_records).each do |resource|
       resources resource, only: [:index, :edit, :update]
     end

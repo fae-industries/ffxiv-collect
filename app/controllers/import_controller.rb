@@ -84,7 +84,7 @@ class ImportController < ApplicationController
   end
 
   def set_keys
-    @keys = %w(armoires bardings cards fashions field_records frames hairstyles leves npcs occult_records orchestrions outfits relics spells survey_records)
+    @keys = %w(armoires bardings beasts cards fashions field_records frames hairstyles leves npcs occult_records orchestrions outfits relics spells survey_records)
   end
 
   def parse_data

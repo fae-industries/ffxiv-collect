@@ -697,3 +697,8 @@ fr:
     title: "Yo-kai Watch"
     weapon: "Arme"
     zone: "Zone"
+  beasts:
+    one: "Bête"
+    title: "Bêtes"
+    trick: "Assaut"
+    tempered_release: "Salve"

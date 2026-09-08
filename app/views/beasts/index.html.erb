@@ -1,0 +1,65 @@
+<% title(t('beasts.title')) %>
+<% description("Track your character's Beastmaster beasts and discover how to obtain new ones.") %>
+
+<%= render 'shared/filters' %>
+<%= render 'shared/spinner' %>
+<%= render 'shared/collection_data' %>
+
+<div class="collection-wrapper">
+  <div class="d-flex justify-content-center">
+    <div class="d-inline-flex flex-column">
+      <div class="d-flex justify-content-between align-items-end mb-1">
+        <div></div>
+        <%= search_form_for(@q, url: beasts_path, enforce_utf8: false, class: 'form form-inline search-form d-flex') do |f| %>
+          <%= f.search_field "name_#{I18n.locale}_cont", placeholder: t('name'), size: 40,
+            class: 'form-control form-control-sm' %>
+          <%= f.search_field "sources_text_#{I18n.locale}_cont", placeholder: t('spells.location'), size: 40,
+            class: 'form-control form-control-sm' %>
+          <%= f.submit t('search'), name: nil, class: 'btn btn-primary btn-sm mr-0' %>
+        <% end %>
+        <%= render 'shared/active_filters' %>
+      </div>
+      <%= render 'shared/collection_progress', ids: @beasts.map(&:id) %>
+      <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+      <table class="table table-striped table-sm shadow sortable collection">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" data-defaultsort="disabled"></th><!-- Image -->
+            <th scope="col"><%= t('name') %></th>
+            <th scope="col" class="hide-xs"><%= t('spells.enemy') %></th>
+            <th scope="col" class="hide-xs"><%= t('spells.location') %></th>
+            <th scope="col" class="text-center hide-md"><%= t('own') %></th>
+            <th scope="col" class="text-center"><%= t('patch') %></th>
+            <% if character_selected? %>
+              <th scope="col" class="check-ownership"></th><!-- Owned -->
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% cache [@beasts.cache_key_with_version, I18n.locale] do %>
+            <% @beasts.each do |beast| %>
+              <tr class="<%= collectable_classes(beast) %>">
+                <td class="number">
+                  <%= link_to("#{t('spells.number')} #{beast.order}", beast_path(beast), class: 'unstyled') %>
+                </td>
+                <td>
+                  <%= link_to(beast_path(beast)) do %>
+                    <%= small_image(beast) %>
+                  <% end %>
+                </td>
+                <td><%= link_to(beast.name, beast_path(beast), class: 'name') %></td>
+                <% spell_sources(beast).each do |source| %>
+                  <td class="hide-xs"><%= source %></td>
+                <% end %>
+                <td class="text-center hide-md" data-value="<%= rarity(beast, numeric: true) %>"><%= rarity(beast) %></td>
+                <td class="text-center" data-value="<%= sort_value(beast) %>"><%= beast.patch %></td>
+                <%= td_owned(beast) %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

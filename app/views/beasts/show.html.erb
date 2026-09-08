@@ -1,0 +1,47 @@
+<% title(@beast.name) %>
+<% description(@beast.description.truncate(150)) %>
+<% image(@beast.image_url) %>
+
+<div class="row">
+  <div class="col-12 col-lg-8 col-xl-6 offset-lg-2 offset-xl-3">
+    <div class="card">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="card-title"><%= @beast.name %></h5>
+        <span class="badge badge-secondary"><%= t('spells.number') %> <%= @beast.order %></span>
+      </div>
+      <div class="card-body py-3">
+        <div class="d-flex">
+          <div class="d-none d-sm-block mr-4">
+            <%= safe_image_tag(@beast.image_url, class: 'image-beast-large') %>
+          </div>
+          <div class="d-flex flex-column flex-info">
+            <div class="d-flex flex-wrap">
+              <%= render 'shared/ownership', collectable: @beast %>
+              <div>
+                <dt><%= t('patch') %></dt>
+                <dd><%= @beast.patch %></dd>
+              </div>
+            </div>
+            <dt><%= t('beasts.trick') %></dt>
+            <dd>
+              <%= small_image(@trick) %>
+              <%= format_tooltip(@trick.description) %>
+            </dd>
+            <dt><%= t('beasts.tempered_release') %></dt>
+            <dd>
+              <%= small_image(@tempered_release) %>
+              <%= format_tooltip(@tempered_release.description) %>
+            </dd>
+            <dt><%= t('description') %></dt>
+            <dd><%= format_text_long(@beast.description) %></dd>
+            <dt><%= t('source') %></dt>
+            <dd class="mb-0"><%= sources(@beast, list: true) %></dd>
+            <div class="d-block d-sm-none">
+              <%= safe_image_tag(@beast.image_url, class: 'image-beast-large') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
