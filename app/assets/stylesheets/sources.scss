@@ -24,6 +24,8 @@
     }
 
     &.source-achievement:before { background-image: url(image_path('sources/achievement.png')); }
+    &.source-beastmaster:before { background-image: url(image_path('sources/beastmaster.png')); }
+    &.source-blue-mage:before { background-image: url(image_path('sources/blue_mage.png')); }
     &.source-bozja:before { background-image: url(image_path('sources/bozja.png')); }
     &.source-crafting:before { background-image: url(image_path('sources/crafting.png')); }
     &.source-deep-dungeon:before { background-image: url(image_path('sources/deep_dungeon.png')); }

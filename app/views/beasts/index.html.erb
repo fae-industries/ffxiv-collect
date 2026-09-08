@@ -27,8 +27,7 @@
             <th scope="col">#</th>
             <th scope="col" data-defaultsort="disabled"></th><!-- Image -->
             <th scope="col"><%= t('name') %></th>
-            <th scope="col" class="hide-xs"><%= t('spells.enemy') %></th>
-            <th scope="col" class="hide-xs"><%= t('spells.location') %></th>
+            <th scope="col" class="hide-xs"><%= t('source') %></th>
             <th scope="col" class="text-center hide-md"><%= t('own') %></th>
             <th scope="col" class="text-center"><%= t('patch') %></th>
             <% if character_selected? %>
@@ -49,9 +48,7 @@
                   <% end %>
                 </td>
                 <td><%= link_to(beast.name, beast_path(beast), class: 'name') %></td>
-                <% spell_sources(beast).each do |source| %>
-                  <td class="hide-xs"><%= source %></td>
-                <% end %>
+                <td class="hide-xs" data-value="<%= source_sort_value(beast) %>"><%= sources(beast) %></td>
                 <td class="text-center hide-md" data-value="<%= rarity(beast, numeric: true) %>"><%= rarity(beast) %></td>
                 <td class="text-center" data-value="<%= sort_value(beast) %>"><%= beast.patch %></td>
                 <%= td_owned(beast) %>
