@@ -38,8 +38,14 @@ namespace :sources do
       { name_en: 'Wondrous Tails', name_de: 'Khloes Abenteueralbum', name_fr: 'Aventures imaginaires', name_ja: '' }
     ].freeze
 
-    types_names.each do |type|
-      SourceType.find_or_create_by!(type)
+    types_names.each do |names|
+      type = SourceType.find_by(name_en: names[:name_en])
+
+      if type.present?
+        type.update!(names)
+      else
+        SourceType.create!(names)
+      end
     end
   end
 
