@@ -19,7 +19,7 @@
         <%= search_form_for(@q, url: spells_path, enforce_utf8: false, class: 'form form-inline search-form d-flex') do |f| %>
           <%= f.search_field "name_#{I18n.locale}_cont", placeholder: t('name'), size: 40,
             class: 'form-control form-control-sm' %>
-          <%= f.search_field "sources_text_#{I18n.locale}_cont", placeholder: t('spells.location'), size: 40,
+          <%= f.search_field "sources_text_#{I18n.locale}_cont", placeholder: t('source'), size: 40,
             class: 'form-control form-control-sm' %>
           <%= f.submit t('search'), name: nil, class: 'btn btn-primary btn-sm mr-0' %>
         <% end %>
