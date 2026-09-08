@@ -6,7 +6,7 @@ class BeastsController < ApplicationController
 
   def index
     @q = Beast.ransack(params[:q])
-    @beasts = @q.result.available.include_related.with_filters(cookies).ordered.reverse_order.distinct
+    @beasts = @q.result.available.include_related.with_filters(cookies).ordered.distinct
   end
 
   def show
