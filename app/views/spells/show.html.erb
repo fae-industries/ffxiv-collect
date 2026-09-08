@@ -35,11 +35,11 @@
               <dd><%= @spell.patch %></dd>
             </div>
           </div>
-          <dt><u><%= t('tooltip') %></u></dt>
+          <dt><%= t('tooltip') %></dt>
           <dd><%= format_tooltip(@spell.tooltip) %></dd>
-          <dt><u><%= t('description') %></u></dt>
+          <dt><%= t('description') %></dt>
           <dd><%= format_text_long(@spell.description) %></dd>
-          <dt><u><%= t('spells.how_to_learn') %></u></dt>
+          <dt><%= t('spells.how_to_learn') %></dt>
           <dd class="mb-0"><%= sources(@spell, list: true) %></dd>
         </div>
       </div>
