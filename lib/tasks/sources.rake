@@ -6,9 +6,9 @@ namespace :sources do
 
     types_names = [
       { name_en: 'Achievement', name_de: 'Errungenschaft', name_fr: 'Hauts faits', name_ja: '' },
-      { name_en: 'Beastmaster', name_de: '', name_fr: '', name_ja: '' },
+      { name_en: 'Beastmaster', name_de: 'Bestienbändiger', name_fr: 'Dresseur', name_ja: '' },
       { name_en: 'Bozja', name_de: 'Bozja', name_fr: 'Bozja', name_ja: '' },
-      { name_en: 'Blue Mage', name_de: '', name_fr: '', name_ja: '' },
+      { name_en: 'Blue Mage', name_de: 'Blaumagier', name_fr: 'Mage bleu', name_ja: '' },
       { name_en: 'Chaotic Raid', name_de: 'Chaotische Raid', name_fr: 'Raid chaotique', name_ja: '滅アライアンスレイド' },
       { name_en: 'Cosmic Exploration', name_de: 'Die Kosmo-Erkundung', name_fr: 'Exploration cosmique', name_ja: 'コスモエクスプローラー' },
       { name_en: 'Crafting', name_de: 'Handwerk', name_fr: 'Artisanat', name_ja: '' },
