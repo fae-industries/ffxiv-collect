@@ -34,7 +34,7 @@ namespace :beasts do
         unless data.present?
           data = {
             id: beast['#'],
-            image_url: XIVData.image_url(beast['Image']),
+            image_url: XIVData.image_url(beast['Icon']),
             **pets[beast['Pet']],
           }
 
@@ -44,8 +44,8 @@ namespace :beasts do
 
         description_key = "description_#{locale}"
         data[description_key] = sanitize_text(beast['Description'])
-        actions[data[:trick_id]][description_key] = sanitize_text(beast['Trick'])
-        actions[data[:tempered_release_id]][description_key] = sanitize_text(beast['TemperedRelease'])
+        actions[data[:trick_id]][description_key] = sanitize_text(beast['TrickDescription'])
+        actions[data[:tempered_release_id]][description_key] = sanitize_text(beast['TemperedDescription'])
 
         h[data[:id]] = data
       end
