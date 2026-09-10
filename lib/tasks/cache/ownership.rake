@@ -31,7 +31,7 @@ namespace :cache do
     log('Setting percentages')
     ownership = relation.where(character: characters).group("#{key.singularize}_id").count
       .each_with_object({}) do |(id, owners), h|
-        percentage = ((owners / total.to_f) * 100).to_s[0..2].sub(/\.\Z/, '').sub(/0\.0/, '0')
+        percentage = ('%.1f' % ((owners / total.to_f) * 100)).sub('0.0', '0')
         h[id] = { count: owners, percentage: "#{percentage}%" }
       end
 
