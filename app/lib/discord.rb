@@ -122,7 +122,7 @@ module Discord
       embed.add_field(name: 'Achievements', inline: true, value: 'Set to private.')
     end
 
-    %i(mounts minions hairstyles emotes orchestrions frames spells bardings fashions facewear outfits armoires field_records survey_records occult_records).each do |category|
+    %i(mounts minions hairstyles emotes orchestrions frames spells beasts bardings fashions facewear outfits armoires field_records survey_records occult_records).each do |category|
       next unless character[category].present? && character[category][:count] > 0
 
       count, total = character[category].values_at(:count, :total)
