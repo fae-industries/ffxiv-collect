@@ -246,7 +246,7 @@ Rails.application.routes.draw do
       get ':collection/missing', action: :missing, as: :missing
     end
 
-    %i(achievements titles mounts minions orchestrions emotes bardings hairstyles armoires outfits spells
+    %i(achievements titles mounts minions orchestrions emotes bardings hairstyles armoires outfits spells beasts
     fashions facewear frames field_records survey_records occult_records relics leves tomestones).each do |resource|
       resources resource, only: [:index, :show]
     end
