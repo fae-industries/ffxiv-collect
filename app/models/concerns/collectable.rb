@@ -20,7 +20,7 @@ module Collectable
 
     scope :hide_ranked_pvp, -> (hide) do
       if hide && available_filters.include?(:ranked_pvp)
-        where('(sources.text_en not like "%Season %" and sources.text_en not like "%Commendation Crystals") or sources.id IS NULL')
+        where('(sources.text_en not like "%Season %" and sources.text_en not like "%Commendation Crystals" and sources.text_en <> "Crucible Contender") or sources.id IS NULL')
       end
     end
 
