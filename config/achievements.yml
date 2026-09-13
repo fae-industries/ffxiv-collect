@@ -92,6 +92,10 @@ shared:
     - 3407
     # Contests
     - 3900
+    # Crucible
+    - 4075
+    - 4076
+    - 4077
   time_limited_category_ids:
     # PvP > Ranking
     - 8

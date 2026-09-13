@@ -47,7 +47,7 @@ class Achievement < ApplicationRecord
   end
 
   scope :exclude_ranked_pvp, -> do
-    where.not('achievements.description_en regexp ?', 'feast season|conflict season|championship|pvp team')
+    where.not('achievements.description_en regexp ?', 'feast season|conflict season|championship|pvp team|crucible rankings')
   end
 
   scope :include_related, -> { includes(:item, :title) }
