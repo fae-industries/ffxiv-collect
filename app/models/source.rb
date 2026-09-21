@@ -5,6 +5,7 @@
 #  id               :bigint           not null, primary key
 #  collectable_type :string(255)      not null
 #  limited          :boolean          default(FALSE)
+#  order            :integer
 #  premium          :boolean          default(FALSE)
 #  related_type     :string(255)
 #  text_de          :string(255)
@@ -32,11 +33,12 @@ class Source < ApplicationRecord
 
   scope :exclude_premium, -> { where(premium: false) }
   scope :exclude_limited, -> { where(limited: false) }
+  scope :ordered, -> { order(order: :asc, id: :asc) }
 
   def self.ransackable_attributes(auth_object = nil)
     super + %w(
       text_en text_de text_fr text_ja text_tc
-      premium limited
+      premium limited order
       related_id type_id related_type collectable_id collectable_type
     )
   end

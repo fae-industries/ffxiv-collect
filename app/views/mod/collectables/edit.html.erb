@@ -56,11 +56,14 @@
                 <%= sf.hidden_field :collectable_type, value: @model.to_s %>
 
                 <div class="row flex align-items-center mb-2">
+                  <div class="col-1">
+                    <%= sf.select :order, @order_options, {}, class: 'form-control' %>
+                  </div>
                   <div class="col-3">
                     <%= sf.collection_select :type_id, @types, :id, :name,
                       { include_blank: t('mod.select_type') }, class: 'form-control' %>
                   </div>
-                  <div class="col-6 pr-4">
+                  <div class="col-5 pr-4">
                     <%= sf.text_field "text_#{I18n.locale}", class: 'form-control mr-2',
                       placeholder: sf.object.text_en  %>
                   </div>

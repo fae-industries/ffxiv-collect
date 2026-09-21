@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_08_145038) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "achievement_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.string "name_de", null: false
@@ -1342,6 +1342,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_145038) do
     t.string "collectable_type", null: false
     t.datetime "created_at", precision: nil, null: false
     t.boolean "limited", default: false
+    t.integer "order"
     t.boolean "premium", default: false
     t.integer "related_id"
     t.string "related_type"
@@ -1354,6 +1355,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_145038) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["collectable_id", "collectable_type"], name: "index_sources_on_collectable_id_and_collectable_type"
     t.index ["limited"], name: "index_sources_on_limited"
+    t.index ["order"], name: "index_sources_on_order"
     t.index ["premium"], name: "index_sources_on_premium"
     t.index ["related_id", "related_type"], name: "index_sources_on_related_id_and_related_type"
     t.index ["type_id"], name: "index_sources_on_type_id"
