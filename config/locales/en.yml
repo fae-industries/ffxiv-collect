@@ -135,6 +135,11 @@ en:
   bardings:
     one: "Barding"
     title: "Bardings"
+  beasts:
+    one: "Beast"
+    tempered_release: "Tempered Release"
+    title: "Beasts"
+    trick: "Trick"
   cards:
     number: "Number"
     one: "Triple Triad Card"
@@ -680,8 +685,3 @@ en:
     title: "Yo-kai Watch"
     weapon: "Weapon"
     zone: "Zone"
-  beasts:
-    one: "Beast"
-    title: "Beasts"
-    trick: "Trick"
-    tempered_release: "Tempered Release"

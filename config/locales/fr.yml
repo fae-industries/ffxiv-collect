@@ -135,6 +135,11 @@ fr:
   bardings:
     one: "Barde"
     title: "Bardes"
+  beasts:
+    one: "Bête"
+    tempered_release: "Salve"
+    title: "Bêtes"
+    trick: "Assaut"
   cards:
     number: "Numéro"
     one: "Carte de Triple Triade"
@@ -697,8 +702,3 @@ fr:
     title: "Yo-kai Watch"
     weapon: "Arme"
     zone: "Zone"
-  beasts:
-    one: "Bête"
-    title: "Bêtes"
-    trick: "Assaut"
-    tempered_release: "Salve"

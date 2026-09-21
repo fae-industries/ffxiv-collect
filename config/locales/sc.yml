@@ -135,6 +135,11 @@ chs:
   bardings:
     one: "陆行鸟装甲"
     title: "陆行鸟装甲"
+  beasts:
+    one: "魔兽"
+    tempered_release: "释放"
+    title: "魔兽"
+    trick: "大招"
   cards:
     number: "编号"
     one: "九宫幻卡"
@@ -680,9 +685,3 @@ chs:
     title: "妖怪手表"
     weapon: "武器"
     zone: "地区"
-  beasts:
-    one: "魔兽"
-    title: "魔兽"
-    trick: "大招"
-    tempered_release: "释放"
-

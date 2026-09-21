@@ -135,6 +135,11 @@ de:
   bardings:
     one: "Rossharnische"
     title: "Rossharnische"
+  beasts:
+    one: "Bestie"
+    tempered_release: "Entfesseln"
+    title: "Bestien"
+    trick: "Dressur"
   cards:
     number: "Nummer"
     one: "Triple Triad Karte"
@@ -696,8 +701,3 @@ de:
     title: "Yo-kai Watch"
     weapon: "Waffe"
     zone: "Gebiet"
-  beasts:
-    one: "Bestie"
-    title: "Bestien"
-    trick: "Dressur"
-    tempered_release: "Entfesseln"
