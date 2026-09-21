@@ -288,7 +288,7 @@ chs:
     stale: "该角色数据已过期。"
     title: "自定义群组"
   hairstyles:
-    female_hrothgar: "女性硌狮族可用" 
+    female_hrothgar: "女性硌狮族可用"
     male_hrothgar: "男性硌狮族可用"
     one: "发型"
     title: "发型"
@@ -434,7 +434,7 @@ chs:
     male: "仅男性"
     missing: "仅未拥有"
     owned: "仅已拥有"
-    tradeable: "仅可交易""
+    tradeable: "仅可交易"
     untradeable: "仅不可交易"
   orchestrions:
     one: "管弦乐琴乐谱"
