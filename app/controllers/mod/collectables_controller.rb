@@ -56,7 +56,7 @@ class Mod::CollectablesController < ModController
   end
 
   def set_types
-    @types = SourceType.all.order("name_#{I18n.locale}")
+    @types = SourceType.all.order(SourceType.current_locale_column(:name))
   end
 
   def set_changes

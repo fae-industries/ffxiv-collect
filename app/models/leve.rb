@@ -36,7 +36,7 @@ class Leve < ApplicationRecord
   delegate :craft, to: :category
 
   scope :include_related, -> { includes(:category, :location, :item) }
-  scope :ordered, -> { order("leve_categories.craft_#{I18n.locale}", "leve_categories.order", :level, :id) }
+  scope :ordered, -> { order("leve_categories.#{LeveCategory.current_locale_column(:craft)}", "leve_categories.order", :level, :id) }
 
   scope :hide_limited, -> (hide) do
     where('leves.limited = FALSE') if hide

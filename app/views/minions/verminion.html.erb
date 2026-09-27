@@ -17,14 +17,14 @@
       <div class="d-flex justify-content-between align-items-end mb-1">
         <div></div>
         <%= search_form_for(@q, url: verminion_minions_path, enforce_utf8: false, class: 'form form-inline search-form d-flex') do |f| %>
-          <%= f.search_field "name_#{I18n.locale}_cont", placeholder: t('name'), size: 30,
+          <%= f.search_field "#{Minion.current_locale_column(:name)}_cont", placeholder: t('name'), size: 30,
             class: 'form-control form-control-sm flex-grow-1' %>
-          <%= f.collection_select :race_id_eq, MinionRace.all.order("name_#{I18n.locale}"), :id, :name,
+          <%= f.collection_select :race_id_eq, MinionRace.ordered, :id, :name,
             { include_blank: t('all.types') }, class: 'form-control form-control-sm' %>
           <%= f.select :speed_eq, speed_options, { include_blank: t('all.speeds') }, class: 'form-control form-control-sm' %>
           <%= select_tag :strength, strength_options(params[:strength]), include_blank: t('all.strengths'),
             class: 'form-control form-control-sm multiselect' %>
-          <%= f.collection_select :skill_type_id_eq, MinionSkillType.all.order("name_#{I18n.locale}"), :id, :name,
+          <%= f.collection_select :skill_type_id_eq, MinionSkillType.ordered, :id, :name,
             { include_blank: t('all.skill_types') }, class: 'form-control form-control-sm' %>
           <%= f.submit t('search'), name: nil, class: 'btn btn-primary btn-sm mr-0' %>
         <% end %>

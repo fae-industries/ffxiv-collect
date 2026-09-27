@@ -7,11 +7,11 @@ class Triad::NPCsController < ApplicationController
     query = {}
 
     if @location.present?
-      query["location_region_#{I18n.locale}_eq"] = @location
+      query["location_#{Location.current_locale_column(:region)}_eq"] = @location
     end
 
     if @rule.present?
-      query["rules_name_#{I18n.locale}_matches_any"] = @rule
+      query["rules_#{Rule.current_locale_column(:name)}_matches_any"] = @rule
     end
 
     @q = NPC.all.ransack(query)

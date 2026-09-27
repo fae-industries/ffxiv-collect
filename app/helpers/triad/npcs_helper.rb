@@ -28,6 +28,6 @@ module Triad::NPCsHelper
   end
 
   def npc_rule_options(selected)
-    options_for_select(Rule.joins(:npcs).order("name_#{I18n.locale}").uniq.map(&:name), selected)
+    options_for_select(Rule.joins(:npcs).order(Rule.current_locale_column(:name)).uniq.map(&:name), selected)
   end
 end

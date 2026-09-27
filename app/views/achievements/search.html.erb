@@ -12,11 +12,11 @@
         <div></div>
         <%= search_form_for(@q, url: achievement_search_path, enforce_utf8: false,
                             class: 'form form-inline search-form d-flex') do |f| %>
-          <%= f.search_field "name_#{I18n.locale}_cont", placeholder: t('name'), size: 40, minlength: 3,
+          <%= f.search_field "#{Achievement.current_locale_column(:name)}_cont", placeholder: t('name'), size: 40, minlength: 3,
             class: 'form-control form-control-sm flex-grow-1' %>
-          <%= f.search_field "description_#{I18n.locale}_cont", placeholder: t('description'), size: 40, minlength: 3,
+          <%= f.search_field "#{Achievement.current_locale_column(:description)}_cont", placeholder: t('description'), size: 40, minlength: 3,
             class: 'form-control form-control-sm flex-grow-1' %>
-          <%= f.collection_select :category_type_id_eq, @types, :id, "name_#{I18n.locale}", { include_blank: t('all.types') },
+          <%= f.collection_select :category_type_id_eq, @types, :id, :name, { include_blank: t('all.types') },
             class: 'form-control form-control-sm' %>
           <%= f.select :patch_eq,
             patch_options_for_select(@patches, @search[:patch_eq] || @search[:patch_start], expansions: true),

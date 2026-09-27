@@ -12,8 +12,8 @@
         <%= form_for(@collectable, url: polymorphic_url([:mod, @collectable]), html: { class: 'form' }) do |f| %>
           <div class="row">
             <div class="col-9 form-group">
-              <%= f.label "name_#{I18n.locale}", t('name') %>
-              <%= f.text_field "name_#{I18n.locale}", class: 'form-control' %>
+              <%= f.label @collectable.class.current_locale_column(:name), t('name') %>
+              <%= f.text_field @collectable.class.current_locale_column(:name), class: 'form-control' %>
             </div>
             <div class="col-3 form-group">
               <%= f.label :patch, t('patch') %>
@@ -41,8 +41,8 @@
           <% if @collectable.has_attribute?(:solution_en) %>
             <div class="row">
               <div class="col-12 form-group">
-                <%= f.label "solution_#{I18n.locale}", t('survey_records.solution') %>
-                <%= f.text_field "solution_#{I18n.locale}", placeholder: @collectable.solution_en,
+                <%= f.label @collectable.class.current_locale_column(:solution), t('survey_records.solution') %>
+                <%= f.text_field @collectable.class.current_locale_column(:solution), placeholder: @collectable.solution_en,
                   class: 'form-control' %>
               </div>
             </div>
@@ -64,7 +64,7 @@
                       { include_blank: t('mod.select_type') }, class: 'form-control' %>
                   </div>
                   <div class="col-5 pr-4">
-                    <%= sf.text_field "text_#{I18n.locale}", class: 'form-control mr-2',
+                    <%= sf.text_field @collectable.class.current_locale_column(:text), class: 'form-control mr-2',
                       placeholder: sf.object.text_en  %>
                   </div>
                   <div class="col-3 d-flex align-items-center">

@@ -17,7 +17,7 @@
         <div></div>
         <%= search_form_for(@q, url: armoires_path, enforce_utf8: false, class: 'form form-inline search-form d-flex') do |f| %>
           <%= hidden_field_tag :category, params[:category] %>
-          <%= f.search_field "name_#{I18n.locale}_cont", placeholder: t('name'), size: 40,
+          <%= f.search_field "#{Armoire.current_locale_column(:name)}_cont", placeholder: t('name'), size: 40,
             class: 'form-control form-control-sm flex-grow-1' %>
           <%= f.collection_select :sources_type_id_eq, @types, :id, :name,
             { include_blank: t('all.sources') }, class: 'form-control form-control-sm' %>

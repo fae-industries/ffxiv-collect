@@ -13,10 +13,11 @@
 #
 
 class SourceType < ApplicationRecord
-  has_many :sources, foreign_key: 'type_id'
   translates :name
 
-  scope :ordered, -> { order("name_#{I18n.locale}") }
+  has_many :sources, foreign_key: 'type_id'
+
+  scope :ordered, -> { order(SourceType.current_locale_column(:name)) }
 
   scope :with_filters, -> (filters) do
     excluded = filters[:premium] == 'hide' ? ['Premium'] : []

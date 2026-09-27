@@ -14,5 +14,8 @@
 
 class MinionRace < ApplicationRecord
   translates :name
+
   has_many :minions
+
+  scope :ordered, -> { order(MinionRace.current_locale_column(:name)) }
 end

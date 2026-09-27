@@ -12,7 +12,7 @@
 <div class="d-flex justify-content-center mb-2">
   <%= form_with(class: 'form form-inline search-form d-flex', method: :get, local: true) do |f| %>
     <%= f.select :collection, group_collection_options(@collection), {}, class: 'form-control form-control-sm' %>
-    <%= f.collection_select :source_type_id, SourceType.all.order("name_#{I18n.locale}"), :id, :name,
+    <%= f.collection_select :source_type_id, SourceType.ordered, :id, :name,
       { include_blank: t('all.sources'), selected: params[:source_type_id] },
       class: 'form-control form-control-sm' %>
     <%= f.select :owned, group_ownership_options(params[:owned]), {}, class: 'form-control form-control-sm' %>

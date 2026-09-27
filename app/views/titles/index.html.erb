@@ -11,7 +11,7 @@
       <div class="d-flex justify-content-between align-items-end mb-1">
         <div></div>
         <%= search_form_for(@q, url: titles_path, enforce_utf8: false, class: 'form form-inline search-form d-flex') do |f| %>
-          <%= f.search_field "name_#{I18n.locale}_or_female_name_#{I18n.locale}_cont", placeholder: 'Title',
+          <%= f.search_field "#{Title.current_locale_column(:name)}_or_#{Title.current_locale_column(:female_name)}_cont", placeholder: 'Title',
             size: 40, class: 'form-control form-control-sm'%>
           <%= f.submit t('search'), name: nil, class: 'btn btn-primary btn-sm mr-0' %>
         <% end %>

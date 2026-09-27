@@ -19,7 +19,7 @@
 
 class Location < ApplicationRecord
   has_many :npcs
-  has_many :alphabetical_npcs, -> { order("name_#{I18n.locale}") }, class_name: 'NPC'
+  has_many :alphabetical_npcs, -> { order(Location.current_locale_column(:name)) }, class_name: 'NPC'
 
   translates :name, :region
 

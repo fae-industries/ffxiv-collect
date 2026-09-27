@@ -11,7 +11,7 @@
       <div class="d-flex justify-content-between align-items-end mb-1">
         <div></div>
         <%= search_form_for(@q, url: outfits_path, enforce_utf8: false, class: 'form form-inline search-form d-flex') do |f| %>
-          <%= f.search_field "name_#{I18n.locale}_or_items_name_#{I18n.locale}_cont",
+          <%= f.search_field "#{Outfit.current_locale_column(:name)}_or_items_#{Item.current_locale_column(:name)}_cont",
             placeholder: t('name'), size: 40, class: 'form-control form-control-sm flex-grow-1' %>
           <%= f.collection_select :sources_type_id_eq, @types, :id, :name,
             { include_blank: t('all.sources') }, class: 'form-control form-control-sm' %>

@@ -40,6 +40,7 @@ class NPC < ApplicationRecord
 
   scope :include_related, -> { include_sources.includes(:rules, :location, :quest, rewards: :type) }
   scope :ordered, -> { order(patch: :desc, id: :desc) }
+  scope :ordered_by_name, -> { order(NPC.current_locale_column(:name)) }
   scope :valid, -> { where(excluded: false) }
 
   def self.available_filters

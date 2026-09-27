@@ -27,9 +27,9 @@
       </div>
       <div class="card-body card-table">
         <%= search_form_for(@q, enforce_utf8: false, url: request.path, class: 'form form-inline search-form d-flex justify-content-center mx-2 my-3') do |f| %>
-          <%= f.collection_select :rule_id_eq, Rule.all.order("name_#{I18n.locale}"), :id, :name,
+          <%= f.collection_select :rule_id_eq, Rule.ordered, :id, :name,
             { include_blank: t('triad.decks.filter_by_rule') }, class: 'form-control form-control-sm'%>
-          <%= f.collection_select :npc_id_eq, NPC.all.order("name_#{I18n.locale}"), :id, :name,
+          <%= f.collection_select :npc_id_eq, NPC.ordered_by_name, :id, :name,
             { include_blank: t('triad.decks.filter_by_npc') }, class: 'form-control form-control-sm'  %>
           <div class="form-check form-check-inline">
             <%= check_box_tag :general, 1, params[:general], class: 'form-check-input checkbox' %>

@@ -31,7 +31,7 @@
           </div>
           <div class="form-group mb-2">
             <%= f.label :npc_id, t('triad.decks.select_npc'), class: 'mb-1' %>
-            <%= f.collection_select :npc_id, NPC.all.order("name_#{I18n.locale}"), :id, :name,
+            <%= f.collection_select :npc_id, NPC.ordered_by_name, :id, :name,
               { include_blank: true }, class: 'form-control form-control-sm'  %>
           </div>
           <span><%= t('triad.decks.select_general_purpose') %></span>
@@ -63,7 +63,7 @@
       <h5 class="card-header"><%= t('triad.decks.find_cards') %></h5>
       <div class="card-body card-table">
         <%= search_form_for(@q, class: 'form form-inline search-form d-flex justify-content-center mx-2 my-3', url: new_deck_path, enforce_utf8: false) do |f| %>
-          <%= f.search_field "name_#{I18n.locale}_cont", placeholder: t('name'), size: 30,
+          <%= f.search_field "#{Card.current_locale_column(:name)}_cont", placeholder: t('name'), size: 30,
             class: 'form-control form-control-sm' %>
           <%= f.search_field 'order_eq', placeholder: t('cards.number'), size: 10,
             class: 'form-control form-control-sm' %>

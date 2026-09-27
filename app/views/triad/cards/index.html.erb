@@ -10,7 +10,7 @@
     <div class="d-inline-flex flex-column">
       <div class="d-flex justify-content-center">
         <%= search_form_for(@q, url: cards_path, enforce_utf8: false, class: 'form form-inline search-form d-flex') do |f| %>
-          <%= f.search_field "name_#{I18n.locale}_cont", placeholder: t('name'), size: 25,
+          <%= f.search_field "#{Card.current_locale_column(:name)}_cont", placeholder: t('name'), size: 25,
             class: 'form-control form-control-sm' %>
           <%= f.search_field 'order_eq', placeholder: t('cards.number'), size: 10,
             class: 'form-control form-control-sm' %>

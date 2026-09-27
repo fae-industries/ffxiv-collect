@@ -14,4 +14,6 @@
 
 class SpellType < ApplicationRecord
   translates :name
+
+  scope :ordered, -> { order(SpellType.current_locale_column(:name)) }
 end

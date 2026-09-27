@@ -12,7 +12,7 @@
         <div></div>
         <%= search_form_for(@q, url: achievement_items_path, enforce_utf8: false,
                             class: 'form form-inline search-form d-flex') do |f| %>
-          <%= f.search_field "item_name_#{I18n.locale}_cont", placeholder: t('item'),
+          <%= f.search_field "item_#{Item.current_locale_column(:name)}_cont", placeholder: t('item'),
             size: 40, class: 'form-control form-control-sm'%>
           <%= f.submit t('search'), name: nil, class: 'btn btn-primary btn-sm mr-0' %>
         <% end %>
