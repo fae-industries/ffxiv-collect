@@ -4,8 +4,6 @@ class ApiController < ApplicationController
 
   before_action :set_defaults, :set_language, :set_owned
 
-  SUPPORTED_LOCALES = %w(en de fr ja tc).freeze
-
   def render_not_found
     render json: { status: 404, error: 'Not found' }, status: :not_found
   end
@@ -41,12 +39,12 @@ class ApiController < ApplicationController
   end
 
   def set_language
-    language = params[:language]
+    language = params[:language]&.to_sym
 
-    if language.present? && SUPPORTED_LOCALES.include?(language)
+    if language.present? && I18n.available_locales.include?(language)
       I18n.locale = language
     else
-      I18n.locale = 'en'
+      I18n.locale = :en
     end
   end
 

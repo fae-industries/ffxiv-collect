@@ -370,6 +370,7 @@ en:
     level: "Level"
     title: "Levequests"
   loading: "Loading..."
+  locale_code: "EN"
   locale_name: "English"
   materiel:
     3: "Possible loot from Materiel Container 3.0"

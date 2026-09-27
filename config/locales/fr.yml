@@ -370,6 +370,7 @@ fr:
     level: "Niveau"
     title: "Mandats"
   loading: "Chargement..."
+  locale_code: "FR"
   locale_name: "Français"
   materiel:
     3: "Récompense possible de la malle-surprise (ARR/Heavensward)"

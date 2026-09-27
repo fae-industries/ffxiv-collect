@@ -324,6 +324,7 @@ tc:
     issuer: "委託人"
     level: "等級"
     title: "理符任務"
+  locale_code: "TW"
   locale_name: "漢語"
   materiel:
     3: "可能從物資補給箱 3.0 中獲得"

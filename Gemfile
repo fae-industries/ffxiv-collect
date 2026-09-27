@@ -33,6 +33,7 @@ gem 'momentjs-rails'
 gem 'js_cookie_rails'
 gem 'rails_bootstrap_sortable'
 gem 'i18n-js', '3.9.1'
+gem 'accept_language'
 
 gem 'lograge'
 gem 'whenever'

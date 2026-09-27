@@ -35,8 +35,6 @@ module FfxivCollect
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.i18n.enforce_available_locales = false
-
     config.cache_store = :file_store, 'tmp/cache'
 
     config.session_store :cookie_store, key: '_ffxiv_collect_session', expire_after: 1.month, same_site: :lax
@@ -47,6 +45,11 @@ module FfxivCollect
     config.autoload_paths += Dir[Rails.root.join('app/models/character')]
     config.autoload_paths += Dir[Rails.root.join('app/models/triad')]
     config.autoload_paths += Dir[Rails.root.join('app/lib/omniauth')]
+
+    config.i18n.available_locales = %i(en de fr ja tc)
+    config.i18n.default_locale = :en
+    # Avoid throwing on invalid locales and just revert to the default
+    config.i18n.enforce_available_locales = false
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do

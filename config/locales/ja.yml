@@ -1,4 +1,5 @@
 ja:
+  locale_code: "JA"
   locale_name: "日本語"
   # Fall back to the English translation when creating translated sources
   sources:

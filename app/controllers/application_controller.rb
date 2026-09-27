@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale, :set_characters, :display_announcements
 
-  SUPPORTED_LOCALES = %w(en de fr ja tc).freeze
+  SUPPORTED_LOCALES = %i(en de fr ja zh-tw).freeze
 
   def new_session_path(scope)
     new_user_session_path
@@ -55,16 +55,18 @@ class ApplicationController < ActionController::Base
 
   private
   def set_locale
-    locale = cookies[:locale]
+    if cookies[:locale].nil?
+      locale = AcceptLanguage.parse(request.headers.fetch('HTTP_ACCEPT_LANGUAGE')).match(*SUPPORTED_LOCALES)
 
-    unless locale.present?
-      locale = request.env['HTTP_ACCEPT_LANGUAGE']&.scan(/^[a-z]{2}/)&.first&.downcase
-
-      unless locale.present? && SUPPORTED_LOCALES.include?(locale)
-        locale = I18n.default_locale
+      # Map the BCP 47 language tags to the shorthand used by the application
+      locale = case locale
+      when :'zh-tw'
+        :tc
+      else
+        locale
       end
 
-      set_permanent_cookie(:locale, locale)
+      set_permanent_cookie(:locale, locale || I18n.default_locale)
     end
 
     I18n.locale = cookies[:locale]

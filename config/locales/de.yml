@@ -370,6 +370,7 @@ de:
     level: "Level"
     title: "Freibriefe"
   loading: "Wird geladen..."
+  locale_code: "DE"
   locale_name: "Deutsch"
   materiel:
     3: "Möglicher Loot aus Sonderziehungstruhe (A Realm Reborn, Heavensward)"
