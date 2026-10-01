@@ -54,7 +54,7 @@ namespace :spells do
     spells.values.each do |spell|
       aspect = SpellAspect.find_or_create_by!(spell.delete(:aspects))
       spell[:aspect_id] = aspect.id.to_s
-      data = spell.except(Spell.locale_columns(:location))
+      data = spell.except(*ALL_LOCALES.map { |locale| "location_#{locale}" })
 
       if existing = Spell.find_by(id: spell[:id])
         existing.update!(data) if updated?(existing, data)
