@@ -146,7 +146,7 @@ namespace 'sources:shops' do
 
       unlock = Item.find(entry['Item']).unlock
 
-      texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+      texts = ALL_LOCALES.each_with_object({}) do |locale, h|
         amount = number_with_delimiter(entry['CostGCSeals'], locale: locale)
         h["text_#{locale}"] = I18n.t('sources.seals', amount: amount, locale: locale)
       end
@@ -166,7 +166,7 @@ def create_shop_source(unlock, type, texts)
 end
 
 def currency_texts(price, currency)
-  %w(en de fr ja tc).each_with_object({}) do |locale, h|
+  ALL_LOCALES.each_with_object({}) do |locale, h|
     if price != '1' && currency["plural_#{locale}"].present?
       formatted_currency = currency["plural_#{locale}"]
     else

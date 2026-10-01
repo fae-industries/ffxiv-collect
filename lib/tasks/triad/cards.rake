@@ -17,11 +17,11 @@ namespace :triad do
                          description_en: sanitize_text(card['Description'], preserve_space: true) }
       end
 
-      %w(fr de ja tc).each do |locale|
+      OTHER_LOCALES.each do |locale|
         XIVData.sheet('TripleTriadCard', locale: locale).each do |card|
           next unless card['#'] != '0' && card['Name'].present?
 
-          cards[card['#']].merge!("name_#{locale}" => sanitize_name(card['Name'], locale: locale, upcase_first_only: locale == 'fr'),
+          cards[card['#']].merge!("name_#{locale}" => sanitize_name(card['Name'], locale: locale, upcase_first_only: locale == :fr),
                                   "description_#{locale}" => sanitize_text(card['Description'], preserve_space: true))
         end
       end

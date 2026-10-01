@@ -8,7 +8,7 @@ namespace :mounts do
     puts 'Creating mounts'
     count = Mount.count
 
-    mounts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    mounts = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('Mount', locale: locale).each do |mount|
         next unless mount['Order'].to_i >= 0 && mount['Singular'].present?
 
@@ -23,7 +23,7 @@ namespace :mounts do
     end
 
     # Add the remaining data from the transient sheet
-    %w(en de fr ja tc).each do |locale, h|
+    ALL_LOCALES.each do |locale, h|
       XIVData.sheet('MountTransient', locale: locale).each do |mount|
         next unless mounts.has_key?(mount['#'])
 

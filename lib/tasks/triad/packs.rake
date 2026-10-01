@@ -82,7 +82,7 @@ namespace :triad do
     def create_card_sources(pack)
       gold_saucer_type = SourceType.find_by(name_en: 'Gold Saucer').freeze
 
-      texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+      texts = ALL_LOCALES.each_with_object({}) do |locale, h|
         h["text_#{locale}"] = pack["name_#{locale}"]
       end
 

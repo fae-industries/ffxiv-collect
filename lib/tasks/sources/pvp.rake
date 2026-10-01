@@ -13,7 +13,7 @@ namespace 'sources:pvp' do
         if item_id != '0' && unlock = Item.find(item_id).unlock
           next if unlock.sources.any?
 
-          texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+          texts = ALL_LOCALES.each_with_object({}) do |locale, h|
             h["text_#{locale}"] = I18n.t('sources.pvp', series: series['#'], level: level, locale: locale)
           end
 

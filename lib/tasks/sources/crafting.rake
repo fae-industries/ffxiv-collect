@@ -29,7 +29,7 @@ namespace 'sources:crafting' do
     # Skip creation if the collectable has any crafting sources (the text will be different)
     return if collectable.sources.exists?(type: source_type)
 
-    texts = %w(en de fr).each_with_object({}) do |locale, h|
+    texts = ALL_LOCALES.each_with_object({}) do |locale, h|
       case collectable
       when Outfit
         # Outfits have multiple recipes, so skip identifying the crafter

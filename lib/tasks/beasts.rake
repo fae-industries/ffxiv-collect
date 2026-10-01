@@ -6,7 +6,7 @@ namespace :beasts do
     puts 'Creating Beastmaster beasts'
     count = Beast.count
 
-    pets = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    pets = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('Pet', locale: locale).each do |pet|
         # All Beastmaster pets share this ability
         next unless pet['Abilities[2]'] == '44934'
@@ -24,7 +24,7 @@ namespace :beasts do
 
     actions = {}
 
-    beasts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    beasts = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('XBMPet', locale: locale).each do |beast|
         pet = pets[beast['Pet']]
         next unless pet.present?
@@ -51,7 +51,7 @@ namespace :beasts do
       end
     end
 
-    %w(en de fr ja tc).each do |locale|
+    ALL_LOCALES.each do |locale|
       XIVData.sheet('Action', locale: locale).each do |action|
         next unless actions.has_key?(action['#']) && action['Name'].present?
 

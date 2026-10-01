@@ -44,7 +44,7 @@ namespace 'sources:orchestrions' do
 
       limited ||= false
 
-      texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+      texts = ALL_LOCALES.each_with_object({}) do |locale, h|
         if related.present?
           h["text_#{locale}"] = related["name_#{locale}"]
         else

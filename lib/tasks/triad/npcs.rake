@@ -24,12 +24,12 @@ namespace :triad do
         end
       end
 
-      %w(en fr de ja tc).each do |locale|
+      ALL_LOCALES.each do |locale|
         XIVData.sheet('ENpcResident', locale: locale).each do |npc|
           if npcs.has_key?(npc['#'])
             npcs[npc['#']]["name_#{locale}"] = sanitize_name(npc['Singular'], locale: locale,
-                                                             capitalize: locale == 'en',
-                                                             upcase_first_only: locale == 'de' || locale == 'fr')
+                                                             capitalize: locale == :en,
+                                                             upcase_first_only: locale == :de || locale == :fr)
           end
         end
       end
@@ -125,7 +125,7 @@ namespace :triad do
         # Create the NPC rewards along with a Source for the Card
         npc_type = SourceType.find_by(name_en: 'NPC')
 
-        texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+        texts = ALL_LOCALES.each_with_object({}) do |locale, h|
           h["text_#{locale}"] = npc["name_#{locale}"]
         end
 

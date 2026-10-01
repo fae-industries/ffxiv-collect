@@ -4,7 +4,7 @@ namespace :orchestrions do
     PaperTrail.enabled = false
 
     puts 'Creating orchestrion categories'
-    categories = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    categories = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('OrchestrionCategory', locale: locale).each do |category|
         next if category['Order'] == '0'
 
@@ -24,7 +24,7 @@ namespace :orchestrions do
 
     puts 'Creating orchestrion rolls'
     count = Orchestrion.count
-    orchestrions = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    orchestrions = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('Orchestrion', locale: locale).each do |orchestrion|
         next unless orchestrion['Name'].present?
 

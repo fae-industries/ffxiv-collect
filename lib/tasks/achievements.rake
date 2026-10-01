@@ -9,7 +9,7 @@ namespace :achievements do
       h[type['#']] = { id: type['#'], name_en: type['Name'], order: type['Order'] }
     end
 
-    %w(de fr ja tc).each do |locale|
+    OTHER_LOCALES.each do |locale|
       XIVData.sheet('AchievementKind', locale: locale).each do |type|
         next unless type['Order'] != '0'
         types[type['#']]["name_#{locale}"] = type['Name']
@@ -31,7 +31,7 @@ namespace :achievements do
                            type_id: AchievementType.find(category['AchievementKind']).id.to_s }
     end
 
-    %w(de fr ja tc).each do |locale|
+    OTHER_LOCALES.each do |locale|
       XIVData.sheet('AchievementCategory', locale: locale).each do |category|
         next unless category['Order'] != '0'
         categories[category['#']]["name_#{locale}"] = category['Name']
@@ -64,7 +64,7 @@ namespace :achievements do
       h[achievement['#']] = data
     end
 
-    %w(de fr ja tc).each do |locale|
+    OTHER_LOCALES.each do |locale|
       XIVData.sheet('Achievement', locale: locale).each do |achievement|
         next unless achievement['Name'].present? && achievement['AchievementCategory'] != '0'
 

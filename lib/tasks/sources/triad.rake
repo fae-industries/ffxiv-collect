@@ -16,7 +16,7 @@ namespace :sources do
         when 2, 3
           if instance = Instance.find(acquisition_id)
             source_type = SourceType.find_by(name_en: instance.content_type.name_en)
-            texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+            texts = ALL_LOCALES.each_with_object({}) do |locale, h|
               h["text_#{locale}"] = instance["name_#{locale}"]
             end
           end
@@ -30,7 +30,7 @@ namespace :sources do
           pack = Pack.find_by(item_id: acquisition_id)
           PackCard.find_or_create_by!(pack_id: pack.id, card_id: card['#'])
 
-          texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+          texts = ALL_LOCALES.each_with_object({}) do |locale, h|
             h["text_#{locale}"] = pack["name_#{locale}"]
           end
         # when 9
@@ -41,7 +41,7 @@ namespace :sources do
           source_type = achievement_type
           achievement = Achievement.find(acquisition_id)
 
-          texts = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+          texts = ALL_LOCALES.each_with_object({}) do |locale, h|
             h["text_#{locale}"] = achievement["name_#{locale}"]
           end
         end

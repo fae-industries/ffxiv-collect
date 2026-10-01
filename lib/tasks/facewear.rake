@@ -19,7 +19,7 @@ namespace :facewear do
       }
     end
 
-    %w(de fr ja tc).each do |locale|
+    OTHER_LOCALES.each do |locale|
       XIVData.sheet('GlassesStyle', locale: locale).each do |facewear|
         next unless facewear['Name'].present? && facewear['Icon'] != '0'
 

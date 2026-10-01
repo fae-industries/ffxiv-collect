@@ -2,6 +2,14 @@ require 'open-uri'
 require 'sprite_factory'
 require 'xiv_data'
 
+# Conjunctions/prepositions + Garlean ranks + special characters
+WORDS_TO_IGNORE = %w(a an and as at by de for from in into la of on or over the to up with
+  aan goe mal oen pyr quo rem sas tol van yae
+  α β γ δ).freeze
+
+ALL_LOCALES = Rails.application.config.i18n.available_locales
+OTHER_LOCALES = ALL_LOCALES[1..-1]
+
 namespace :data do
   desc 'Initialize all data'
   task initialize: :environment do
@@ -61,12 +69,7 @@ def log(message)
   puts "[#{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}] #{message}"
 end
 
-# Conjunctions/prepositions + Garlean ranks + special characters
-WORDS_TO_IGNORE = %w(a an and as at by de for from in into la of on or over the to up with
-  aan goe mal oen pyr quo rem sas tol van yae
-  α β γ δ).freeze
-
-def sanitize_name(name, locale: 'en', capitalize: false, upcase_first_only: false)
+def sanitize_name(name, locale: :en, capitalize: false, upcase_first_only: false)
   return '' if name.nil?
 
   # Clean up symbols, language tags, etc.
@@ -81,8 +84,8 @@ def sanitize_name(name, locale: 'en', capitalize: false, upcase_first_only: fals
 
   return name unless capitalize
 
-  # Capitalize for 'en' and 'ja' only ('ja' uses English names sometimes)
-  if locale == 'en' || locale == 'ja'
+  # Capitalize for EN and JA only (JA uses English names sometimes)
+  if locale == :en || locale == :en
     name = name.split(' ')
       .map { |word| WORDS_TO_IGNORE.include?(word) ? word : word.upcase_first }
       .join(' ')
@@ -145,7 +148,7 @@ def maps_with_locations(ids)
   end
 
   # Look up the locations associated with each map
-  locations = %w(en fr de ja tc).each_with_object(Hash.new({})) do |locale, h|
+  locations = ALL_LOCALES.each_with_object(Hash.new({})) do |locale, h|
     places = XIVData.sheet('PlaceName', locale: locale).map { |place| place['Name']}
 
     maps.values.each do |map|

@@ -30,26 +30,26 @@ namespace :hairstyles do
       end
 
       # Set the Hairstyle name to the item name sans the "Modern Aesthetics"
-      data["name_en"] = sanitize_name(item["name_en"], locale: 'en')
+      data['name_en'] = sanitize_name(item['name_en'], locale: :en)
         .gsub(/.+-\s(.+)/, '\1')
 
-      data["name_de"] = sanitize_name(item["name_de"], locale: 'de')
+      data['name_de'] = sanitize_name(item['name_de'], locale: :de)
         .gsub(/.+„(.+?)“/, '\1') # Quote marks
         .gsub(/.+(?:Ästhetik\s-|,)\s(.+)/, '\1') # Prefixes
         .upcase_first
 
-      data["name_fr"] = sanitize_name(item["name_fr"], locale: 'fr')
+      data['name_fr'] = sanitize_name(item['name_fr'], locale: :fr)
         .gsub(/.+“(.+?)”/, '\1') # Hairstyles
         .gsub(/.+:\s(.+)/, '\1') # Facepaint
         .upcase_first
 
-      data["name_ja"] = sanitize_name(item["name_ja"], locale: 'ja')
+      data['name_ja'] = sanitize_name(item['name_ja'], locale: :ja)
         .gsub(/.+:(.+)/, '\1')
 
-      data["name_tc"] = sanitize_name(item["name_tc"], locale: 'tc')
+      data['name_tc'] = sanitize_name(item['name_tc'], locale: :tc)
         .gsub(/.+：(.+)/, '\1')
 
-      data.merge!(item.slice(:description_en, :description_de, :description_fr, :description_ja, :description_tc))
+      data.merge!(item.slice(Item.locale_columns(:description)))
 
       data[:item_id] = item.id.to_s
 

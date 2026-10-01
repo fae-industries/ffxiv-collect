@@ -15,7 +15,7 @@ namespace :relics do
 
     Item.where(id: ids).sort_by { |item| ids.index(item.id) }.each_with_index do |item, i|
       data = { id: item.id.to_s, order: (i + 1).to_s, type_id: type.id.to_s, achievement_id: achievement_ids[i]&.to_s }
-        .merge(item.slice(:name_en, :name_de, :name_fr, :name_ja, :name_tc, :image_url))
+        .merge(item.slice(*Item.locale_columns(:name), :image_url))
 
       if existing = Relic.find_by(id: data[:id])
         existing.update!(data) if updated?(existing, data)

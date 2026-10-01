@@ -16,16 +16,16 @@ namespace 'sources:achievements' do
       next if Source.exists?(collectable_id: collectable_id, collectable_type: collectable_type,
                              type: achievement_type)
 
+      texts = ALL_LOCALES.each_with_object({}) do |locale, h|
+        h["text_#{locale}"] = achievement["name_#{locale}"]
+      end
+
       Source.create!(
         collectable_id: collectable_id,
         collectable_type: collectable_type,
         type: achievement_type,
         related_id: achievement.id,
-        text_en: achievement.name_en,
-        text_de: achievement.name_de,
-        text_fr: achievement.name_fr,
-        text_ja: achievement.name_ja,
-        text_tc: achievement.name_tc
+        **texts,
       )
     end
   end

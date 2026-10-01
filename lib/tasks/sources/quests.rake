@@ -29,12 +29,12 @@ namespace 'sources:quests' do
     quest = item.quest
     source_type = SourceType.find_by(name_en: quest.event ? 'Event' : 'Quest')
 
+    texts = ALL_LOCALES.each_with_object({}) do |locale, h|
+      h["text_#{locale}"] = quest["name_#{locale}"]
+    end
+
     collectable.sources.find_or_create_by!(
-      text_en: quest.name_en,
-      text_de: quest.name_de,
-      text_fr: quest.name_fr,
-      text_ja: quest.name_ja,
-      text_tc: quest.name_tc,
+      **texts,
       type: source_type,
       limited: quest.event?,
       related_type: 'Quest',

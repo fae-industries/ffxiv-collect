@@ -14,7 +14,7 @@ namespace :instances do
       h[type['#']] = { id: type['#'], name_en: name }
     end
 
-    %w(de fr ja tc).each do |locale|
+    OTHER_LOCALES.each do |locale|
       XIVData.sheet('ContentType', locale: locale).each do |type|
         next unless types.has_key?(type['#'])
         types[type['#']]["name_#{locale}"] = type['Name']
@@ -40,7 +40,7 @@ namespace :instances do
                              name_en: sanitize_name(instance['Name'], upcase_first_only: true) }
     end
 
-    %w(de fr ja tc).each do |locale|
+    OTHER_LOCALES.each do |locale|
       XIVData.sheet('ContentFinderCondition', locale: locale).each do |instance|
         next unless instances.has_key?(instance['#'])
         instances[instance['#']]["name_#{locale}"] = sanitize_name(instance['Name'], locale: locale, upcase_first_only: true)

@@ -13,7 +13,7 @@ namespace :leves do
     location_categories = ['1', '13', '14', '15'] # Battlecraft, The Maelstrom, Order of the Twin Adder, Immortal Flames
 
     puts 'Creating leve categories'
-    categories = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    categories = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('LeveAssignmentType', locale: locale).each do |category|
         next unless category['Name'].present?
 
@@ -55,7 +55,7 @@ namespace :leves do
     puts 'Creating leves'
     count = Leve.count
 
-    leves = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    leves = ALL_LOCALES.each_with_object({}) do |locale, h|
       # Initialize the leves
       XIVData.sheet('Leve', locale: locale).each do |leve|
         next unless leve['Name'].present?
@@ -127,7 +127,7 @@ namespace :leves do
 
     # Add NPC issuer names
     npc_ids = leves.values.pluck(:npc_id).uniq
-    npcs = %w(en fr de ja tc).each_with_object(Hash.new { |h, k| h[k] = {} }) do |locale, h|
+    npcs = ALL_LOCALES.each_with_object(Hash.new { |h, k| h[k] = {} }) do |locale, h|
       XIVData.sheet('ENpcResident', locale: locale).each do |npc|
         if npc_ids.include?(npc['#'])
           h[npc['#']]["issuer_name_#{locale}"] = sanitize_name(npc['Singular'], locale: locale)
@@ -150,7 +150,7 @@ namespace :leves do
 
     # Find the NPC and save their names
     npc_ids = issuers.values.pluck(:npc_id)
-    %w(en fr de ja tc).each do |locale|
+    ALL_LOCALES.each do |locale|
       XIVData.sheet('ENpcResident', locale: locale).each do |npc|
         if npc_ids.include?(npc['#'])
           issuers[npc['#']]["issuer_name_#{locale}"] = sanitize_name(npc['Singular'], locale: locale)

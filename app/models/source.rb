@@ -51,7 +51,7 @@ class Source < ApplicationRecord
   def assign_relations!
     locale = nil
 
-    %w(en de fr ja tc).each do |i18n|
+    I18n.available_locales.each do |i18n|
       break locale = i18n if changes.keys.include?("text_#{i18n}")
     end
 
@@ -113,7 +113,7 @@ class Source < ApplicationRecord
   end
 
   def set_text_for_relation!(relation)
-    %w(en de fr ja tc).each do |locale|
+    I18n.available_locales.each do |locale|
       self["text_#{locale}"] = relation["name_#{locale}"]
     end
   end

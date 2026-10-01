@@ -4,12 +4,12 @@ namespace :quests do
     puts 'Creating quests'
 
     count = Quest.count
-    quests = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    quests = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('Quest', locale: locale).each do |quest|
         next unless quest['Name'].present?
 
         # Initialize the data and process rewards on the first pass
-        if locale == 'en'
+        if locale == :en
           data = { id: quest['#'], event: quest['FestivalEnd'] != '0' }
 
           7.times do |i|

@@ -6,7 +6,7 @@ namespace :titles do
     puts 'Creating titles'
     count = Title.count
 
-    titles = %w(en de fr ja tc).each_with_object({}) do |locale, h|
+    titles = ALL_LOCALES.each_with_object({}) do |locale, h|
       XIVData.sheet('Title', locale: locale).each do |title|
         next unless title['Masculine'].present?
 
