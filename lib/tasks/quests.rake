@@ -12,11 +12,10 @@ namespace :quests do
         if locale == 'en'
           data = { id: quest['#'], event: quest['FestivalEnd'] != '0' }
 
-          # Apparently this is only an item if the ItemRewardType is: 1, 3, 5
           7.times do |i|
             reward = quest["Reward[#{i}]"]
-            break if reward.nil?
-            Item.find_by(name_en: reward)&.update!(quest_id: quest['#'])
+            break if reward == '0'
+            Item.find_by(id: reward)&.update!(quest_id: quest['#'])
           end
         else
           data = h[quest['#']]
