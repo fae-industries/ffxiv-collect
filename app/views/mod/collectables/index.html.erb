@@ -8,7 +8,7 @@
         <%= link_to t("#{@model.to_s.tableize}.title"), polymorphic_url([:mod, @model]), class: 'unstyled' %>
       </h5>
       <%= search_form_for(@q, url: polymorphic_url([:mod, @model]), class: 'form form-inline admin-search-form') do |f| %>
-        <%= f.search_field "#{@model.class.current_locale_column(:name)}_cont", placeholder: t('name'), size: 30,
+        <%= f.search_field "#{@model.current_locale_column(:name)}_cont", placeholder: t('name'), size: 30,
           class: 'form-control form-control-sm' %>
         <div class="form-group form-check">
           <%= check_box_tag :missing_patch, 1, @missing_patch %>
