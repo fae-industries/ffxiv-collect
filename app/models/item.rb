@@ -2,32 +2,35 @@
 #
 # Table name: items
 #
-#  id             :bigint           not null, primary key
-#  crafter        :string(255)
-#  description_de :string(1000)     not null
-#  description_en :string(1000)     not null
-#  description_fr :string(1000)     not null
-#  description_ja :string(1000)     not null
-#  description_tc :string(1000)
-#  image_url      :string(255)
-#  name_de        :string(255)      not null
-#  name_en        :string(255)      not null
-#  name_fr        :string(255)      not null
-#  name_ja        :string(255)      not null
-#  name_tc        :string(255)
-#  plural_de      :string(255)
-#  plural_en      :string(255)
-#  plural_fr      :string(255)
-#  plural_ja      :string(255)
-#  plural_tc      :string(255)
-#  price          :integer
-#  tradeable      :boolean
-#  unlock_type    :string(255)
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  quest_id       :integer
-#  recipe_id      :integer
-#  unlock_id      :integer
+#  id              :bigint           not null, primary key
+#  crafter         :string(255)
+#  description_chs :string(1000)
+#  description_de  :string(1000)     not null
+#  description_en  :string(1000)     not null
+#  description_fr  :string(1000)     not null
+#  description_ja  :string(1000)     not null
+#  description_tc  :string(1000)
+#  image_url       :string(255)
+#  name_chs        :string(255)
+#  name_de         :string(255)      not null
+#  name_en         :string(255)      not null
+#  name_fr         :string(255)      not null
+#  name_ja         :string(255)      not null
+#  name_tc         :string(255)
+#  plural_chs      :string(255)
+#  plural_de       :string(255)
+#  plural_en       :string(255)
+#  plural_fr       :string(255)
+#  plural_ja       :string(255)
+#  plural_tc       :string(255)
+#  price           :integer
+#  tradeable       :boolean
+#  unlock_type     :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  quest_id        :integer
+#  recipe_id       :integer
+#  unlock_id       :integer
 #
 class Item < ApplicationRecord
   translates :name, :description, :plural
@@ -44,7 +47,7 @@ class Item < ApplicationRecord
     name = I18n.with_locale(locale) { self.name }
 
     case locale
-    when :en, :tc
+    when :en, :tc, :chs
       name.sub(/.+ Of (.+)/i, '\1')
     when :de
       name.sub(/.+ De[rs] (.+)/i, '\1')

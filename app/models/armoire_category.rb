@@ -3,6 +3,7 @@
 # Table name: armoire_categories
 #
 #  id         :bigint           not null, primary key
+#  name_chs   :string(255)
 #  name_de    :string(255)      not null
 #  name_en    :string(255)      not null
 #  name_fr    :string(255)      not null

@@ -6,6 +6,7 @@
 #  bottom           :integer          not null
 #  buy_price        :integer
 #  deck_order       :integer
+#  description_chs  :text(65535)
 #  description_de   :text(65535)      not null
 #  description_en   :text(65535)      not null
 #  description_fr   :text(65535)      not null
@@ -15,6 +16,7 @@
 #  image_url        :string(255)
 #  large_image_url  :string(255)
 #  left             :integer          not null
+#  name_chs         :string(255)
 #  name_de          :string(255)      not null
 #  name_en          :string(255)      not null
 #  name_fr          :string(255)      not null

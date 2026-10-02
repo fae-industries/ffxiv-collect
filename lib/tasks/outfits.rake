@@ -19,8 +19,11 @@ namespace :outfits do
 
       item = Item.find(outfit['#'])
 
-      data = { id: outfit['#'], item_id: outfit['#'], item_ids: item_ids, gender: nil,
-               name_en: item.name_en, name_de: item.name_de, name_fr: item.name_fr, name_ja: item.name_ja }
+      data = { id: outfit['#'], item_id: outfit['#'], item_ids: item_ids, gender: nil }
+
+      ALL_LOCALES.each do |locale|
+        data["name_#{locale}"] = item["name_#{locale}"]
+      end
 
       # Check the associated items for tradeability and gender restrictions
       Item.where(id: item_ids).each do |item|

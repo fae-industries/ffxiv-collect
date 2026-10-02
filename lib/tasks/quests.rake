@@ -21,6 +21,8 @@ namespace :quests do
           data = h[quest['#']]
         end
 
+        next unless data.present?
+
         data["name_#{locale}"] = sanitize_name(quest['Name'], locale: locale)
         h[data[:id]] = data
       end

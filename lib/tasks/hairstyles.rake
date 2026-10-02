@@ -43,11 +43,10 @@ namespace :hairstyles do
         .gsub(/.+:\s(.+)/, '\1') # Facepaint
         .upcase_first
 
-      data['name_ja'] = sanitize_name(item['name_ja'], locale: :ja)
-        .gsub(/.+:(.+)/, '\1')
-
-      data['name_tc'] = sanitize_name(item['name_tc'], locale: :tc)
-        .gsub(/.+：(.+)/, '\1')
+      %i(ja tc chs).each do |locale|
+        data["name_#{locale}"] = sanitize_name(item["name_#{locale}"], locale: :locale)
+          .gsub(/.+:(.+)/, '\1')
+      end
 
       data.merge!(item.slice(Item.locale_columns(:description)))
 

@@ -3,6 +3,7 @@
 # Table name: field_records
 #
 #  id               :bigint           not null, primary key
+#  description_chs  :text(65535)
 #  description_de   :text(65535)      not null
 #  description_en   :text(65535)      not null
 #  description_fr   :text(65535)      not null
@@ -10,11 +11,13 @@
 #  description_tc   :text(65535)
 #  image_url        :string(255)
 #  large_image_url  :string(255)
+#  location_chs     :text(65535)
 #  location_de      :string(255)
 #  location_en      :string(255)
 #  location_fr      :string(255)
 #  location_ja      :string(255)
 #  location_tc      :string(255)
+#  name_chs         :string(255)
 #  name_de          :string(255)      not null
 #  name_en          :string(255)      not null
 #  name_fr          :string(255)      not null

@@ -6,6 +6,7 @@
 #  category   :string(255)
 #  expansion  :integer
 #  jobs       :integer
+#  name_chs   :string(255)
 #  name_de    :string(255)
 #  name_en    :string(255)
 #  name_fr    :string(255)

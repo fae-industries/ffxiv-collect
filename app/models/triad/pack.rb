@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  cost       :integer          not null
+#  name_chs   :string(255)
 #  name_de    :string(255)      not null
 #  name_en    :string(255)      not null
 #  name_fr    :string(255)      not null

@@ -8,6 +8,7 @@
 #  order            :integer
 #  premium          :boolean          default(FALSE)
 #  related_type     :string(255)
+#  text_chs         :string(255)
 #  text_de          :string(255)
 #  text_en          :string(255)
 #  text_fr          :string(255)

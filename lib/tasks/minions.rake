@@ -93,6 +93,8 @@ namespace :minions do
     end
 
     minions.values.each do |minion|
+      next unless minion['name_en'].present?
+
       minion[:large_image_url] = minion[:image_url].gsub(/004(\d{3})/, '068\1')
       minion[:footprint_image_url] = minion[:image_url].gsub(/004(\d{3})/, '069\1')
 

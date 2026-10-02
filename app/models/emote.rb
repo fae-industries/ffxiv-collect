@@ -3,12 +3,14 @@
 # Table name: emotes
 #
 #  id          :bigint           not null, primary key
+#  command_chs :string(255)
 #  command_de  :string(255)
 #  command_en  :string(255)
 #  command_fr  :string(255)
 #  command_ja  :string(255)
 #  command_tc  :string(255)
 #  image_url   :string(255)
+#  name_chs    :string(255)
 #  name_de     :string(255)      not null
 #  name_en     :string(255)      not null
 #  name_fr     :string(255)      not null

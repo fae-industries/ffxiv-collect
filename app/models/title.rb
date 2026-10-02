@@ -2,21 +2,23 @@
 #
 # Table name: titles
 #
-#  id             :bigint           not null, primary key
-#  female_name_de :string(255)      not null
-#  female_name_en :string(255)      not null
-#  female_name_fr :string(255)      not null
-#  female_name_ja :string(255)      not null
-#  female_name_tc :string(255)
-#  name_de        :string(255)      not null
-#  name_en        :string(255)      not null
-#  name_fr        :string(255)      not null
-#  name_ja        :string(255)      not null
-#  name_tc        :string(255)
-#  order          :integer          not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  achievement_id :integer          not null
+#  id              :bigint           not null, primary key
+#  female_name_chs :string(255)
+#  female_name_de  :string(255)      not null
+#  female_name_en  :string(255)      not null
+#  female_name_fr  :string(255)      not null
+#  female_name_ja  :string(255)      not null
+#  female_name_tc  :string(255)
+#  name_chs        :string(255)
+#  name_de         :string(255)      not null
+#  name_en         :string(255)      not null
+#  name_fr         :string(255)      not null
+#  name_ja         :string(255)      not null
+#  name_tc         :string(255)
+#  order           :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  achievement_id  :integer          not null
 #
 
 class Title < ApplicationRecord

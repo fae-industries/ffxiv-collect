@@ -66,10 +66,11 @@ namespace :achievements do
 
     OTHER_LOCALES.each do |locale|
       XIVData.sheet('Achievement', locale: locale).each do |achievement|
-        next unless achievement['Name'].present? && achievement['AchievementCategory'] != '0'
+        id = achievement['#']
+        next unless achievement['Name'].present? && achievement['AchievementCategory'] != '0' && achievements.has_key?(id)
 
-        achievements[achievement['#']].merge!("name_#{locale}" => sanitize_name(achievement['Name'], locale: locale),
-                                              "description_#{locale}" => sanitize_text(achievement['Description']))
+        achievements[id].merge!("name_#{locale}" => sanitize_name(achievement['Name'], locale: locale),
+                                "description_#{locale}" => sanitize_text(achievement['Description']))
       end
     end
 

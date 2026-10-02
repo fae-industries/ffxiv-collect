@@ -35,6 +35,8 @@ namespace :mounts do
     end
 
     mounts.values.each do |mount|
+      next unless mount['name_en'].present?
+
       mount[:large_image_url] = mount[:image_url].gsub(/004(\d{3})/, '068\1')
       mount[:footprint_image_url] = mount[:image_url].gsub(/004(\d{3})/, '069\1')
 

@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_01_121959) do
   create_table "achievement_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -21,6 +22,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "order"
     t.integer "type_id", null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_achievement_categories_on_name_chs"
     t.index ["name_de"], name: "index_achievement_categories_on_name_de"
     t.index ["name_en"], name: "index_achievement_categories_on_name_en"
     t.index ["name_fr"], name: "index_achievement_categories_on_name_fr"
@@ -32,6 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "achievement_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -39,6 +42,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "name_tc"
     t.integer "order"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_achievement_types_on_name_chs"
     t.index ["name_de"], name: "index_achievement_types_on_name_de"
     t.index ["name_en"], name: "index_achievement_types_on_name_en"
     t.index ["name_fr"], name: "index_achievement_types_on_name_fr"
@@ -50,6 +54,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "achievements", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "category_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs"
     t.string "description_de", null: false
     t.string "description_en", null: false
     t.string "description_fr", null: false
@@ -57,6 +62,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "description_tc"
     t.string "image_url"
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -67,6 +73,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "points", null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["category_id"], name: "index_achievements_on_category_id"
+    t.index ["name_chs"], name: "index_achievements_on_name_chs"
     t.index ["name_de"], name: "index_achievements_on_name_de"
     t.index ["name_en"], name: "index_achievements_on_name_en"
     t.index ["name_fr"], name: "index_achievements_on_name_fr"
@@ -78,6 +85,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "armoire_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -85,6 +93,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "name_tc"
     t.integer "order", null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_armoire_categories_on_name_chs"
     t.index ["name_de"], name: "index_armoire_categories_on_name_de"
     t.index ["name_en"], name: "index_armoire_categories_on_name_en"
     t.index ["name_fr"], name: "index_armoire_categories_on_name_fr"
@@ -96,6 +105,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "armoires", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "category_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs"
     t.string "description_de"
     t.string "description_en"
     t.string "description_fr"
@@ -103,6 +113,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "description_tc"
     t.string "gender"
     t.integer "item_id", null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -116,6 +127,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.index ["category_id"], name: "index_armoires_on_category_id"
     t.index ["gender"], name: "index_armoires_on_gender"
     t.index ["item_id"], name: "index_armoires_on_item_id"
+    t.index ["name_chs"], name: "index_armoires_on_name_chs"
     t.index ["name_de"], name: "index_armoires_on_name_de"
     t.index ["name_en"], name: "index_armoires_on_name_en"
     t.index ["name_fr"], name: "index_armoires_on_name_fr"
@@ -128,6 +140,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "bardings", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs"
     t.string "description_de"
     t.string "description_en"
     t.string "description_fr"
@@ -135,6 +148,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "description_tc"
     t.string "image_url"
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -143,6 +157,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "order"
     t.string "patch"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_bardings_on_name_chs"
     t.index ["name_de"], name: "index_bardings_on_name_de"
     t.index ["name_en"], name: "index_bardings_on_name_en"
     t.index ["name_fr"], name: "index_bardings_on_name_fr"
@@ -154,12 +169,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "beast_actions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "description_chs"
     t.text "description_de"
     t.text "description_en"
     t.text "description_fr"
     t.text "description_ja"
     t.text "description_tc"
     t.string "image_url"
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
@@ -170,12 +187,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "beasts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "description_chs"
     t.text "description_de"
     t.text "description_en"
     t.text "description_fr"
     t.text "description_ja"
     t.text "description_tc"
     t.string "image_url"
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
@@ -194,12 +213,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "card_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
     t.string "name_tc"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_card_types_on_name_chs"
     t.index ["name_de"], name: "index_card_types_on_name_de", unique: true
     t.index ["name_en"], name: "index_card_types_on_name_en", unique: true
     t.index ["name_fr"], name: "index_card_types_on_name_fr", unique: true
@@ -213,6 +234,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "card_type_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.integer "deck_order"
+    t.text "description_chs"
     t.text "description_de", null: false
     t.text "description_en", null: false
     t.text "description_fr", null: false
@@ -223,6 +245,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "item_id"
     t.string "large_image_url"
     t.integer "left", null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -239,6 +262,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.index ["card_type_id"], name: "index_cards_on_card_type_id"
     t.index ["deck_order"], name: "index_cards_on_deck_order"
     t.index ["item_id"], name: "index_cards_on_item_id"
+    t.index ["name_chs"], name: "index_cards_on_name_chs"
     t.index ["name_de"], name: "index_cards_on_name_de"
     t.index ["name_en"], name: "index_cards_on_name_en"
     t.index ["name_fr"], name: "index_cards_on_name_fr"
@@ -549,6 +573,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "content_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -586,12 +611,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "emote_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
     t.string "name_tc"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_emote_categories_on_name_chs"
     t.index ["name_de"], name: "index_emote_categories_on_name_de"
     t.index ["name_en"], name: "index_emote_categories_on_name_en"
     t.index ["name_fr"], name: "index_emote_categories_on_name_fr"
@@ -601,6 +628,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "emotes", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "category_id", null: false
+    t.string "command_chs"
     t.string "command_de"
     t.string "command_en"
     t.string "command_fr"
@@ -609,6 +637,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.datetime "created_at", precision: nil, null: false
     t.string "image_url"
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -618,6 +647,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "patch"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["category_id"], name: "index_emotes_on_category_id"
+    t.index ["name_chs"], name: "index_emotes_on_name_chs"
     t.index ["name_de"], name: "index_emotes_on_name_de"
     t.index ["name_en"], name: "index_emotes_on_name_en"
     t.index ["name_fr"], name: "index_emotes_on_name_fr"
@@ -633,6 +663,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.text "image_urls"
     t.integer "item_id"
     t.string "lodestone_name"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -641,6 +672,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "order", null: false
     t.string "patch"
     t.datetime "updated_at", null: false
+    t.index ["name_chs"], name: "index_facewear_on_name_chs"
     t.index ["name_de"], name: "index_facewear_on_name_de"
     t.index ["name_en"], name: "index_facewear_on_name_en"
     t.index ["name_fr"], name: "index_facewear_on_name_fr"
@@ -652,6 +684,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "fashions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs", limit: 1000
     t.string "description_de", limit: 1000
     t.string "description_en", limit: 1000
     t.string "description_fr", limit: 1000
@@ -660,6 +693,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "image_url"
     t.integer "item_id"
     t.string "large_image_url"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -668,6 +702,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "order", null: false
     t.string "patch"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_fashions_on_name_chs"
     t.index ["name_de"], name: "index_fashions_on_name_de"
     t.index ["name_en"], name: "index_fashions_on_name_en"
     t.index ["name_fr"], name: "index_fashions_on_name_fr"
@@ -679,6 +714,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "field_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.text "description_chs"
     t.text "description_de", null: false
     t.text "description_en", null: false
     t.text "description_fr", null: false
@@ -687,11 +723,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "image_url"
     t.string "large_image_url"
     t.integer "linked_record_id"
+    t.text "location_chs"
     t.string "location_de"
     t.string "location_en"
     t.string "location_fr"
     t.string "location_ja"
     t.string "location_tc"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -701,6 +739,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "rarity", null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["linked_record_id"], name: "index_field_records_on_linked_record_id"
+    t.index ["name_chs"], name: "index_field_records_on_name_chs"
     t.index ["name_de"], name: "index_field_records_on_name_de"
     t.index ["name_en"], name: "index_field_records_on_name_en"
     t.index ["name_fr"], name: "index_field_records_on_name_fr"
@@ -711,6 +750,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "frames", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -721,6 +761,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.boolean "portrait_only", default: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_frames_on_item_id"
+    t.index ["name_chs"], name: "index_frames_on_name_chs"
     t.index ["name_de"], name: "index_frames_on_name_de"
     t.index ["name_en"], name: "index_frames_on_name_en"
     t.index ["name_fr"], name: "index_frames_on_name_fr"
@@ -765,6 +806,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "hairstyles", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs", limit: 1000
     t.string "description_de", limit: 1000
     t.string "description_en", limit: 1000
     t.string "description_fr", limit: 1000
@@ -776,6 +818,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "image_url"
     t.text "image_urls"
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -785,6 +828,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "vierable", default: false
     t.index ["gender"], name: "index_hairstyles_on_gender"
+    t.index ["name_chs"], name: "index_hairstyles_on_name_chs"
     t.index ["name_de"], name: "index_hairstyles_on_name_de"
     t.index ["name_en"], name: "index_hairstyles_on_name_en"
     t.index ["name_fr"], name: "index_hairstyles_on_name_fr"
@@ -809,6 +853,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "content_id"
     t.integer "content_type_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -821,17 +866,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "items", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.string "crafter"
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs", limit: 1000
     t.string "description_de", limit: 1000, null: false
     t.string "description_en", limit: 1000, null: false
     t.string "description_fr", limit: 1000, null: false
     t.string "description_ja", limit: 1000, null: false
     t.string "description_tc", limit: 1000
     t.string "image_url"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
     t.string "name_tc"
+    t.string "plural_chs"
     t.string "plural_de"
     t.string "plural_en"
     t.string "plural_fr"
@@ -844,6 +892,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "unlock_id"
     t.string "unlock_type"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_items_on_name_chs"
     t.index ["name_de"], name: "index_items_on_name_de"
     t.index ["name_en"], name: "index_items_on_name_en"
     t.index ["name_fr"], name: "index_items_on_name_fr"
@@ -854,6 +903,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   end
 
   create_table "leve_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.string "craft_chs"
     t.string "craft_de", null: false
     t.string "craft_en", null: false
     t.string "craft_fr", null: false
@@ -861,6 +911,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "craft_tc"
     t.datetime "created_at", null: false
     t.boolean "items", default: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -868,11 +919,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "name_tc"
     t.integer "order", null: false
     t.datetime "updated_at", null: false
+    t.index ["craft_chs"], name: "index_leve_categories_on_craft_chs"
     t.index ["craft_de"], name: "index_leve_categories_on_craft_de"
     t.index ["craft_en"], name: "index_leve_categories_on_craft_en"
     t.index ["craft_fr"], name: "index_leve_categories_on_craft_fr"
     t.index ["craft_ja"], name: "index_leve_categories_on_craft_ja"
     t.index ["craft_tc"], name: "index_leve_categories_on_craft_tc"
+    t.index ["name_chs"], name: "index_leve_categories_on_name_chs"
     t.index ["name_de"], name: "index_leve_categories_on_name_de"
     t.index ["name_en"], name: "index_leve_categories_on_name_en"
     t.index ["name_fr"], name: "index_leve_categories_on_name_fr"
@@ -885,6 +938,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "category_id", null: false
     t.integer "cost", default: 1
     t.datetime "created_at", null: false
+    t.string "issuer_name_chs"
     t.string "issuer_name_de", null: false
     t.string "issuer_name_en", null: false
     t.string "issuer_name_fr", null: false
@@ -897,6 +951,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "level", null: false
     t.boolean "limited", default: false
     t.integer "location_id", null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -907,6 +962,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.index ["category_id"], name: "index_leves_on_category_id"
     t.index ["item_id"], name: "index_leves_on_item_id"
     t.index ["location_id"], name: "index_leves_on_location_id"
+    t.index ["name_chs"], name: "index_leves_on_name_chs"
     t.index ["name_de"], name: "index_leves_on_name_de"
     t.index ["name_en"], name: "index_leves_on_name_en"
     t.index ["name_fr"], name: "index_leves_on_name_fr"
@@ -917,22 +973,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "locations", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
     t.string "name_tc"
+    t.string "region_chs"
     t.string "region_de", null: false
     t.string "region_en", null: false
     t.string "region_fr", null: false
     t.string "region_ja", null: false
     t.string "region_tc"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_locations_on_name_chs"
     t.index ["name_de"], name: "index_locations_on_name_de", unique: true
     t.index ["name_en"], name: "index_locations_on_name_en", unique: true
     t.index ["name_fr"], name: "index_locations_on_name_fr", unique: true
     t.index ["name_ja"], name: "index_locations_on_name_ja", unique: true
     t.index ["name_tc"], name: "index_locations_on_name_tc"
+    t.index ["region_chs"], name: "index_locations_on_region_chs"
     t.index ["region_de"], name: "index_locations_on_region_de"
     t.index ["region_en"], name: "index_locations_on_region_en"
     t.index ["region_fr"], name: "index_locations_on_region_fr"
@@ -942,6 +1002,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "minion_behaviors", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -952,6 +1013,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "minion_races", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -962,6 +1024,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "minion_skill_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -978,11 +1041,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "cost", null: false
     t.datetime "created_at", precision: nil, null: false
     t.integer "defense", null: false
+    t.string "description_chs", limit: 1000
     t.string "description_de", limit: 1000
     t.string "description_en", limit: 1000
     t.string "description_fr", limit: 1000
     t.string "description_ja", limit: 1000
     t.string "description_tc", limit: 1000
+    t.string "enhanced_description_chs", limit: 1000
     t.string "enhanced_description_de", limit: 1000
     t.string "enhanced_description_en", limit: 1000
     t.string "enhanced_description_fr", limit: 1000
@@ -995,6 +1060,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "image_url"
     t.integer "item_id"
     t.string "large_image_url"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1005,8 +1071,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "race_id", null: false
     t.boolean "shield", null: false
     t.integer "skill_angle", null: false
+    t.string "skill_chs"
     t.integer "skill_cost", null: false
     t.string "skill_de"
+    t.string "skill_description_chs"
     t.string "skill_description_de"
     t.string "skill_description_en"
     t.string "skill_description_fr"
@@ -1018,6 +1086,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "skill_tc"
     t.integer "skill_type_id"
     t.integer "speed", null: false
+    t.string "tooltip_chs"
     t.string "tooltip_de"
     t.string "tooltip_en"
     t.string "tooltip_fr"
@@ -1025,6 +1094,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "tooltip_tc"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["behavior_id"], name: "index_minions_on_behavior_id"
+    t.index ["name_chs"], name: "index_minions_on_name_chs"
     t.index ["name_de"], name: "index_minions_on_name_de"
     t.index ["name_en"], name: "index_minions_on_name_en"
     t.index ["name_fr"], name: "index_minions_on_name_fr"
@@ -1039,11 +1109,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "mounts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.boolean "custom_music", default: false
+    t.string "description_chs"
     t.string "description_de", null: false
     t.string "description_en", null: false
     t.string "description_fr", null: false
     t.string "description_ja", null: false
     t.string "description_tc"
+    t.string "enhanced_description_chs", limit: 1000
     t.string "enhanced_description_de", limit: 1000, null: false
     t.string "enhanced_description_en", limit: 1000, null: false
     t.string "enhanced_description_fr", limit: 1000, null: false
@@ -1054,6 +1126,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "item_id"
     t.string "large_image_url"
     t.string "movement", null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1063,6 +1136,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "order_group"
     t.string "patch"
     t.integer "seats", null: false
+    t.string "tooltip_chs"
     t.string "tooltip_de", null: false
     t.string "tooltip_en", null: false
     t.string "tooltip_fr", null: false
@@ -1070,6 +1144,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "tooltip_tc"
     t.datetime "updated_at", precision: nil, null: false
     t.string "video"
+    t.index ["name_chs"], name: "index_mounts_on_name_chs"
     t.index ["name_de"], name: "index_mounts_on_name_de"
     t.index ["name_en"], name: "index_mounts_on_name_en"
     t.index ["name_fr"], name: "index_mounts_on_name_fr"
@@ -1103,6 +1178,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.decimal "difficulty", precision: 3, scale: 2
     t.boolean "excluded", default: false
     t.integer "location_id", null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1115,6 +1191,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.decimal "x", precision: 3, scale: 1
     t.decimal "y", precision: 3, scale: 1
     t.index ["location_id"], name: "index_npcs_on_location_id"
+    t.index ["name_chs"], name: "index_npcs_on_name_chs"
     t.index ["name_de"], name: "index_npcs_on_name_de", unique: true
     t.index ["name_en"], name: "index_npcs_on_name_en", unique: true
     t.index ["name_fr"], name: "index_npcs_on_name_fr", unique: true
@@ -1133,17 +1210,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "occult_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.text "description_chs"
     t.text "description_de"
     t.text "description_en"
     t.text "description_fr"
     t.text "description_ja"
     t.text "description_tc"
     t.string "image_url"
+    t.text "location_chs"
     t.string "location_de"
     t.string "location_en"
     t.string "location_fr"
     t.string "location_ja"
     t.string "location_tc"
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
@@ -1151,6 +1231,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "name_tc"
     t.string "patch"
     t.datetime "updated_at", null: false
+    t.index ["name_chs"], name: "index_occult_records_on_name_chs"
     t.index ["name_de"], name: "index_occult_records_on_name_de"
     t.index ["name_en"], name: "index_occult_records_on_name_en"
     t.index ["name_fr"], name: "index_occult_records_on_name_fr"
@@ -1161,6 +1242,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "orchestrion_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1168,6 +1250,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "name_tc"
     t.integer "order"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_orchestrion_categories_on_name_chs"
     t.index ["name_de"], name: "index_orchestrion_categories_on_name_de"
     t.index ["name_en"], name: "index_orchestrion_categories_on_name_en"
     t.index ["name_fr"], name: "index_orchestrion_categories_on_name_fr"
@@ -1179,6 +1262,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "orchestrions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "category_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs"
     t.string "description_de", null: false
     t.string "description_en", null: false
     t.string "description_fr", null: false
@@ -1186,6 +1270,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "description_tc"
     t.string "details"
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1195,6 +1280,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "patch"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["category_id"], name: "index_orchestrions_on_category_id"
+    t.index ["name_chs"], name: "index_orchestrions_on_name_chs"
     t.index ["name_de"], name: "index_orchestrions_on_name_de"
     t.index ["name_en"], name: "index_orchestrions_on_name_en"
     t.index ["name_fr"], name: "index_orchestrions_on_name_fr"
@@ -1216,6 +1302,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.datetime "created_at", null: false
     t.string "gender"
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1226,6 +1313,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.datetime "updated_at", null: false
     t.index ["armoireable"], name: "index_outfits_on_armoireable"
     t.index ["gender"], name: "index_outfits_on_gender"
+    t.index ["name_chs"], name: "index_outfits_on_name_chs"
     t.index ["name_de"], name: "index_outfits_on_name_de"
     t.index ["name_en"], name: "index_outfits_on_name_en"
     t.index ["name_fr"], name: "index_outfits_on_name_fr"
@@ -1247,6 +1335,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "cost", null: false
     t.datetime "created_at", precision: nil, null: false
     t.integer "item_id"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1254,6 +1343,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.string "name_tc"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["item_id"], name: "index_packs_on_item_id"
+    t.index ["name_chs"], name: "index_packs_on_name_chs"
     t.index ["name_de"], name: "index_packs_on_name_de", unique: true
     t.index ["name_en"], name: "index_packs_on_name_en", unique: true
     t.index ["name_fr"], name: "index_packs_on_name_fr", unique: true
@@ -1264,6 +1354,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "quests", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.boolean "event"
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
@@ -1278,6 +1369,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.datetime "created_at", null: false
     t.integer "expansion"
     t.integer "jobs"
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
@@ -1293,6 +1385,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "achievement_id"
     t.datetime "created_at", precision: nil, null: false
     t.string "image_url"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1308,17 +1401,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "rules", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs"
     t.string "description_de", null: false
     t.string "description_en", null: false
     t.string "description_fr", null: false
     t.string "description_ja", null: false
     t.string "description_tc"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
     t.string "name_tc"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_rules_on_name_chs"
     t.index ["name_de"], name: "index_rules_on_name_de", unique: true
     t.index ["name_en"], name: "index_rules_on_name_en", unique: true
     t.index ["name_fr"], name: "index_rules_on_name_fr", unique: true
@@ -1328,6 +1424,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "source_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en", null: false
     t.string "name_fr"
@@ -1346,6 +1443,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.boolean "premium", default: false
     t.integer "related_id"
     t.string "related_type"
+    t.string "text_chs"
     t.string "text_de"
     t.string "text_en"
     t.string "text_fr"
@@ -1363,12 +1461,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "spell_aspects", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
     t.string "name_ja"
     t.string "name_tc"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_spell_aspects_on_name_chs"
     t.index ["name_de"], name: "index_spell_aspects_on_name_de"
     t.index ["name_en"], name: "index_spell_aspects_on_name_en"
     t.index ["name_fr"], name: "index_spell_aspects_on_name_fr"
@@ -1378,12 +1478,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "spell_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
     t.string "name_ja"
     t.string "name_tc"
     t.datetime "updated_at", precision: nil, null: false
+    t.index ["name_chs"], name: "index_spell_types_on_name_chs"
     t.index ["name_de"], name: "index_spell_types_on_name_de"
     t.index ["name_en"], name: "index_spell_types_on_name_en"
     t.index ["name_fr"], name: "index_spell_types_on_name_fr"
@@ -1394,12 +1496,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "spells", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "aspect_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "description_chs", limit: 1000
     t.string "description_de", limit: 1000, null: false
     t.string "description_en", limit: 1000, null: false
     t.string "description_fr", limit: 1000, null: false
     t.string "description_ja", limit: 1000, null: false
     t.string "description_tc", limit: 1000
     t.string "image_url"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
@@ -1408,6 +1512,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "order"
     t.string "patch"
     t.integer "rank", null: false
+    t.string "tooltip_chs", limit: 1000
     t.string "tooltip_de", limit: 1000, null: false
     t.string "tooltip_en", limit: 1000, null: false
     t.string "tooltip_fr", limit: 1000, null: false
@@ -1416,6 +1521,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "type_id", null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["aspect_id"], name: "index_spells_on_aspect_id"
+    t.index ["name_chs"], name: "index_spells_on_name_chs"
     t.index ["name_de"], name: "index_spells_on_name_de"
     t.index ["name_en"], name: "index_spells_on_name_en"
     t.index ["name_fr"], name: "index_spells_on_name_fr"
@@ -1427,6 +1533,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "survey_record_series", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
@@ -1437,6 +1544,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
 
   create_table "survey_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.text "description_chs"
     t.text "description_de"
     t.text "description_en"
     t.text "description_fr"
@@ -1444,6 +1552,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.text "description_tc"
     t.string "image_url"
     t.string "large_image_url"
+    t.string "name_chs"
     t.string "name_de"
     t.string "name_en"
     t.string "name_fr"
@@ -1452,6 +1561,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
     t.integer "order"
     t.string "patch"
     t.integer "series_id"
+    t.string "solution_chs", limit: 1000
     t.string "solution_de", limit: 1000
     t.string "solution_en", limit: 1000
     t.string "solution_fr", limit: 1000
@@ -1465,11 +1575,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_21_223828) do
   create_table "titles", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "achievement_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "female_name_chs"
     t.string "female_name_de", null: false
     t.string "female_name_en", null: false
     t.string "female_name_fr", null: false
     t.string "female_name_ja", null: false
     t.string "female_name_tc"
+    t.string "name_chs"
     t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false

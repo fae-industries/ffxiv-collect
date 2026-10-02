@@ -3,6 +3,7 @@
 # Table name: survey_records
 #
 #  id              :bigint           not null, primary key
+#  description_chs :text(65535)
 #  description_de  :text(65535)
 #  description_en  :text(65535)
 #  description_fr  :text(65535)
@@ -10,6 +11,7 @@
 #  description_tc  :text(65535)
 #  image_url       :string(255)
 #  large_image_url :string(255)
+#  name_chs        :string(255)
 #  name_de         :string(255)
 #  name_en         :string(255)
 #  name_fr         :string(255)
@@ -17,6 +19,7 @@
 #  name_tc         :string(255)
 #  order           :integer
 #  patch           :string(255)
+#  solution_chs    :string(1000)
 #  solution_de     :string(1000)
 #  solution_en     :string(1000)
 #  solution_fr     :string(1000)

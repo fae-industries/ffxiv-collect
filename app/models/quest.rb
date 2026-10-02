@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  event      :boolean
+#  name_chs   :string(255)
 #  name_de    :string(255)
 #  name_en    :string(255)
 #  name_fr    :string(255)

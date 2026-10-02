@@ -2,25 +2,27 @@
 #
 # Table name: achievements
 #
-#  id             :bigint           not null, primary key
-#  description_de :string(255)      not null
-#  description_en :string(255)      not null
-#  description_fr :string(255)      not null
-#  description_ja :string(255)      not null
-#  description_tc :string(255)
-#  image_url      :string(255)
-#  name_de        :string(255)      not null
-#  name_en        :string(255)      not null
-#  name_fr        :string(255)      not null
-#  name_ja        :string(255)      not null
-#  name_tc        :string(255)
-#  order          :integer          not null
-#  patch          :string(255)
-#  points         :integer          not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  category_id    :integer          not null
-#  item_id        :integer
+#  id              :bigint           not null, primary key
+#  description_chs :string(255)
+#  description_de  :string(255)      not null
+#  description_en  :string(255)      not null
+#  description_fr  :string(255)      not null
+#  description_ja  :string(255)      not null
+#  description_tc  :string(255)
+#  image_url       :string(255)
+#  name_chs        :string(255)
+#  name_de         :string(255)      not null
+#  name_en         :string(255)      not null
+#  name_fr         :string(255)      not null
+#  name_ja         :string(255)      not null
+#  name_tc         :string(255)
+#  order           :integer          not null
+#  patch           :string(255)
+#  points          :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  category_id     :integer          not null
+#  item_id         :integer
 #
 
 class Achievement < ApplicationRecord

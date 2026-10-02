@@ -2,60 +2,66 @@
 #
 # Table name: minions
 #
-#  id                      :bigint           not null, primary key
-#  arcana                  :boolean          not null
-#  area_attack             :boolean          not null
-#  attack                  :integer          not null
-#  cost                    :integer          not null
-#  defense                 :integer          not null
-#  description_de          :string(1000)
-#  description_en          :string(1000)
-#  description_fr          :string(1000)
-#  description_ja          :string(1000)
-#  description_tc          :string(1000)
-#  enhanced_description_de :string(1000)
-#  enhanced_description_en :string(1000)
-#  enhanced_description_fr :string(1000)
-#  enhanced_description_ja :string(1000)
-#  enhanced_description_tc :string(1000)
-#  eye                     :boolean          not null
-#  footprint_image_url     :string(255)
-#  gate                    :boolean          not null
-#  hp                      :integer          not null
-#  image_url               :string(255)
-#  large_image_url         :string(255)
-#  name_de                 :string(255)      not null
-#  name_en                 :string(255)      not null
-#  name_fr                 :string(255)      not null
-#  name_ja                 :string(255)      not null
-#  name_tc                 :string(255)
-#  order                   :integer
-#  patch                   :string(255)
-#  shield                  :boolean          not null
-#  skill_angle             :integer          not null
-#  skill_cost              :integer          not null
-#  skill_de                :string(255)
-#  skill_description_de    :string(255)
-#  skill_description_en    :string(255)
-#  skill_description_fr    :string(255)
-#  skill_description_ja    :string(255)
-#  skill_description_tc    :string(255)
-#  skill_en                :string(255)
-#  skill_fr                :string(255)
-#  skill_ja                :string(255)
-#  skill_tc                :string(255)
-#  speed                   :integer          not null
-#  tooltip_de              :string(255)
-#  tooltip_en              :string(255)
-#  tooltip_fr              :string(255)
-#  tooltip_ja              :string(255)
-#  tooltip_tc              :string(255)
-#  created_at              :datetime         not null
-#  updated_at              :datetime         not null
-#  behavior_id             :integer          not null
-#  item_id                 :integer
-#  race_id                 :integer          not null
-#  skill_type_id           :integer
+#  id                       :bigint           not null, primary key
+#  arcana                   :boolean          not null
+#  area_attack              :boolean          not null
+#  attack                   :integer          not null
+#  cost                     :integer          not null
+#  defense                  :integer          not null
+#  description_chs          :string(1000)
+#  description_de           :string(1000)
+#  description_en           :string(1000)
+#  description_fr           :string(1000)
+#  description_ja           :string(1000)
+#  description_tc           :string(1000)
+#  enhanced_description_chs :string(1000)
+#  enhanced_description_de  :string(1000)
+#  enhanced_description_en  :string(1000)
+#  enhanced_description_fr  :string(1000)
+#  enhanced_description_ja  :string(1000)
+#  enhanced_description_tc  :string(1000)
+#  eye                      :boolean          not null
+#  footprint_image_url      :string(255)
+#  gate                     :boolean          not null
+#  hp                       :integer          not null
+#  image_url                :string(255)
+#  large_image_url          :string(255)
+#  name_chs                 :string(255)
+#  name_de                  :string(255)      not null
+#  name_en                  :string(255)      not null
+#  name_fr                  :string(255)      not null
+#  name_ja                  :string(255)      not null
+#  name_tc                  :string(255)
+#  order                    :integer
+#  patch                    :string(255)
+#  shield                   :boolean          not null
+#  skill_angle              :integer          not null
+#  skill_chs                :string(255)
+#  skill_cost               :integer          not null
+#  skill_de                 :string(255)
+#  skill_description_chs    :string(255)
+#  skill_description_de     :string(255)
+#  skill_description_en     :string(255)
+#  skill_description_fr     :string(255)
+#  skill_description_ja     :string(255)
+#  skill_description_tc     :string(255)
+#  skill_en                 :string(255)
+#  skill_fr                 :string(255)
+#  skill_ja                 :string(255)
+#  skill_tc                 :string(255)
+#  speed                    :integer          not null
+#  tooltip_chs              :string(255)
+#  tooltip_de               :string(255)
+#  tooltip_en               :string(255)
+#  tooltip_fr               :string(255)
+#  tooltip_ja               :string(255)
+#  tooltip_tc               :string(255)
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  behavior_id              :integer          not null
+#  item_id                  :integer
+#  race_id                  :integer          not null
+#  skill_type_id            :integer
 #
 
 class Minion < ApplicationRecord

@@ -2,29 +2,31 @@
 #
 # Table name: leves
 #
-#  id             :bigint           not null, primary key
-#  cost           :integer          default(1)
-#  issuer_name_de :string(255)      not null
-#  issuer_name_en :string(255)      not null
-#  issuer_name_fr :string(255)      not null
-#  issuer_name_ja :string(255)      not null
-#  issuer_name_tc :string(255)
-#  issuer_x       :decimal(3, 1)    not null
-#  issuer_y       :decimal(3, 1)    not null
-#  item_quantity  :integer
-#  level          :integer          not null
-#  limited        :boolean          default(FALSE)
-#  name_de        :string(255)      not null
-#  name_en        :string(255)      not null
-#  name_fr        :string(255)      not null
-#  name_ja        :string(255)      not null
-#  name_tc        :string(255)
-#  patch          :string(255)
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  category_id    :integer          not null
-#  item_id        :integer
-#  location_id    :integer          not null
+#  id              :bigint           not null, primary key
+#  cost            :integer          default(1)
+#  issuer_name_chs :string(255)
+#  issuer_name_de  :string(255)      not null
+#  issuer_name_en  :string(255)      not null
+#  issuer_name_fr  :string(255)      not null
+#  issuer_name_ja  :string(255)      not null
+#  issuer_name_tc  :string(255)
+#  issuer_x        :decimal(3, 1)    not null
+#  issuer_y        :decimal(3, 1)    not null
+#  item_quantity   :integer
+#  level           :integer          not null
+#  limited         :boolean          default(FALSE)
+#  name_chs        :string(255)
+#  name_de         :string(255)      not null
+#  name_en         :string(255)      not null
+#  name_fr         :string(255)      not null
+#  name_ja         :string(255)      not null
+#  name_tc         :string(255)
+#  patch           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  category_id     :integer          not null
+#  item_id         :integer
+#  location_id     :integer          not null
 #
 class Leve < ApplicationRecord
   include Collectable

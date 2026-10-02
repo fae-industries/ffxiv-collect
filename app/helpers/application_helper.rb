@@ -105,4 +105,15 @@ module ApplicationHelper
   def universalis_url(item_id)
     "https://universalis.app/market/#{item_id}"
   end
+
+  def language_attribute
+    case I18n.locale
+    when :tc
+      'zh-Hant'
+    when :chs
+      'zh-Hans'
+    else
+      I18n.locale.to_s
+    end
+  end
 end

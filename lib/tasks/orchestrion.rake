@@ -42,6 +42,8 @@ namespace :orchestrions do
     end
 
     orchestrions.values.each do |orchestrion|
+      next unless orchestrion['name_en'].present?
+
       if existing = Orchestrion.find_by(id: orchestrion[:id])
         existing.update!(orchestrion) if updated?(existing, orchestrion)
       else

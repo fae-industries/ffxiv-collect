@@ -3,6 +3,7 @@
 # Table name: fashions
 #
 #  id              :bigint           not null, primary key
+#  description_chs :string(1000)
 #  description_de  :string(1000)
 #  description_en  :string(1000)
 #  description_fr  :string(1000)
@@ -10,6 +11,7 @@
 #  description_tc  :string(1000)
 #  image_url       :string(255)
 #  large_image_url :string(255)
+#  name_chs        :string(255)
 #  name_de         :string(255)      not null
 #  name_en         :string(255)      not null
 #  name_fr         :string(255)      not null

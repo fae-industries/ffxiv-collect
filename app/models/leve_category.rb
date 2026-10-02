@@ -3,12 +3,14 @@
 # Table name: leve_categories
 #
 #  id         :bigint           not null, primary key
+#  craft_chs  :string(255)
 #  craft_de   :string(255)      not null
 #  craft_en   :string(255)      not null
 #  craft_fr   :string(255)      not null
 #  craft_ja   :string(255)      not null
 #  craft_tc   :string(255)
 #  items      :boolean          default(FALSE)
+#  name_chs   :string(255)
 #  name_de    :string(255)      not null
 #  name_en    :string(255)      not null
 #  name_fr    :string(255)      not null

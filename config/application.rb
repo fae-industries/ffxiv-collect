@@ -46,7 +46,7 @@ module FfxivCollect
     config.autoload_paths += Dir[Rails.root.join('app/models/triad')]
     config.autoload_paths += Dir[Rails.root.join('app/lib/omniauth')]
 
-    config.i18n.available_locales = %i(en de fr ja tc)
+    config.i18n.available_locales = %i(en de fr ja chs tc)
     config.i18n.default_locale = :en
     # Avoid throwing on invalid locales and just revert to the default
     config.i18n.enforce_available_locales = false

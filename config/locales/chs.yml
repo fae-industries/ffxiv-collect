@@ -1,4 +1,4 @@
-sc:
+chs:
   achievement_points:
     title: "成就点"
   achievements:
@@ -371,7 +371,7 @@ sc:
     title: "理符任务"
   loading: "正在加载..."
   locale_code: "CN"
-  locale_name: "简体中文"
+  locale_name: "中文（简体）"
   materiel:
     3: "特殊配给货箱（重生/苍穹）的可能掉落物"
     4: "特殊配给货箱（红莲）的可能掉落物"

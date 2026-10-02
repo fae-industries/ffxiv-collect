@@ -325,7 +325,7 @@ tc:
     level: "等級"
     title: "理符任務"
   locale_code: "TW"
-  locale_name: "漢語"
+  locale_name: "中文（繁體）"
   materiel:
     3: "可能從物資補給箱 3.0 中獲得"
     4: "可能從物資補給箱 4.0 中獲得"
