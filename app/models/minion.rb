@@ -119,8 +119,6 @@ class Minion < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     super + %w(
-      skill_en skill_de skill_fr skill_ja
-      skill_description_en skill_description_de skill_description_fr skill_description_ja
       cost attack defense hp speed area_attack skill_angle skill_cost arcana eye gate shield
       behavior_id race_id skill_type_id
     )

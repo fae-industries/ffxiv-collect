@@ -50,7 +50,6 @@ class Leve < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     super + %w(
-      issuer_name_en issuer_name_de issuer_name_fr issuer_name_ja
       issuer_x issuer_y item_quantity limited cost
     )
   end

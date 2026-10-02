@@ -38,7 +38,6 @@ class Source < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     super + %w(
-      text_en text_de text_fr text_ja text_tc
       premium limited order
       related_id type_id related_type collectable_id collectable_type
     )
@@ -126,7 +125,8 @@ class Source < ApplicationRecord
 
     if text_en_changed?
       # Populate non-English source texts from an existing matching source
-      %w(text_de text_fr text_ja text_tc).each do |text|
+      I18n.available_locales.each do |locale|
+        text = "text_#{locale}"
         next unless self[text].nil?
 
         existing = Source.where(text_en: self.text_en)
@@ -139,7 +139,9 @@ class Source < ApplicationRecord
 
     # Propagate translations to existing sources with the same English text
     unless text_en.nil?
-      %w(text_de text_fr text_ja text_tc).each do |text|
+      I18n.available_locales.each do |locale|
+        text = "text_#{locale}"
+
         if changes.keys.include?(text)
           Source.where(text_en: text_en).where(text => nil).excluding(self).each do |source|
             source.update!(text => self[text])
