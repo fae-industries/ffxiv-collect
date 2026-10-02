@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   private
   def set_locale
     if cookies[:locale].nil?
-      locale = AcceptLanguage.parse(request.headers.fetch('HTTP_ACCEPT_LANGUAGE')).match(*SUPPORTED_LOCALES)
+      locale = AcceptLanguage.parse(request.headers.fetch('HTTP_ACCEPT_LANGUAGE', 'en')).match(*SUPPORTED_LOCALES)
 
       # Map the BCP 47 language tags to the shorthand used by the application
       locale = case locale
