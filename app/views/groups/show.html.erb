@@ -23,8 +23,10 @@
           </h6>
         </div>
         <div>
-          <%= link_to fa_icon('trophy', text: t('leaderboards.title')), polymorphic_group_path(@group, :leaderboards),
-            class: 'btn btn-sm btn-primary' %>
+          <% unless current_user&.zen? %>
+            <%= link_to fa_icon('trophy', text: t('leaderboards.title')), polymorphic_group_path(@group, :leaderboards),
+              class: 'btn btn-sm btn-primary' %>
+          <% end %>
           <%= link_to fa_icon('list', text: t('groups.collections')), polymorphic_group_path(@group, :collections),
             class: 'btn btn-sm btn-secondary' %>
           <%= link_to fa_icon('sync', text: t('groups.refresh.button')), polymorphic_path(@group, action: :refresh),
