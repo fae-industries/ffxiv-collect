@@ -133,18 +133,20 @@
       'https://ff14fish.carbuncleplushy.com/', target: '_blank', class: 'nav-link' %>
 
     <!-- Leaderboards -->
-    <% if @character&.free_company_id.present? %>
-      <div class="nav-item dropdown<%= ' bold' if active_path?(leaderboards_path) %>">
-        <a class="nav-link dropdown-toggle" href="#" id="leaderboardsDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false"><%= fa_icon('trophy', text: t('leaderboards.title')) %></a>
-        <div class="dropdown-menu" aria-labelledBy="leaderboardsDropdown">
-          <%= link_to fa_icon('globe', text: t('leaderboards.global')), leaderboards_path, class: 'nav-link' %>
-          <%= link_to fa_icon('users', text: t('leaderboards.free_company')),
-            free_company_leaderboards_path(@character.free_company_id), class: 'nav-link' %>
+    <% if !current_user&.zen? %>
+      <% if @character&.free_company_id.present? %>
+        <div class="nav-item dropdown<%= ' bold' if active_path?(leaderboards_path) %>">
+          <a class="nav-link dropdown-toggle" href="#" id="leaderboardsDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"><%= fa_icon('trophy', text: t('leaderboards.title')) %></a>
+          <div class="dropdown-menu" aria-labelledBy="leaderboardsDropdown">
+            <%= link_to fa_icon('globe', text: t('leaderboards.global')), leaderboards_path, class: 'nav-link' %>
+            <%= link_to fa_icon('users', text: t('leaderboards.free_company')),
+              free_company_leaderboards_path(@character.free_company_id), class: 'nav-link' %>
+          </div>
         </div>
-      </div>
-    <% else %>
-      <%= nav_link(t('leaderboards.title'), 'trophy', leaderboards_path) %>
+      <% else %>
+        <%= nav_link(t('leaderboards.title'), 'trophy', leaderboards_path) %>
+      <% end %>
     <% end %>
 
     <%# <%= nav_link(t('yokai.title'), 'ghost', yokai_path) %1> %>

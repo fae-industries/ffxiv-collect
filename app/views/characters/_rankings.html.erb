@@ -1,4 +1,4 @@
-<% if @rankings[category].values.any? && !@profile.banned? %>
+<% if !current_user&.zen? && @rankings[category].values.any? && !@profile.banned? %>
   <ul class="list-unstyled list-inline m-0">
     <% %i(server data_center global).each do |context| %>
       <li class="list-inline-item">

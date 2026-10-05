@@ -517,6 +517,7 @@ en:
     pricing_data_center: "Pricing Data Center"
     title: "Settings"
     user: "User Settings"
+    zen: "Hide leaderboards and rankings"
   show_all: "Show All"
   source: "Source"
   sources:

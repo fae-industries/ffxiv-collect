@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_01_121959) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   create_table "achievement_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.string "name_chs"
@@ -1626,6 +1626,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_01_121959) do
     t.string "uid"
     t.datetime "updated_at", precision: nil, null: false
     t.string "username"
+    t.boolean "zen", default: false
     t.index ["character_id"], name: "index_users_on_character_id"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end

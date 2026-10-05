@@ -518,6 +518,7 @@ fr:
     pricing_data_center: "Centre de données pour les comparaisons de prix"
     title: "Paramètres"
     user: "Paramètres utilisateur"
+    zen: "Masquer les classements"
   show_all: "Afficher tout"
   source: "Provenance"
   sources:

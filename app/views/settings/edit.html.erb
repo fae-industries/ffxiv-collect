@@ -37,6 +37,10 @@
             <%= f.select :database, database_options(@user.database), {},
               class: 'form-control' %>
           </div>
+          <div class="form-check">
+            <%= f.check_box :zen, class: 'form-check-input' %>
+            <%= f.label :zen, t('settings.zen'), class: 'form-check-label' %>
+          </div>
           <div class="text-right mt-3">
             <%= f.submit t('save'), class: 'btn btn-primary' %>
           </div>

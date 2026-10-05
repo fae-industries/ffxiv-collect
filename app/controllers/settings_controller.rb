@@ -58,7 +58,7 @@ class SettingsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:database)
+    params.require(:user).permit(:database, :zen)
   end
 
   def character_params

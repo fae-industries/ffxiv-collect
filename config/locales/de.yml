@@ -517,6 +517,7 @@ de:
     pricing_data_center: "Datenzentrum für Preisvergleiche"
     title: "Einstellungen"
     user: "Benutzereinstellungen"
+    zen: "Verstecke Ranglisten und Ränge"
   show_all: "Zeige alle"
   source: "Quelle"
   sources:

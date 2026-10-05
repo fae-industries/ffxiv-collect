@@ -11,6 +11,7 @@
 #  provider            :string(255)
 #  uid                 :string(255)
 #  username            :string(255)
+#  zen                 :boolean          default(FALSE)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  character_id        :integer
