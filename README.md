@@ -1,5 +1,5 @@
 # FFXIV Collect
-This is a collection tracking companion website for Final Fantasy XIV collections written in [Ruby on Rails](https://rubyonrails.org/). Game data is powered by [XIVData Oxidizer](https://github.com/skyborn-industries/xiv-data-oxidizer). This application strives to be as autonomous as possible by pulling most of its information directly from the game data. The rest is maintained by myself and a small group of moderators using community-sourced data.
+This is a collection tracking companion website for Final Fantasy XIV collections written in [Ruby on Rails](https://rubyonrails.org/). Game data is powered by [XIVData Oxidizer](https://github.com/fae-industries/xiv-data-oxidizer). This application strives to be as autonomous as possible by pulling most of its information directly from the game data. The rest is maintained by myself and a small group of moderators using community-sourced data.
 
 ## API
 
@@ -15,7 +15,7 @@ All of this application's data is made available through a RESTful JSON API. See
 ## Installation
 #### Clone and initialize the repository
 ```
-git clone --recurse-submodules https://github.com/skyborn-industries/ffxiv-collect
+git clone --recurse-submodules https://github.com/fae-industries/ffxiv-collect
 cd ffxiv-collect
 bundle install
 ```
@@ -91,7 +91,7 @@ bin/rails console
 exit
 ```
 
-This data is available once the [data repository](https://github.com/skyborn-industries/xiv-data) has been updated with the latest patch data.
+This data is available once the [data repository](https://github.com/fae-industries/xiv-data) has been updated with the latest patch data.
 
 More action may be required in the event of complex game updates. Patch data must be populated manually.
 
