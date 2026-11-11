@@ -1,9 +1,7 @@
 $ ->
   return unless $('.collection').length || $('#filters').length
 
-  # Collections
-
-  # Update cached table data with dynamic content
+  #region Update cached table data with dynamic content
   data = $('#collection-data').data()
 
   if data?.characterSelected
@@ -73,7 +71,9 @@ $ ->
   $('.collection-spinner').hide()
   $('.collection-wrapper').show()
 
-  # Redo the table striping as some items may have shifted during the flight
+  #endregion
+
+  #region Restripe table (performed after adding, removing, or filtering)
   restripe = ->
     # Skip restripe for Orchestrion Quick Select
     return if $('.quick-select').length || $('.npcs').length
@@ -137,8 +137,9 @@ $ ->
         progress_label.text(text)
 
   restripe()
+  #endregion
 
-  # Add/remove a collectable from a player's collection
+  #region Add/remove a collectable from a player's collection
   updateCollection = (collectable) ->
     $.ajax({
       type: 'POST',
@@ -152,8 +153,9 @@ $ ->
   $('.sortable').on 'sorted', ->
     restripe()
 
-  # Manual collection ownership toggle
+  #endregion
 
+  #region Manual collection ownership toggle
   $('td input.own').change ->
     collectable = $(this)
     updateCollection(collectable)
@@ -172,9 +174,9 @@ $ ->
 
     collectable.data('path', path)
     restripe()
+  #endregion
 
-  # Manual generic item ownership toggle
-
+  #region Manual generic item ownership toggle
   $('.item.own').click ->
     collectable = $(this)
     title = collectable.parent().attr('data-original-title')
@@ -205,9 +207,9 @@ $ ->
       header.addClass('complete')
     else
       header.removeClass('complete')
+  #endregion
 
-  # Orchestrion quick select
-
+  #region Orchestrion quick select
   $('.orchestrion-select input.own').change ->
     collectable = $(this)
 
@@ -221,9 +223,9 @@ $ ->
       collectable.closest('.collectable').addClass('owned')
 
     collectable.data('path', path)
+  #endregion
 
-  # Category Buttons
-
+  #region Category Buttons
   categories = $('.category-buttons button')
   categories.click ->
     category = $(@).attr('id').match(/\d+$/)[0]
@@ -242,9 +244,9 @@ $ ->
       $('.all-hide').removeClass('hidden')
 
     restripe()
+  #endregion
 
-  # Type Buttons
-
+  #region Type Buttons
   types = $('.type-buttons button:not("#reset")')
 
   types.click ->
@@ -262,9 +264,9 @@ $ ->
     $('.collectable').removeClass('hidden')
     Cookies.remove('hidden_types')
     restripe()
+  #endregion
 
-  # Filters
-
+  #region Filters
   checkboxValue = (checkbox) ->
     if $(checkbox).prop('checked') then 'hide' else 'show'
 
@@ -304,8 +306,13 @@ $ ->
     $('#filters-form input[type=checkbox]').prop('checked', false)
     $(@).blur()
     false
+  #endregion
+
+  #region Miscellaneous
 
   # Remove focus from modal toggle button after showing
   $('.modal').on 'shown.bs.modal', ->
     $('.modal-toggle').one 'focus', ->
       $(@).blur()
+
+  #endregion
