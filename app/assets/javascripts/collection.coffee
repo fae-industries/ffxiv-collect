@@ -150,8 +150,6 @@ $ ->
         location.reload()
     })
 
-  $('.sortable').on 'sorted', ->
-    restripe()
 
   #endregion
 
@@ -164,8 +162,6 @@ $ ->
       path = collectable.data('path').replace('remove', 'add')
       collectable.closest('tr').removeClass('owned')
       collectable.closest('td').attr('data-value', 0)
-      collectable.closest('td').tooltip('disable')
-      collectable.closest('td').tooltip('dispose')
     else
       path = collectable.data('path').replace('add', 'remove')
       collectable.closest('tr').addClass('owned')
@@ -179,25 +175,16 @@ $ ->
   #region Manual generic item ownership toggle
   $('.item.own').click ->
     collectable = $(this)
-    title = collectable.parent().attr('data-original-title')
     updateCollection(collectable)
 
     if collectable.hasClass('owned')
       path = collectable.data('path').replace('remove', 'add')
       collectable.removeClass('owned')
-      title = title.replace(/<br>.*?<br>/, '<br>')
-        .replace(I18n.t('click.remove'), I18n.t('click.add'))
-      collectable.parent().attr('data-original-title', title)
     else
       path = collectable.data('path').replace('add', 'remove')
       collectable.addClass('owned')
-      title = title.replace('<br>', "<br>#{I18n.t('acquired')} #{moment.utc().format('MMM DD, YYYY')}<br>")
-        .replace(I18n.t('click.add'), I18n.t('click.remove'))
-      collectable.parent().attr('data-original-title', title)
 
     collectable.data('path', path)
-    collectable.parent().tooltip('dispose')
-    collectable.parent().tooltip('toggle')
 
     count = collectable.closest('.collapse').find('.owned').length
     header = collectable.closest('.card').find('.card-header > h6')
@@ -309,6 +296,10 @@ $ ->
   #endregion
 
   #region Miscellaneous
+
+  # Restripe on table sort
+  $('.sortable').on 'sorted', ->
+    restripe()
 
   # Remove focus from modal toggle button after showing
   $('.modal').on 'shown.bs.modal', ->
