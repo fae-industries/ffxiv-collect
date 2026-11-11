@@ -434,6 +434,7 @@ en:
     user_decks_tooltip: "User decks designed to be used against this NPC"
   occult_records:
     title: "Occult Records"
+    one: "Occult Record"
   of: "of"
   only:
     female: "Female Only"

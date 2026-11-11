@@ -62,9 +62,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # All collections (TT exists in the "triad" scope)
+  # Tooltips
   %i(achievements mounts minions hairstyles emotes orchestrions frames spells beasts bardings fashions facewear
-  outfits armoires field_records survey_records).each do |resource|
+  outfits armoires field_records survey_records occult_records occult_records).each do |resource|
     resources resource, only: [] do
       get :tooltip
     end

@@ -433,7 +433,8 @@ de:
     user_decks: "Benutzer Decks"
     user_decks_tooltip: "Benutzer Decks, die zum Besiegen dieses NPCs erstellt wurden."
   occult_records:
-    title: "Kreszentia-Chronik"
+    title: "Kreszentia-Chronike"
+    one: "Kreszentia-Chronik"
   of: "von"
   only:
     female: "Nur für Damen"

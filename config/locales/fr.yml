@@ -434,6 +434,7 @@ fr:
     user_decks_tooltip: "Les decks conçus par les utilisateurs pour être utilisés contre ce PNJ"
   occult_records:
     title: "Calepin du croissant"
+    one: "Calepin du croissant"
   of: "de"
   only:
     female: "Réservé aux femmes"
