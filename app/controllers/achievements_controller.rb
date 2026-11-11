@@ -1,5 +1,7 @@
 class AchievementsController < ApplicationController
   include PrivateCollection
+  include Tooltipable
+
   before_action -> { check_privacy!(:achievements) }
   before_action :verify_character!, only: :index
   before_action :set_owned!, on: :items

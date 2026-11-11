@@ -1,5 +1,6 @@
 class ArmoiresController < ApplicationController
   include ManualCollection
+  include Tooltipable
 
   def index
     @q = Armoire.ransack(params[:q])

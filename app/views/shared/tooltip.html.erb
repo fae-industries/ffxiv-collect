@@ -16,6 +16,8 @@
       <div class="d-flex flex-column">
         <% if @collectable.is_a?(SurveyRecord) %>
           <span><%= @collectable.solution %></span>
+        <% elsif @collectable.is_a?(Achievement) %>
+          <span><%= @collectable.description %></span>
         <% else %>
           <%= sources(@collectable, list: true, limit: 2) %>
           <ul class="list-inline">

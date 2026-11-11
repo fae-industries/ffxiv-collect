@@ -51,7 +51,8 @@ Rails.application.routes.draw do
     get :battle, on: :collection
   end
 
-  %i(orchestrions emotes bardings hairstyles armoires outfits spells beasts fashions facewear frames
+  # Manual collections
+  %i(hairstyles emotes orchestrions frames spells beasts bardings fashions facewear outfits armoires
   field_records survey_records occult_records).each do |resource|
     resources resource, only: [:index, :show] do
       member do
@@ -61,8 +62,9 @@ Rails.application.routes.draw do
     end
   end
 
-  %i(mounts minions hairstyles emotes orchestrions frames spells beasts bardings fashions facewear
-  field_records survey_records).each do |resource|
+  # All collections (TT exists in the "triad" scope)
+  %i(achievements mounts minions hairstyles emotes orchestrions frames spells beasts bardings fashions facewear
+  outfits armoires field_records survey_records).each do |resource|
     resources resource, only: [] do
       get :tooltip
     end
