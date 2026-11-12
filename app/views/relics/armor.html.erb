@@ -1,6 +1,6 @@
 <% title(t('relics.relic_armor')) %>
 <% description("Track your character's relic armor.") %>
-<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<%= render 'shared/form_authenticity_token' %>
 
 <%= render 'shared/category_buttons', categories: @categories, selected: @categories.last.id, exclude_all: true %>
 <%= render 'collapse_toggle' %>

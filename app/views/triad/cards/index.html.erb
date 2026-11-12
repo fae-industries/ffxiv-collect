@@ -33,7 +33,7 @@
         <%= render 'shared/active_filters' %>
       </div>
       <%= render 'shared/collection_progress', ids: @cards.map(&:id) %>
-      <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+      <%= render 'shared/form_authenticity_token' %>
       <table class="table table-striped table-sm shadow collection sortable">
         <thead>
           <tr>

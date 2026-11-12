@@ -47,7 +47,7 @@
         </div>
       </div>
       <%= render 'shared/collection_progress', ids: @valid_npcs.map(&:id) %>
-      <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+      <%= render 'shared/form_authenticity_token' %>
       <table class="table table-striped table-sm shadow sortable collection npcs">
         <thead>
           <tr>

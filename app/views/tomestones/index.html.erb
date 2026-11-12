@@ -15,7 +15,7 @@
     <% end %>
   </div>
 
-  <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+  <%= render 'shared/form_authenticity_token' %>
   <div class="d-flex justify-content-center">
     <div class="d-inline-flex flex-column mt-1">
       <div class="d-flex justify-content-end align-items-end mb-1">

@@ -39,7 +39,7 @@
         <div class="mb-2">
           <%# Value is dependent on the restripe JS %>
           <%= render 'shared/progress', value: 0, min: 0, max: @collectables.size %>
-          <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+          <%= render 'shared/form_authenticity_token' %>
         </div>
       <% end %>
       <table class="table table-striped table-sm shadow collection sortable">

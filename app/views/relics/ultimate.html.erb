@@ -1,7 +1,7 @@
 <% title(t('relics.ultimate_weapons')) %>
 <% description("Track your character's ultimate weapons.") %>
-<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 
+<%= render 'shared/form_authenticity_token' %>
 <%= render 'collapse_toggle' %>
 <% @types.each do |type| %>
   <div class="card mb-3">

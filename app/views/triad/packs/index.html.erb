@@ -4,7 +4,7 @@
 <%= render 'shared/filters' %>
 <%= render 'shared/spinner' %>
 <%= render 'shared/collection_data' %>
-<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<%= render 'shared/form_authenticity_token' %>
 
 <div class="collection-wrapper">
   <div class="d-flex justify-content-end mb-2">

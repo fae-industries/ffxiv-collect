@@ -1,7 +1,7 @@
 <% title('Orchestrion Quick Select') %>
 
 <%= render 'shared/category_buttons', categories: @categories, selected: @categories.first.id, exclude_all: true %>
-<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<%= render 'shared/form_authenticity_token' %>
 <div class="d-flex flex-wrap categorized mt-3 offset-lg-1 collection quick-select">
   <% @orchestrions.each_slice(2) do |orchestrions| %>
     <% orchestrions.each do |orchestrion| %>
