@@ -39,21 +39,21 @@ class SettingsController < ApplicationController
   def update_user
     if current_user.update(user_params)
       flash[:success] = t('alerts.settings_updated')
-      redirect_to settings_path
     else
       flash[:error] = t('alerts.settings_error')
-      render :edit
     end
+
+    redirect_to settings_path
   end
 
   def update_character
     if verified? && @character.update(character_params)
       flash[:success] = t('alerts.settings_updated')
-      redirect_to settings_path
     else
       flash[:error] = t('alerts.settings_error')
-      render :edit
     end
+
+    redirect_to settings_path
   end
 
   private
