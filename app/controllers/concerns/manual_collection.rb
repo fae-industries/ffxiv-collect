@@ -13,7 +13,7 @@ module ManualCollection
       collection << collectable
       head :no_content
     else
-      head :not_found
+      head :forbidden
     end
   end
 
@@ -22,19 +22,11 @@ module ManualCollection
       collection.destroy(collectable)
       head :no_content
     else
-      head :not_found
+      head :forbidden
     end
   end
 
   private
-  def verified?
-    @character.verified_user?(current_user)
-  end
-
-  def verified_user?
-    user_signed_in? && @character.present?
-  end
-
   def display_verify_alert!
     return if !@character.present? || @peeking
 

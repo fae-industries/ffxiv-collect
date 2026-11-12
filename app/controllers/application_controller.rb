@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
     cookies[key] = { value: value, expires: 20.years.from_now, same_site: :lax }
   end
 
+  def verified?
+    @character&.verified_user?(current_user)
+  end
+
+  def verified_user?
+    user_signed_in? && @character&.present?
+  end
+
   def render_private_character_flash!(character)
     flash[:error] = t('alerts.private_character',
                       link: view_context.link_to(t('alerts.here'), verify_character_path(character)))
