@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale, :set_characters, :display_announcements
 
+  helper_method :verified?
+
   SUPPORTED_LOCALES = %i(en de fr ja zh-tw).freeze
 
   rescue_from ActiveRecord::RecordNotFound, with: -> { redirect_to not_found_path }

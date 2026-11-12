@@ -36,7 +36,7 @@
         class: 'dropdown-item' %>
       <%= link_to fa_icon('sync', text: t('characters.refresh')), refresh_character_path,
         method: :post, class: 'dropdown-item' %>
-      <% if !@peeking && user_signed_in? && !@character.verified_user?(current_user) %>
+      <% if !@peeking && user_signed_in? && !verified? %>
         <%= link_to fa_icon('check-circle', text: t('characters.verify')), verify_character_path(@character), class: 'dropdown-item' %>
       <% end %>
       <% if @character.free_company_id.present? %>
@@ -69,7 +69,7 @@
         <%= link_to fa_icon('book', text: t('mod.translation_dashboard')), mod_translate_path, class: 'dropdown-item' %>
         <hr class="my-1">
       <% end %>
-      <% if @character&.verified_user?(current_user) %>
+      <% if verified? %>
         <%= link_to fa_icon('upload', text: t('import.title')), import_path, class: 'dropdown-item' %>
       <% end %>
       <%= link_to fa_icon('wrench', text: t('settings.title')), settings_path, class: 'dropdown-item' %>

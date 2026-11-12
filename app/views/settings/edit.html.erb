@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <% if @character.present? && @character.verified_user?(@user) %>
+    <% if @character.present? && verified? %>
       <div class="card shadow mt-4">
         <div class="card-header">
           <h5 class="card-title"><%= t('settings.character') %></h5>

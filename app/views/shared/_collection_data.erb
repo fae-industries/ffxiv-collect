@@ -1,5 +1,5 @@
 <div id="collection-data"
   data-character-selected="<%= character_selected? %>"
-  data-character-verified="<%= @character && @character.verified_user?(current_user) %>"
+  data-character-verified="<%= verified? %>"
   data-collection-ids="<%= @keyed_collection_ids&.join(',') %>"
 ></div>

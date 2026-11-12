@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap justify-content-xl-around">
   <% relics.each do |relic| %>
     <div class="p-2" data-toggle="tooltip" data-html="true" title="<%= relic_tooltip(relic) %>">
-      <% if @character&.verified_user?(current_user) %>
+      <% if verified? %>
         <% if @achievement_ids.include?(relic.achievement_id) %>
           <div class="relic item owned">
             <%= small_image(relic) %>

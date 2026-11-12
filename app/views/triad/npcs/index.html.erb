@@ -16,7 +16,7 @@
               include_blank: t('all.locations'), class: 'form-control form-control-sm mt-0' %>
             <%= select_tag :rule, npc_rule_options(@rule), include_blank: t('all.rules'),
               class: 'form-control form-control-sm' %>
-            <% if @character&.verified_user?(current_user) %>
+            <% if verified? %>
               <%= link_to t('npcs.update_defeated'), update_defeated_npcs_path, method: :post,
                 class: 'btn btn-sm btn-secondary mr-2',
                 data: { confirm: t('npcs.update_defeated_confirmation') } %>

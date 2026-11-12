@@ -1,9 +1,7 @@
 <% title(t('outfits.title')) %>
 <% description("Track your character's outfits and discover how to obtain new ones.") %>
 
-<%= render 'shared/filters' %>
-<%= render 'shared/spinner' %>
-<%= render 'shared/collection_data' %>
+<%= render 'shared/collection_components' %>
 
 <div class="collection-wrapper">
   <div class="d-flex justify-content-center">
@@ -20,7 +18,6 @@
         <%= render 'shared/active_filters' %>
       </div>
       <%= render 'shared/collection_progress', ids: @outfits.map(&:id) %>
-      <%= render 'shared/form_authenticity_token' %>
       <table class="table table-striped table-sm shadow collection sortable">
         <thead>
           <tr>
