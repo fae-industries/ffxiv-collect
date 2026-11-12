@@ -12,16 +12,16 @@
 
 ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   create_table "achievement_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
     t.integer "type_id", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "order"
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_achievement_categories_on_name_chs"
     t.index ["name_de"], name: "index_achievement_categories_on_name_de"
     t.index ["name_en"], name: "index_achievement_categories_on_name_en"
@@ -33,15 +33,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "achievement_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "order"
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_achievement_types_on_name_chs"
     t.index ["name_de"], name: "index_achievement_types_on_name_de"
     t.index ["name_en"], name: "index_achievement_types_on_name_en"
@@ -52,26 +52,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "achievements", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs"
-    t.string "description_de", null: false
-    t.string "description_en", null: false
-    t.string "description_fr", null: false
-    t.string "description_ja", null: false
-    t.string "description_tc"
-    t.string "image_url"
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.string "description_en", null: false
+    t.string "description_de", null: false
+    t.string "description_fr", null: false
+    t.string "description_ja", null: false
+    t.integer "points", null: false
     t.integer "order", null: false
     t.string "patch"
-    t.integer "points", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "item_id"
+    t.string "name_tc"
+    t.string "description_tc"
+    t.string "image_url"
+    t.string "name_chs"
+    t.string "description_chs"
     t.index ["category_id"], name: "index_achievements_on_category_id"
     t.index ["name_chs"], name: "index_achievements_on_name_chs"
     t.index ["name_de"], name: "index_achievements_on_name_de"
@@ -84,15 +84,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "armoire_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
     t.integer "order", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_armoire_categories_on_name_chs"
     t.index ["name_de"], name: "index_armoire_categories_on_name_de"
     t.index ["name_en"], name: "index_armoire_categories_on_name_en"
@@ -103,27 +103,27 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "armoires", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs"
-    t.string "description_de"
-    t.string "description_en"
-    t.string "description_fr"
-    t.string "description_ja"
-    t.string "description_tc"
-    t.string "gender"
-    t.integer "item_id", null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
     t.integer "order", null: false
-    t.integer "order_group"
-    t.boolean "outfitable", default: false
     t.string "patch"
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "gender"
+    t.string "description_en"
+    t.string "description_de"
+    t.string "description_fr"
+    t.string "description_ja"
+    t.integer "item_id", null: false
+    t.integer "order_group"
+    t.string "name_tc"
+    t.string "description_tc"
+    t.boolean "outfitable", default: false
+    t.string "name_chs"
+    t.string "description_chs"
     t.index ["category_id"], name: "index_armoires_on_category_id"
     t.index ["gender"], name: "index_armoires_on_gender"
     t.index ["item_id"], name: "index_armoires_on_item_id"
@@ -139,24 +139,24 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "bardings", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs"
-    t.string "description_de"
-    t.string "description_en"
-    t.string "description_fr"
-    t.string "description_ja"
-    t.string "description_tc"
-    t.string "image_url"
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
     t.string "patch"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "item_id"
+    t.string "description_en"
+    t.string "description_de"
+    t.string "description_fr"
+    t.string "description_ja"
+    t.integer "order"
+    t.string "name_tc"
+    t.string "description_tc"
+    t.string "image_url"
+    t.string "name_chs"
+    t.string "description_chs"
     t.index ["name_chs"], name: "index_bardings_on_name_chs"
     t.index ["name_de"], name: "index_bardings_on_name_de"
     t.index ["name_en"], name: "index_bardings_on_name_en"
@@ -168,42 +168,42 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "beast_actions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "description_chs"
-    t.text "description_de"
+    t.string "name_en"
+    t.string "name_de"
+    t.string "name_fr"
+    t.string "name_ja"
+    t.string "name_tc"
     t.text "description_en"
+    t.text "description_de"
     t.text "description_fr"
     t.text "description_ja"
     t.text "description_tc"
     t.string "image_url"
-    t.string "name_chs"
-    t.string "name_de"
-    t.string "name_en"
-    t.string "name_fr"
-    t.string "name_ja"
-    t.string "name_tc"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_chs"
+    t.string "description_chs"
   end
 
   create_table "beasts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "description_chs"
-    t.text "description_de"
+    t.string "name_en"
+    t.string "name_de"
+    t.string "name_fr"
+    t.string "name_ja"
+    t.string "name_tc"
     t.text "description_en"
+    t.text "description_de"
     t.text "description_fr"
     t.text "description_ja"
     t.text "description_tc"
     t.string "image_url"
-    t.string "name_chs"
-    t.string "name_de"
-    t.string "name_en"
-    t.string "name_fr"
-    t.string "name_ja"
-    t.string "name_tc"
     t.string "patch"
-    t.integer "tempered_release_id"
     t.integer "trick_id"
+    t.integer "tempered_release_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_chs"
+    t.string "description_chs"
     t.index ["name_de"], name: "index_beasts_on_name_de"
     t.index ["name_en"], name: "index_beasts_on_name_en"
     t.index ["name_fr"], name: "index_beasts_on_name_fr"
@@ -213,13 +213,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "card_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
     t.string "name_tc"
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_card_types_on_name_chs"
     t.index ["name_de"], name: "index_card_types_on_name_de", unique: true
     t.index ["name_en"], name: "index_card_types_on_name_en", unique: true
@@ -229,36 +229,36 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "cards", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "bottom", null: false
-    t.integer "buy_price"
-    t.integer "card_type_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.integer "deck_order"
-    t.text "description_chs"
-    t.text "description_de", null: false
-    t.text "description_en", null: false
-    t.text "description_fr", null: false
-    t.text "description_ja", null: false
-    t.text "description_tc"
-    t.string "formatted_number", null: false
-    t.string "image_url"
-    t.integer "item_id"
-    t.string "large_image_url"
-    t.integer "left", null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
-    t.string "name_en", null: false
-    t.string "name_fr", null: false
-    t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
-    t.integer "order_group"
     t.string "patch"
-    t.integer "right", null: false
-    t.integer "sell_price", null: false
+    t.integer "card_type_id", null: false
     t.integer "stars", null: false
     t.integer "top", null: false
+    t.integer "right", null: false
+    t.integer "bottom", null: false
+    t.integer "left", null: false
+    t.integer "buy_price"
+    t.integer "sell_price", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "order"
+    t.string "name_en", null: false
+    t.string "name_de", null: false
+    t.string "name_fr", null: false
+    t.string "name_ja", null: false
+    t.text "description_en", null: false
+    t.text "description_de", null: false
+    t.text "description_fr", null: false
+    t.text "description_ja", null: false
+    t.integer "order_group"
+    t.integer "deck_order"
+    t.string "formatted_number", null: false
+    t.integer "item_id"
+    t.string "name_tc"
+    t.text "description_tc"
+    t.string "image_url"
+    t.string "large_image_url"
+    t.string "name_chs"
+    t.text "description_chs"
     t.index ["card_type_id"], name: "index_cards_on_card_type_id"
     t.index ["deck_order"], name: "index_cards_on_deck_order"
     t.index ["item_id"], name: "index_cards_on_item_id"
@@ -275,8 +275,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "character_achievements", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "achievement_id"
     t.integer "character_id"
+    t.integer "achievement_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["achievement_id"], name: "index_character_achievements_on_achievement_id"
@@ -285,8 +285,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "character_armoires", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "armoire_id"
     t.integer "character_id"
+    t.integer "armoire_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["armoire_id"], name: "index_character_armoires_on_armoire_id"
@@ -295,8 +295,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "character_bardings", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "barding_id"
     t.integer "character_id"
+    t.integer "barding_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["barding_id"], name: "index_character_bardings_on_barding_id"
@@ -305,8 +305,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "character_beasts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "beast_id"
     t.integer "character_id"
+    t.integer "beast_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["beast_id"], name: "index_character_beasts_on_beast_id"
@@ -326,8 +326,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_emotes", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "emote_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "emote_id"], name: "index_character_emotes_on_character_id_and_emote_id", unique: true
     t.index ["character_id"], name: "index_character_emotes_on_character_id"
@@ -336,8 +336,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_facewear", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", null: false
     t.integer "facewear_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "facewear_id"], name: "character_id_and_facewear_id", unique: true
     t.index ["character_id"], name: "index_character_facewear_on_character_id"
@@ -346,8 +346,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_fashions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "fashion_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "fashion_id"], name: "index_character_fashions_on_character_id_and_fashion_id", unique: true
     t.index ["character_id"], name: "index_character_fashions_on_character_id"
@@ -356,8 +356,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_field_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "field_record_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "field_record_id"], name: "idx_on_character_id_field_record_id_e85f42d7de", unique: true
     t.index ["character_id"], name: "index_character_field_records_on_character_id"
@@ -366,8 +366,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_frames", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", null: false
     t.integer "frame_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "frame_id"], name: "character_id_and_frame_id", unique: true
     t.index ["character_id"], name: "index_character_frames_on_character_id"
@@ -376,8 +376,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_hairstyles", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "hairstyle_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "hairstyle_id"], name: "index_character_hairstyles_on_character_id_and_hairstyle_id", unique: true
     t.index ["character_id"], name: "index_character_hairstyles_on_character_id"
@@ -385,9 +385,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "character_leves", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "leve_id"
     t.integer "character_id"
     t.datetime "created_at", precision: nil, null: false
-    t.integer "leve_id"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "leve_id"], name: "index_character_leves_on_character_id_and_leve_id", unique: true
     t.index ["character_id"], name: "index_character_achievements_on_character_id"
@@ -396,8 +396,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_minions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "minion_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "minion_id"], name: "index_character_minions_on_character_id_and_minion_id", unique: true
     t.index ["character_id"], name: "index_character_minions_on_character_id"
@@ -406,8 +406,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_mounts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "mount_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "mount_id"], name: "index_character_mounts_on_character_id_and_mount_id", unique: true
     t.index ["character_id"], name: "index_character_mounts_on_character_id"
@@ -416,8 +416,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_npcs", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "npc_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "npc_id"], name: "index_character_npcs_on_character_id_and_npc_id", unique: true
     t.index ["character_id"], name: "index_character_achievements_on_character_id"
@@ -426,8 +426,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_occult_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", null: false
     t.integer "occult_record_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "occult_record_id"], name: "character_id_and_occult_record_id", unique: true
     t.index ["character_id"], name: "index_character_occult_records_on_character_id"
@@ -436,8 +436,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_orchestrions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "orchestrion_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "orchestrion_id"], name: "index_character_orchestrions_on_character_id_and_orchestrion_id", unique: true
     t.index ["character_id"], name: "index_character_orchestrions_on_character_id"
@@ -446,8 +446,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_outfits", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", null: false
     t.integer "outfit_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "outfit_id"], name: "index_character_outfits_on_character_id_and_outfit_id", unique: true
     t.index ["character_id"], name: "index_character_outfits_on_character_id"
@@ -456,8 +456,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_relics", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "relic_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "relic_id"], name: "index_character_relics_on_character_id_and_relic_id", unique: true
     t.index ["character_id"], name: "index_character_relics_on_character_id"
@@ -466,8 +466,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_spells", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "spell_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["character_id", "spell_id"], name: "index_character_spells_on_character_id_and_spell_id", unique: true
     t.index ["character_id"], name: "index_character_spells_on_character_id"
@@ -476,8 +476,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
 
   create_table "character_survey_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "character_id"
-    t.datetime "created_at", null: false
     t.integer "survey_record_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id", "survey_record_id"], name: "character_id_and_survey_record_id", unique: true
     t.index ["character_id"], name: "index_character_survey_records_on_character_id"
@@ -485,55 +485,55 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "characters", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "achievement_points", default: 0
-    t.integer "achievements_count", default: 0
-    t.integer "armoires_count", default: 0
+    t.string "name", null: false
+    t.string "server", null: false
+    t.string "portrait"
     t.string "avatar", null: false
-    t.boolean "banned", default: false
-    t.integer "bardings_count", default: 0
-    t.integer "beasts_count", default: 0
-    t.integer "cards_count", default: 0
-    t.datetime "created_at", precision: nil, null: false
-    t.string "data_center"
+    t.datetime "last_parsed", precision: nil
+    t.integer "verified_user_id"
+    t.integer "achievements_count", default: 0
+    t.integer "mounts_count", default: 0
+    t.integer "minions_count", default: 0
+    t.integer "orchestrions_count", default: 0
     t.integer "emotes_count", default: 0
-    t.integer "facewear_count", default: 0
+    t.integer "bardings_count", default: 0
+    t.integer "hairstyles_count", default: 0
+    t.integer "armoires_count", default: 0
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.boolean "public", default: true
+    t.integer "achievement_points", default: 0
+    t.string "free_company_id"
+    t.datetime "refreshed_at", precision: nil, default: "1970-01-01 00:00:00"
+    t.string "gender"
+    t.integer "spells_count", default: 0
+    t.integer "relics_count", default: 0
+    t.datetime "queued_at", precision: nil, default: "1970-01-01 00:00:00"
     t.integer "fashions_count", default: 0
     t.integer "field_records_count", default: 0
-    t.integer "frames_count", default: 0
-    t.string "free_company_id"
-    t.string "gender"
-    t.integer "hairstyles_count", default: 0
-    t.datetime "last_parsed", precision: nil
-    t.datetime "last_ranked_achievement_time", precision: nil
-    t.integer "leves_count", default: 0
-    t.integer "minions_count", default: 0
-    t.integer "mounts_count", default: 0
-    t.string "name", null: false
-    t.integer "npcs_count", default: 0
-    t.integer "occult_records_count", default: 0
-    t.integer "orchestrions_count", default: 0
-    t.integer "outfits_count", default: 0
-    t.string "portrait"
-    t.string "pricing_data_center"
-    t.boolean "public", default: true
-    t.boolean "public_achievements", default: false
-    t.boolean "public_emotes", default: false
-    t.boolean "public_facewear", default: true
-    t.boolean "public_minions", default: true
-    t.boolean "public_mounts", default: true
-    t.boolean "public_profile", default: true
-    t.datetime "queued_at", precision: nil, default: "1970-01-01 00:00:00"
+    t.string "data_center"
     t.integer "ranked_achievement_points", default: 0
-    t.integer "ranked_minions_count", default: 0
     t.integer "ranked_mounts_count", default: 0
-    t.datetime "refreshed_at", precision: nil, default: "1970-01-01 00:00:00"
-    t.integer "relics_count", default: 0
-    t.string "server", null: false
-    t.integer "spells_count", default: 0
-    t.boolean "supporter", default: false
+    t.integer "ranked_minions_count", default: 0
+    t.datetime "last_ranked_achievement_time", precision: nil
     t.integer "survey_records_count", default: 0
-    t.datetime "updated_at", precision: nil, null: false
-    t.integer "verified_user_id"
+    t.integer "frames_count", default: 0
+    t.boolean "banned", default: false
+    t.integer "cards_count", default: 0
+    t.integer "npcs_count", default: 0
+    t.integer "leves_count", default: 0
+    t.boolean "public_achievements", default: false
+    t.boolean "public_profile", default: true
+    t.boolean "public_mounts", default: true
+    t.boolean "public_minions", default: true
+    t.boolean "public_facewear", default: true
+    t.integer "facewear_count", default: 0
+    t.string "pricing_data_center"
+    t.integer "outfits_count", default: 0
+    t.integer "occult_records_count", default: 0
+    t.boolean "supporter", default: false
+    t.boolean "public_emotes", default: false
+    t.integer "beasts_count", default: 0
     t.index ["achievement_points"], name: "index_characters_on_achievement_points"
     t.index ["achievements_count"], name: "index_characters_on_achievements_count"
     t.index ["armoires_count"], name: "index_characters_on_armoires_count"
@@ -572,35 +572,35 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "content_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_tc"
+    t.string "name_chs"
   end
 
   create_table "deck_cards", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "card_id"
-    t.datetime "created_at", precision: nil, null: false
     t.integer "deck_id"
+    t.integer "card_id"
     t.integer "position"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["card_id"], name: "index_deck_cards_on_card_id"
     t.index ["deck_id"], name: "index_deck_cards_on_deck_id"
   end
 
   create_table "decks", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "notes", limit: 1000
-    t.integer "npc_id"
-    t.integer "rating"
-    t.integer "rule_id"
-    t.boolean "updated", default: true
-    t.datetime "updated_at", precision: nil, null: false
     t.integer "user_id"
+    t.integer "rule_id"
+    t.integer "npc_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "rating"
+    t.string "notes", limit: 1000
+    t.boolean "updated", default: true
     t.string "user_uid"
     t.index ["npc_id"], name: "index_decks_on_npc_id"
     t.index ["rule_id"], name: "index_decks_on_rule_id"
@@ -610,14 +610,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "emote_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_emote_categories_on_name_chs"
     t.index ["name_de"], name: "index_emote_categories_on_name_de"
     t.index ["name_en"], name: "index_emote_categories_on_name_en"
@@ -627,25 +627,25 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "emotes", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.string "command_chs"
-    t.string "command_de"
-    t.string "command_en"
-    t.string "command_fr"
-    t.string "command_ja"
-    t.string "command_tc"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "image_url"
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
     t.string "patch"
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "item_id"
+    t.string "command_en"
+    t.string "command_de"
+    t.string "command_fr"
+    t.string "command_ja"
+    t.integer "order"
+    t.string "name_tc"
+    t.string "command_tc"
+    t.string "image_url"
+    t.string "name_chs"
+    t.string "command_chs"
     t.index ["category_id"], name: "index_emotes_on_category_id"
     t.index ["name_chs"], name: "index_emotes_on_name_chs"
     t.index ["name_de"], name: "index_emotes_on_name_de"
@@ -658,20 +658,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "facewear", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "image_url"
-    t.text "image_urls"
-    t.integer "item_id"
-    t.string "lodestone_name"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
     t.integer "order", null: false
     t.string "patch"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "lodestone_name"
+    t.string "name_tc"
+    t.string "image_url"
+    t.text "image_urls"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_facewear_on_name_chs"
     t.index ["name_de"], name: "index_facewear_on_name_de"
     t.index ["name_en"], name: "index_facewear_on_name_en"
@@ -683,25 +683,25 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "fashions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs", limit: 1000
-    t.string "description_de", limit: 1000
-    t.string "description_en", limit: 1000
-    t.string "description_fr", limit: 1000
-    t.string "description_ja", limit: 1000
-    t.string "description_tc", limit: 1000
-    t.string "image_url"
-    t.integer "item_id"
-    t.string "large_image_url"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.string "description_en", limit: 1000
+    t.string "description_de", limit: 1000
+    t.string "description_fr", limit: 1000
+    t.string "description_ja", limit: 1000
     t.integer "order", null: false
     t.string "patch"
+    t.integer "item_id"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "description_tc", limit: 1000
+    t.string "image_url"
+    t.string "large_image_url"
+    t.string "name_chs"
+    t.string "description_chs", limit: 1000
     t.index ["name_chs"], name: "index_fashions_on_name_chs"
     t.index ["name_de"], name: "index_fashions_on_name_de"
     t.index ["name_en"], name: "index_fashions_on_name_en"
@@ -713,31 +713,31 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "field_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.text "description_chs"
-    t.text "description_de", null: false
+    t.string "name_en", null: false
+    t.string "name_de", null: false
+    t.string "name_fr", null: false
+    t.string "name_ja", null: false
     t.text "description_en", null: false
+    t.text "description_de", null: false
     t.text "description_fr", null: false
     t.text "description_ja", null: false
+    t.integer "rarity", null: false
+    t.string "patch"
+    t.integer "linked_record_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "location_en"
+    t.string "name_tc"
     t.text "description_tc"
     t.string "image_url"
     t.string "large_image_url"
-    t.integer "linked_record_id"
-    t.text "location_chs"
     t.string "location_de"
-    t.string "location_en"
     t.string "location_fr"
     t.string "location_ja"
     t.string "location_tc"
     t.string "name_chs"
-    t.string "name_de", null: false
-    t.string "name_en", null: false
-    t.string "name_fr", null: false
-    t.string "name_ja", null: false
-    t.string "name_tc"
-    t.string "patch"
-    t.integer "rarity", null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.text "description_chs"
+    t.text "location_chs"
     t.index ["linked_record_id"], name: "index_field_records_on_linked_record_id"
     t.index ["name_chs"], name: "index_field_records_on_name_chs"
     t.index ["name_de"], name: "index_field_records_on_name_de"
@@ -748,18 +748,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "frames", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
     t.string "patch"
-    t.boolean "portrait_only", default: false
+    t.integer "item_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order"
+    t.boolean "portrait_only", default: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["item_id"], name: "index_frames_on_item_id"
     t.index ["name_chs"], name: "index_frames_on_name_chs"
     t.index ["name_de"], name: "index_frames_on_name_de"
@@ -772,18 +772,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "free_companies", id: :string, charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
     t.string "name"
+    t.string "tag"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.datetime "queued_at", precision: nil, default: "1970-01-01 00:00:00"
     t.boolean "syncing", default: false
-    t.string "tag"
-    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "group_memberships", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "group_id"
     t.integer "character_id"
     t.datetime "created_at", null: false
-    t.integer "group_id"
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_group_memberships_on_character_id"
     t.index ["group_id", "character_id"], name: "index_group_memberships_on_group_id_and_character_id", unique: true
@@ -791,42 +791,42 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "groups", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "description"
-    t.string "name", null: false
-    t.integer "owner_id", null: false
-    t.boolean "public", default: true
-    t.datetime "queued_at", precision: nil, default: "1970-01-01 00:00:00"
     t.string "slug", null: false
-    t.boolean "syncing", default: false
+    t.string "name", null: false
+    t.string "description"
+    t.boolean "public", default: true
+    t.integer "owner_id", null: false
+    t.datetime "queued_at", precision: nil, default: "1970-01-01 00:00:00"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "syncing", default: false
     t.index ["owner_id"], name: "index_groups_on_owner_id"
     t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
 
   create_table "hairstyles", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs", limit: 1000
-    t.string "description_de", limit: 1000
-    t.string "description_en", limit: 1000
-    t.string "description_fr", limit: 1000
-    t.string "description_ja", limit: 1000
-    t.string "description_tc", limit: 1000
-    t.boolean "femhrothable", default: false
-    t.string "gender"
-    t.boolean "hrothable", default: false
-    t.string "image_url"
-    t.text "image_urls"
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.string "description_en", limit: 1000
+    t.string "description_de", limit: 1000
+    t.string "description_fr", limit: 1000
+    t.string "description_ja", limit: 1000
     t.string "patch"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "item_id"
+    t.string "gender"
     t.boolean "vierable", default: false
+    t.boolean "hrothable", default: false
+    t.boolean "femhrothable", default: false
+    t.string "name_tc"
+    t.string "description_tc", limit: 1000
+    t.string "image_url"
+    t.text "image_urls"
+    t.string "name_chs"
+    t.string "description_chs", limit: 1000
     t.index ["gender"], name: "index_hairstyles_on_gender"
     t.index ["name_chs"], name: "index_hairstyles_on_name_chs"
     t.index ["name_de"], name: "index_hairstyles_on_name_de"
@@ -838,60 +838,60 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "identities", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.string "avatar_url"
-    t.datetime "created_at", null: false
     t.string "provider", null: false
     t.string "uid", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
     t.string "username"
+    t.string "avatar_url"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "instances", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "content_id"
-    t.integer "content_type_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "content_type_id", null: false
+    t.integer "content_id"
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_en"], name: "index_instances_on_name_en"
   end
 
   create_table "items", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.string "crafter"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs", limit: 1000
-    t.string "description_de", limit: 1000, null: false
-    t.string "description_en", limit: 1000, null: false
-    t.string "description_fr", limit: 1000, null: false
-    t.string "description_ja", limit: 1000, null: false
-    t.string "description_tc", limit: 1000
-    t.string "image_url"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.string "plural_chs"
-    t.string "plural_de"
+    t.string "description_en", limit: 1000, null: false
+    t.string "description_de", limit: 1000, null: false
+    t.string "description_fr", limit: 1000, null: false
+    t.string "description_ja", limit: 1000, null: false
+    t.boolean "tradeable"
+    t.string "unlock_type"
+    t.integer "unlock_id"
+    t.string "crafter"
+    t.integer "recipe_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "price"
     t.string "plural_en"
+    t.string "plural_de"
     t.string "plural_fr"
     t.string "plural_ja"
-    t.string "plural_tc"
-    t.integer "price"
     t.integer "quest_id"
-    t.integer "recipe_id"
-    t.boolean "tradeable"
-    t.integer "unlock_id"
-    t.string "unlock_type"
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "description_tc", limit: 1000
+    t.string "plural_tc"
+    t.string "image_url"
+    t.string "name_chs"
+    t.string "description_chs", limit: 1000
+    t.string "plural_chs"
     t.index ["name_chs"], name: "index_items_on_name_chs"
     t.index ["name_de"], name: "index_items_on_name_de"
     t.index ["name_en"], name: "index_items_on_name_en"
@@ -903,22 +903,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "leve_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.string "craft_chs"
-    t.string "craft_de", null: false
-    t.string "craft_en", null: false
-    t.string "craft_fr", null: false
-    t.string "craft_ja", null: false
-    t.string "craft_tc"
-    t.datetime "created_at", null: false
-    t.boolean "items", default: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.string "craft_en", null: false
+    t.string "craft_de", null: false
+    t.string "craft_fr", null: false
+    t.string "craft_ja", null: false
     t.integer "order", null: false
+    t.boolean "items", default: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_tc"
+    t.string "craft_tc"
+    t.string "name_chs"
+    t.string "craft_chs"
     t.index ["craft_chs"], name: "index_leve_categories_on_craft_chs"
     t.index ["craft_de"], name: "index_leve_categories_on_craft_de"
     t.index ["craft_en"], name: "index_leve_categories_on_craft_en"
@@ -935,30 +935,30 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "leves", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.string "name_en", null: false
+    t.string "name_de", null: false
+    t.string "name_fr", null: false
+    t.string "name_ja", null: false
     t.integer "category_id", null: false
-    t.integer "cost", default: 1
-    t.datetime "created_at", null: false
-    t.string "issuer_name_chs"
-    t.string "issuer_name_de", null: false
+    t.integer "level", null: false
+    t.integer "location_id", null: false
     t.string "issuer_name_en", null: false
+    t.string "issuer_name_de", null: false
     t.string "issuer_name_fr", null: false
     t.string "issuer_name_ja", null: false
-    t.string "issuer_name_tc"
     t.decimal "issuer_x", precision: 3, scale: 1, null: false
     t.decimal "issuer_y", precision: 3, scale: 1, null: false
     t.integer "item_id"
     t.integer "item_quantity"
-    t.integer "level", null: false
-    t.boolean "limited", default: false
-    t.integer "location_id", null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
-    t.string "name_en", null: false
-    t.string "name_fr", null: false
-    t.string "name_ja", null: false
-    t.string "name_tc"
     t.string "patch"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "limited", default: false
+    t.integer "cost", default: 1
+    t.string "name_tc"
+    t.string "issuer_name_tc"
+    t.string "name_chs"
+    t.string "issuer_name_chs"
     t.index ["category_id"], name: "index_leves_on_category_id"
     t.index ["item_id"], name: "index_leves_on_item_id"
     t.index ["location_id"], name: "index_leves_on_location_id"
@@ -972,20 +972,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "locations", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.string "region_chs"
-    t.string "region_de", null: false
     t.string "region_en", null: false
+    t.string "region_de", null: false
     t.string "region_fr", null: false
     t.string "region_ja", null: false
-    t.string "region_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "region_tc"
+    t.string "name_chs"
+    t.string "region_chs"
     t.index ["name_chs"], name: "index_locations_on_name_chs"
     t.index ["name_de"], name: "index_locations_on_name_de", unique: true
     t.index ["name_en"], name: "index_locations_on_name_en", unique: true
@@ -1001,98 +1001,98 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "minion_behaviors", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "name_chs"
   end
 
   create_table "minion_races", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "name_chs"
   end
 
   create_table "minion_skill_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "name_chs"
   end
 
   create_table "minions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.boolean "arcana", null: false
-    t.boolean "area_attack", null: false
-    t.integer "attack", null: false
-    t.integer "behavior_id", null: false
-    t.integer "cost", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.integer "defense", null: false
-    t.string "description_chs", limit: 1000
-    t.string "description_de", limit: 1000
-    t.string "description_en", limit: 1000
-    t.string "description_fr", limit: 1000
-    t.string "description_ja", limit: 1000
-    t.string "description_tc", limit: 1000
-    t.string "enhanced_description_chs", limit: 1000
-    t.string "enhanced_description_de", limit: 1000
-    t.string "enhanced_description_en", limit: 1000
-    t.string "enhanced_description_fr", limit: 1000
-    t.string "enhanced_description_ja", limit: 1000
-    t.string "enhanced_description_tc", limit: 1000
-    t.boolean "eye", null: false
-    t.string "footprint_image_url"
-    t.boolean "gate", null: false
-    t.integer "hp", null: false
-    t.string "image_url"
-    t.integer "item_id"
-    t.string "large_image_url"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
-    t.string "patch"
-    t.integer "race_id", null: false
-    t.boolean "shield", null: false
-    t.integer "skill_angle", null: false
-    t.string "skill_chs"
-    t.integer "skill_cost", null: false
-    t.string "skill_de"
-    t.string "skill_description_chs"
-    t.string "skill_description_de"
-    t.string "skill_description_en"
-    t.string "skill_description_fr"
-    t.string "skill_description_ja"
-    t.string "skill_description_tc"
-    t.string "skill_en"
-    t.string "skill_fr"
-    t.string "skill_ja"
-    t.string "skill_tc"
-    t.integer "skill_type_id"
+    t.integer "cost", null: false
+    t.integer "attack", null: false
+    t.integer "defense", null: false
+    t.integer "hp", null: false
     t.integer "speed", null: false
-    t.string "tooltip_chs"
-    t.string "tooltip_de"
+    t.boolean "area_attack", null: false
+    t.integer "skill_angle", null: false
+    t.boolean "arcana", null: false
+    t.boolean "eye", null: false
+    t.boolean "gate", null: false
+    t.boolean "shield", null: false
+    t.string "patch"
+    t.integer "behavior_id", null: false
+    t.integer "race_id", null: false
+    t.integer "skill_type_id"
+    t.string "description_en", limit: 1000
+    t.string "description_de", limit: 1000
+    t.string "description_fr", limit: 1000
+    t.string "description_ja", limit: 1000
     t.string "tooltip_en"
+    t.string "tooltip_de"
     t.string "tooltip_fr"
     t.string "tooltip_ja"
-    t.string "tooltip_tc"
+    t.string "skill_en"
+    t.string "skill_de"
+    t.string "skill_fr"
+    t.string "skill_ja"
+    t.string "skill_description_en"
+    t.string "skill_description_de"
+    t.string "skill_description_fr"
+    t.string "skill_description_ja"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "skill_cost", null: false
+    t.string "enhanced_description_en", limit: 1000
+    t.string "enhanced_description_de", limit: 1000
+    t.string "enhanced_description_fr", limit: 1000
+    t.string "enhanced_description_ja", limit: 1000
+    t.integer "item_id"
+    t.integer "order"
+    t.string "name_tc"
+    t.string "description_tc", limit: 1000
+    t.string "tooltip_tc"
+    t.string "skill_tc"
+    t.string "skill_description_tc"
+    t.string "enhanced_description_tc", limit: 1000
+    t.string "image_url"
+    t.string "large_image_url"
+    t.string "footprint_image_url"
+    t.string "name_chs"
+    t.string "description_chs", limit: 1000
+    t.string "tooltip_chs"
+    t.string "skill_chs"
+    t.string "skill_description_chs"
+    t.string "enhanced_description_chs", limit: 1000
     t.index ["behavior_id"], name: "index_minions_on_behavior_id"
     t.index ["name_chs"], name: "index_minions_on_name_chs"
     t.index ["name_de"], name: "index_minions_on_name_de"
@@ -1107,43 +1107,43 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "mounts", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.boolean "custom_music", default: false
-    t.string "description_chs"
-    t.string "description_de", null: false
-    t.string "description_en", null: false
-    t.string "description_fr", null: false
-    t.string "description_ja", null: false
-    t.string "description_tc"
-    t.string "enhanced_description_chs", limit: 1000
-    t.string "enhanced_description_de", limit: 1000, null: false
-    t.string "enhanced_description_en", limit: 1000, null: false
-    t.string "enhanced_description_fr", limit: 1000, null: false
-    t.string "enhanced_description_ja", limit: 1000, null: false
-    t.string "enhanced_description_tc", limit: 1000
-    t.string "footprint_image_url"
-    t.string "image_url"
-    t.integer "item_id"
-    t.string "large_image_url"
-    t.string "movement", null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
     t.integer "order", null: false
-    t.integer "order_group"
     t.string "patch"
-    t.integer "seats", null: false
-    t.string "tooltip_chs"
-    t.string "tooltip_de", null: false
+    t.string "description_en", null: false
+    t.string "description_de", null: false
+    t.string "description_fr", null: false
+    t.string "description_ja", null: false
+    t.string "enhanced_description_en", limit: 1000, null: false
+    t.string "enhanced_description_de", limit: 1000, null: false
+    t.string "enhanced_description_fr", limit: 1000, null: false
+    t.string "enhanced_description_ja", limit: 1000, null: false
     t.string "tooltip_en", null: false
+    t.string "tooltip_de", null: false
     t.string "tooltip_fr", null: false
     t.string "tooltip_ja", null: false
-    t.string "tooltip_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "movement", null: false
+    t.integer "seats", null: false
+    t.integer "item_id"
     t.string "video"
+    t.integer "order_group"
+    t.boolean "custom_music", default: false
+    t.string "name_tc"
+    t.string "description_tc"
+    t.string "enhanced_description_tc", limit: 1000
+    t.string "tooltip_tc"
+    t.string "image_url"
+    t.string "large_image_url"
+    t.string "footprint_image_url"
+    t.string "name_chs"
+    t.string "description_chs"
+    t.string "enhanced_description_chs", limit: 1000
+    t.string "tooltip_chs"
     t.index ["name_chs"], name: "index_mounts_on_name_chs"
     t.index ["name_de"], name: "index_mounts_on_name_de"
     t.index ["name_en"], name: "index_mounts_on_name_en"
@@ -1155,41 +1155,41 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "npc_cards", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "card_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.boolean "fixed", default: true, null: false
     t.integer "npc_id", null: false
+    t.integer "card_id", null: false
+    t.boolean "fixed", default: true, null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["card_id"], name: "index_npc_cards_on_card_id"
     t.index ["npc_id"], name: "index_npc_cards_on_npc_id"
   end
 
   create_table "npc_rewards", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "npc_id", null: false
     t.integer "card_id", null: false
     t.datetime "created_at", precision: nil, null: false
-    t.integer "npc_id", null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["card_id"], name: "index_npc_rewards_on_card_id"
     t.index ["npc_id"], name: "index_npc_rewards_on_npc_id"
   end
 
   create_table "npcs", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.decimal "difficulty", precision: 3, scale: 2
-    t.boolean "excluded", default: false
-    t.integer "location_id", null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
-    t.string "name_en", null: false
-    t.string "name_fr", null: false
-    t.string "name_ja", null: false
-    t.string "name_tc"
-    t.string "patch"
-    t.integer "quest_id"
-    t.integer "resident_id", null: false
-    t.datetime "updated_at", precision: nil, null: false
     t.decimal "x", precision: 3, scale: 1
     t.decimal "y", precision: 3, scale: 1
+    t.integer "resident_id", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "quest_id"
+    t.string "patch"
+    t.string "name_en", null: false
+    t.string "name_de", null: false
+    t.string "name_fr", null: false
+    t.string "name_ja", null: false
+    t.integer "location_id", null: false
+    t.decimal "difficulty", precision: 3, scale: 2
+    t.boolean "excluded", default: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["location_id"], name: "index_npcs_on_location_id"
     t.index ["name_chs"], name: "index_npcs_on_name_chs"
     t.index ["name_de"], name: "index_npcs_on_name_de", unique: true
@@ -1209,28 +1209,28 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "occult_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.text "description_chs"
-    t.text "description_de"
+    t.string "name_en"
+    t.string "name_de"
+    t.string "name_fr"
+    t.string "name_ja"
     t.text "description_en"
+    t.text "description_de"
     t.text "description_fr"
     t.text "description_ja"
+    t.string "patch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name_tc"
     t.text "description_tc"
     t.string "image_url"
-    t.text "location_chs"
-    t.string "location_de"
     t.string "location_en"
+    t.string "location_de"
     t.string "location_fr"
     t.string "location_ja"
     t.string "location_tc"
     t.string "name_chs"
-    t.string "name_de"
-    t.string "name_en"
-    t.string "name_fr"
-    t.string "name_ja"
-    t.string "name_tc"
-    t.string "patch"
-    t.datetime "updated_at", null: false
+    t.text "description_chs"
+    t.text "location_chs"
     t.index ["name_chs"], name: "index_occult_records_on_name_chs"
     t.index ["name_de"], name: "index_occult_records_on_name_de"
     t.index ["name_en"], name: "index_occult_records_on_name_en"
@@ -1241,15 +1241,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "orchestrion_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "order"
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_orchestrion_categories_on_name_chs"
     t.index ["name_de"], name: "index_orchestrion_categories_on_name_de"
     t.index ["name_en"], name: "index_orchestrion_categories_on_name_en"
@@ -1260,25 +1260,25 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "orchestrions", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs"
-    t.string "description_de", null: false
-    t.string "description_en", null: false
-    t.string "description_fr", null: false
-    t.string "description_ja", null: false
-    t.string "description_tc"
-    t.string "details"
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.string "description_en", null: false
+    t.string "description_de", null: false
+    t.string "description_fr", null: false
+    t.string "description_ja", null: false
     t.integer "order"
     t.string "patch"
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.integer "item_id"
+    t.string "details"
+    t.string "name_tc"
+    t.string "description_tc"
+    t.string "name_chs"
+    t.string "description_chs"
     t.index ["category_id"], name: "index_orchestrions_on_category_id"
     t.index ["name_chs"], name: "index_orchestrions_on_name_chs"
     t.index ["name_de"], name: "index_orchestrions_on_name_de"
@@ -1298,19 +1298,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "outfits", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.boolean "armoireable", default: false
-    t.datetime "created_at", null: false
-    t.string "gender"
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.boolean "armoireable", default: false
+    t.string "gender"
     t.string "patch"
-    t.boolean "tradeable", default: false
+    t.integer "item_id"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "tradeable", default: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["armoireable"], name: "index_outfits_on_armoireable"
     t.index ["gender"], name: "index_outfits_on_gender"
     t.index ["name_chs"], name: "index_outfits_on_name_chs"
@@ -1323,9 +1323,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "pack_cards", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "pack_id", null: false
     t.integer "card_id", null: false
     t.datetime "created_at", precision: nil, null: false
-    t.integer "pack_id", null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["card_id"], name: "index_pack_cards_on_card_id"
     t.index ["pack_id"], name: "index_pack_cards_on_pack_id"
@@ -1334,14 +1334,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   create_table "packs", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "cost", null: false
     t.datetime "created_at", precision: nil, null: false
-    t.integer "item_id"
-    t.string "name_chs"
-    t.string "name_de", null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
+    t.integer "item_id"
     t.string "name_tc"
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "name_chs"
     t.index ["item_id"], name: "index_packs_on_item_id"
     t.index ["name_chs"], name: "index_packs_on_name_chs"
     t.index ["name_de"], name: "index_packs_on_name_de", unique: true
@@ -1352,68 +1352,68 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "quests", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.boolean "event"
-    t.string "name_chs"
-    t.string "name_de"
     t.string "name_en"
+    t.string "name_de"
     t.string "name_fr"
     t.string "name_ja"
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.boolean "event"
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_en"], name: "index_quests_on_name_en"
   end
 
   create_table "relic_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.integer "expansion"
-    t.integer "jobs"
-    t.string "name_chs"
-    t.string "name_de"
     t.string "name_en"
+    t.string "name_de"
     t.string "name_fr"
     t.string "name_ja"
-    t.string "name_tc"
+    t.string "category"
+    t.integer "jobs"
     t.integer "order"
+    t.integer "expansion"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["expansion"], name: "index_relic_types_on_expansion"
     t.index ["order"], name: "index_relic_types_on_order"
   end
 
   create_table "relics", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "achievement_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.string "image_url"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
     t.string "name_fr", null: false
+    t.string "name_de", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "order"
     t.integer "type_id"
-    t.datetime "updated_at", precision: nil, null: false
+    t.integer "achievement_id"
+    t.string "name_tc"
+    t.string "image_url"
+    t.string "name_chs"
     t.index ["achievement_id"], name: "index_relics_on_achievement_id"
     t.index ["order"], name: "index_relics_on_order"
     t.index ["type_id"], name: "index_relics_on_type_id"
   end
 
   create_table "rules", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs"
-    t.string "description_de", null: false
-    t.string "description_en", null: false
-    t.string "description_fr", null: false
-    t.string "description_ja", null: false
-    t.string "description_tc"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.string "description_en", null: false
+    t.string "description_de", null: false
+    t.string "description_fr", null: false
+    t.string "description_ja", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "description_tc"
+    t.string "name_chs"
+    t.string "description_chs"
     t.index ["name_chs"], name: "index_rules_on_name_chs"
     t.index ["name_de"], name: "index_rules_on_name_de", unique: true
     t.index ["name_en"], name: "index_rules_on_name_en", unique: true
@@ -1423,34 +1423,34 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "source_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de"
     t.string "name_en", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "name_de"
     t.string "name_fr"
     t.string "name_ja"
     t.string "name_tc"
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "name_chs"
     t.index ["name_en"], name: "index_source_types_on_name_en", unique: true
   end
 
   create_table "sources", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.integer "collectable_id", null: false
     t.string "collectable_type", null: false
+    t.string "text_en"
+    t.integer "type_id", null: false
     t.datetime "created_at", precision: nil, null: false
-    t.boolean "limited", default: false
-    t.integer "order"
-    t.boolean "premium", default: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "related_id"
     t.string "related_type"
-    t.string "text_chs"
+    t.boolean "premium", default: false
+    t.boolean "limited", default: false
     t.string "text_de"
-    t.string "text_en"
     t.string "text_fr"
     t.string "text_ja"
     t.string "text_tc"
-    t.integer "type_id", null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.integer "order"
+    t.string "text_chs"
     t.index ["collectable_id", "collectable_type"], name: "index_sources_on_collectable_id_and_collectable_type"
     t.index ["limited"], name: "index_sources_on_limited"
     t.index ["order"], name: "index_sources_on_order"
@@ -1460,14 +1460,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "spell_aspects", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de"
     t.string "name_en"
+    t.string "name_de"
     t.string "name_fr"
     t.string "name_ja"
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_spell_aspects_on_name_chs"
     t.index ["name_de"], name: "index_spell_aspects_on_name_de"
     t.index ["name_en"], name: "index_spell_aspects_on_name_en"
@@ -1477,14 +1477,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "spell_types", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
-    t.string "name_chs"
-    t.string "name_de"
     t.string "name_en"
+    t.string "name_de"
     t.string "name_fr"
     t.string "name_ja"
-    t.string "name_tc"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "name_chs"
     t.index ["name_chs"], name: "index_spell_types_on_name_chs"
     t.index ["name_de"], name: "index_spell_types_on_name_de"
     t.index ["name_en"], name: "index_spell_types_on_name_en"
@@ -1494,32 +1494,32 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "spells", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "aspect_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.string "description_chs", limit: 1000
-    t.string "description_de", limit: 1000, null: false
-    t.string "description_en", limit: 1000, null: false
-    t.string "description_fr", limit: 1000, null: false
-    t.string "description_ja", limit: 1000, null: false
-    t.string "description_tc", limit: 1000
-    t.string "image_url"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
-    t.integer "order"
-    t.string "patch"
-    t.integer "rank", null: false
-    t.string "tooltip_chs", limit: 1000
-    t.string "tooltip_de", limit: 1000, null: false
+    t.string "description_en", limit: 1000, null: false
+    t.string "description_de", limit: 1000, null: false
+    t.string "description_fr", limit: 1000, null: false
+    t.string "description_ja", limit: 1000, null: false
     t.string "tooltip_en", limit: 1000, null: false
+    t.string "tooltip_de", limit: 1000, null: false
     t.string "tooltip_fr", limit: 1000, null: false
     t.string "tooltip_ja", limit: 1000, null: false
-    t.string "tooltip_tc", limit: 1000
+    t.integer "order"
+    t.integer "rank", null: false
+    t.string "patch"
     t.integer "type_id", null: false
+    t.integer "aspect_id", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "description_tc", limit: 1000
+    t.string "tooltip_tc", limit: 1000
+    t.string "image_url"
+    t.string "name_chs"
+    t.string "description_chs", limit: 1000
+    t.string "tooltip_chs", limit: 1000
     t.index ["aspect_id"], name: "index_spells_on_aspect_id"
     t.index ["name_chs"], name: "index_spells_on_name_chs"
     t.index ["name_de"], name: "index_spells_on_name_de"
@@ -1532,124 +1532,124 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
   end
 
   create_table "survey_record_series", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.string "name_chs"
-    t.string "name_de"
     t.string "name_en"
+    t.string "name_de"
     t.string "name_fr"
     t.string "name_ja"
-    t.string "name_tc"
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name_tc"
+    t.string "name_chs"
   end
 
   create_table "survey_records", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.text "description_chs"
-    t.text "description_de"
+    t.string "name_en"
+    t.string "name_de"
+    t.string "name_fr"
+    t.string "name_ja"
     t.text "description_en"
+    t.text "description_de"
     t.text "description_fr"
     t.text "description_ja"
+    t.string "solution_en", limit: 1000
+    t.string "patch"
+    t.integer "series_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "order"
+    t.string "solution_de", limit: 1000
+    t.string "solution_fr", limit: 1000
+    t.string "solution_ja", limit: 1000
+    t.string "name_tc"
     t.text "description_tc"
+    t.string "solution_tc", limit: 1000
     t.string "image_url"
     t.string "large_image_url"
     t.string "name_chs"
-    t.string "name_de"
-    t.string "name_en"
-    t.string "name_fr"
-    t.string "name_ja"
-    t.string "name_tc"
-    t.integer "order"
-    t.string "patch"
-    t.integer "series_id"
+    t.text "description_chs"
     t.string "solution_chs", limit: 1000
-    t.string "solution_de", limit: 1000
-    t.string "solution_en", limit: 1000
-    t.string "solution_fr", limit: 1000
-    t.string "solution_ja", limit: 1000
-    t.string "solution_tc", limit: 1000
-    t.datetime "updated_at", null: false
     t.index ["order"], name: "index_survey_records_on_order"
     t.index ["series_id"], name: "index_survey_records_on_series_id"
   end
 
   create_table "titles", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.integer "achievement_id", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.string "female_name_chs"
-    t.string "female_name_de", null: false
-    t.string "female_name_en", null: false
-    t.string "female_name_fr", null: false
-    t.string "female_name_ja", null: false
-    t.string "female_name_tc"
-    t.string "name_chs"
-    t.string "name_de", null: false
     t.string "name_en", null: false
+    t.string "name_de", null: false
     t.string "name_fr", null: false
     t.string "name_ja", null: false
-    t.string "name_tc"
+    t.string "female_name_en", null: false
+    t.string "female_name_de", null: false
+    t.string "female_name_fr", null: false
+    t.string "female_name_ja", null: false
     t.integer "order", null: false
+    t.integer "achievement_id", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "name_tc"
+    t.string "female_name_tc"
+    t.string "name_chs"
+    t.string "female_name_chs"
     t.index ["achievement_id"], name: "index_titles_on_achievement_id"
   end
 
   create_table "tomestone_rewards", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "cost"
     t.integer "collectable_id"
     t.string "collectable_type"
-    t.integer "cost"
     t.datetime "created_at", precision: nil, null: false
-    t.string "tomestone"
     t.datetime "updated_at", precision: nil, null: false
+    t.string "tomestone"
     t.index ["collectable_id", "collectable_type"], name: "index_tomestone_rewards_on_collectable_id_and_collectable_type"
     t.index ["tomestone"], name: "index_tomestone_rewards_on_tomestone"
   end
 
   create_table "user_characters", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "character_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "user_id"
     t.index ["character_id"], name: "index_user_characters_on_character_id"
     t.index ["user_id", "character_id"], name: "index_user_characters_on_user_id_and_character_id", unique: true
     t.index ["user_id"], name: "index_user_characters_on_user_id"
   end
 
   create_table "users", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.boolean "admin", default: false
-    t.string "avatar_url"
-    t.integer "character_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.integer "current_identity_id"
-    t.string "database", default: "garland", null: false
+    t.string "username"
     t.integer "discriminator"
-    t.boolean "mod", default: false
+    t.string "avatar_url"
     t.string "provider"
     t.string "uid"
+    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.string "username"
+    t.integer "character_id"
+    t.boolean "admin", default: false
+    t.boolean "mod", default: false
+    t.string "database", default: "garland", null: false
+    t.integer "current_identity_id"
     t.boolean "zen", default: false
     t.index ["character_id"], name: "index_users_on_character_id"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
   create_table "versions", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.bigint "collectable_id"
-    t.string "collectable_type", limit: 191
-    t.datetime "created_at", precision: nil
-    t.string "event", null: false
-    t.bigint "item_id", null: false
     t.string "item_type", limit: 191, null: false
-    t.text "object", size: :long
-    t.text "object_changes", size: :long
+    t.bigint "item_id", null: false
+    t.string "collectable_type", limit: 191
+    t.bigint "collectable_id"
+    t.string "event", null: false
     t.string "whodunnit"
+    t.text "object", size: :long
+    t.datetime "created_at", precision: nil
+    t.text "object_changes", size: :long
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   create_table "votes", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
-    t.datetime "created_at", precision: nil, null: false
     t.integer "deck_id"
-    t.integer "score", default: 1
-    t.datetime "updated_at", precision: nil, null: false
     t.integer "user_id"
+    t.integer "score", default: 1
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["deck_id", "user_id"], name: "index_votes_on_deck_id_and_user_id", unique: true
     t.index ["deck_id"], name: "index_votes_on_deck_id"
   end
