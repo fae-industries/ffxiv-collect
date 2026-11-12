@@ -28,6 +28,7 @@
             <th scope="col" class="text-center"><%= fa_icon('paw') %> <%= fa_icon('venus') %></th>
             <th scope="col" class="text-center"><%= fa_icon('carrot') %></th>
             <th scope="col" class="text-center"><%= fa_icon('dollar-sign') %></th>
+            <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
             <th scope="col" class="text-center hide-xs"><%= t('own') %></th>
             <th scope="col" class="text-center"><%= t('patch') %></th>
             <th scope="col" class="check-ownership"></th>
@@ -53,6 +54,7 @@
                 <td class="text-center" data-value="<%= hairstyle.femhrothable? ? 1 : 0 %>"><%= femhrothable(hairstyle) %></td>
                 <td class="text-center" data-value="<%= hairstyle.vierable? ? 1 : 0 %>"><%= vierable(hairstyle) %></td>
                 <td class="text-center" data-value="<%= price_sort_value(hairstyle) %>"><%= market_link(hairstyle) %></td>
+                <%= td_wishlist(hairstyle) %>
                 <td class="text-center hide-xs" data-value="<%= rarity(hairstyle, numeric: true) %>"><%= rarity(hairstyle) %></td>
                 <td class="text-center" data-value="<%= sort_value(hairstyle) %>"><%= hairstyle.patch %></td>
                 <%= td_owned(hairstyle) %>

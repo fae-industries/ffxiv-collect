@@ -27,6 +27,7 @@
             <th scope="col" class="hide-xs"><%= t('source') %></th>
             <th scope="col" class="text-center"><%= collectable_icon('Armoire') %></th>
             <th scope="col" class="text-center"><%= fa_icon('dollar-sign') %></th>
+            <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
             <th scope="col" class="text-center hide-xs"><%= t('own') %></th>
             <th scope="col" class="text-center"><%= t('patch') %></th>
             <th scope="col" class="check-ownership"></th>
@@ -57,6 +58,7 @@
                 <td class="text-center" data-value="<%= outfit.tradeable? %>">
                   <%= fa_icon('dollar-sign') if outfit.tradeable? %>
                 </td>
+                <%= td_wishlist(outfit) %>
                 <td class="text-center hide-xs" data-value="<%= rarity(outfit, numeric: true) %>">
                   <%= rarity(outfit) %>
                 </td>

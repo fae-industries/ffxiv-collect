@@ -23,6 +23,7 @@
             <th scope="col"><%= t('name') %></th>
             <th scope="col" class="hide-xs"><%= t('source') %></th>
             <th scope="col" class="text-center"><%= fa_icon('dollar-sign') %></th>
+            <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
             <th scope="col" class="text-center"><%= t('patch') %></th>
             <th scope="col" class="check-ownership"></th>
           </tr>
@@ -36,6 +37,7 @@
                 <td><%= collectable_name_link(collectable) %></td>
                 <td class="hide-xs" data-value="<%= source_sort_value(collectable) %>"><%= sources(collectable) %></td>
                 <td class="text-center" data-value="<%= price_sort_value(collectable) %>"><%= market_link(collectable) %></td>
+                <%= td_wishlist(collectable) %>
                 <td class="text-center"><%= collectable.patch %></td>
                 <%= td_owned(collectable) %>
               </tr>

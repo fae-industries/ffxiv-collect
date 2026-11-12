@@ -56,22 +56,24 @@
 
 class Character < ApplicationRecord
   after_destroy :clear_user_characters
+
   belongs_to :verified_user, class_name: 'User', required: false
   belongs_to :free_company, required: false
 
   has_many :group_memberships
   has_many :groups, through: :group_memberships
-
-  scope :recent,   -> { where('characters.updated_at > ?', Date.current - 3.months) }
-  scope :verified, -> { where.not(verified_user: nil) }
-  scope :visible,  -> { where(public: true, banned: false) }
-  scope :with_public_achievements, -> { where(public_achievements: true) }
+  has_many :wishes, class_name: 'CharacterWish'
 
   %i(achievements mounts minions orchestrions emotes bardings hairstyles armoires outfits spells beasts relics
   fashions facewear field_records survey_records occult_records frames leves cards npcs).each do |model|
     has_many "character_#{model}".to_sym, dependent: :delete_all
     has_many model, through: "character_#{model}".to_sym
   end
+
+  scope :recent,   -> { where('characters.updated_at > ?', Date.current - 3.months) }
+  scope :verified, -> { where.not(verified_user: nil) }
+  scope :visible,  -> { where(public: true, banned: false) }
+  scope :with_public_achievements, -> { where(public_achievements: true) }
 
   def sync
     update(queued_at: Time.now)

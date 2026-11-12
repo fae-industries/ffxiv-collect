@@ -24,6 +24,7 @@
             <th scope="col"><%= t('prices.price') %></th>
             <th scope="col" class="hide-sm"><%= t('prices.world') %></th>
             <th scope="col" class="hide-sm"><%= t('prices.updated') %></th>
+            <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
             <th scope="col" class="text-center hide-sm"><%= t('patch') %></th>
             <th scope="col" class="check-ownership"></th>
           </tr>
@@ -49,6 +50,7 @@
                   <%= link_to(@prices.dig(item.id, :last_updated) || 'N/A',
                               universalis_url(item.id), class: 'name', target: '_blank') %>
                 </td>
+                <%= td_wishlist(item.unlock) %>
                 <td class="text-center hide-sm"><%= item.unlock.patch %></td>
                 <%= td_owned(item.unlock) %>
               </tr>

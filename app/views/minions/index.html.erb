@@ -31,6 +31,7 @@
             <th scope="col"><%= t('name') %></th>
             <th scope="col" class="hide-xs"><%= t('source') %></th>
             <th scope="col" class="text-center"><%= fa_icon('dollar-sign') %></th>
+            <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
             <th scope="col" class="text-center hide-xs"><%= t('own') %></th>
             <th scope="col" class="text-center"><%= t('patch') %></th>
             <th scope="col" class="check-ownership"></th>
@@ -48,6 +49,7 @@
                 <td><%= link_to(minion.name, minion_path(minion), class: 'name') %></td>
                 <td class="hide-xs" data-value="<%= source_sort_value(minion) %>"><%= sources(minion) %></td>
                 <td class="text-center" data-value="<%= price_sort_value(minion) %>"><%= market_link(minion) %></td>
+                <%= td_wishlist(minion) %>
                 <td class="text-center hide-xs" data-value="<%= rarity(minion, numeric: true) %>"><%= rarity(minion) %></td>
                 <td class="text-center" data-value="<%= sort_value(minion) %>"><%= minion.patch %></td>
                 <%= td_owned(minion) %>

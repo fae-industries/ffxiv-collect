@@ -433,8 +433,8 @@ en:
     user_decks: "User Decks"
     user_decks_tooltip: "User decks designed to be used against this NPC"
   occult_records:
-    title: "Occult Records"
     one: "Occult Record"
+    title: "Occult Records"
   of: "of"
   only:
     female: "Female Only"
@@ -681,6 +681,10 @@ en:
     title: "Verminion"
   view: "View"
   view_details: "View Details"
+  wishlist:
+    add: "Add to Wishlist"
+    remove: "Remove from Wishlist"
+    title: "Wishlist"
   "yes": "Yes"
   yokai:
     locations: "Legendary Medal Locations"

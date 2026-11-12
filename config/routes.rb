@@ -70,6 +70,16 @@ Rails.application.routes.draw do
     end
   end
 
+  # Wishlist
+  %i(mounts minions hairstyles emotes orchestrions frames spells beasts bardings fashions facewear outfits armoires).each do |resource|
+    resources resource, only: [] do
+      member do
+        post :wish
+        post :unwish
+      end
+    end
+  end
+
   # Backwards compatibility for old field records URLs
   get 'records', to: redirect('field_records')
   get 'records/:id', to: redirect('field_records/%{id}')
@@ -94,6 +104,8 @@ Rails.application.routes.draw do
       member do
         post :add
         post :remove
+        post :wish
+        post :unwish
       end
 
       collection do

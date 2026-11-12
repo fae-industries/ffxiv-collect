@@ -29,6 +29,7 @@
             <th scope="col" class="hide-md"><%= t('emotes.command') %></th>
             <th scope="col" class="text-center hide-md"><%= t('category') %></th>
             <th scope="col" class="text-center"><%= fa_icon('dollar-sign') %></th>
+            <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
             <th scope="col" class="text-center hide-xs"><%= t('own') %></th>
             <th scope="col" class="text-center"><%= t('patch') %></th>
             <th scope="col" class="check-ownership"></th>
@@ -48,6 +49,7 @@
                 <td class="hide-md"><%= emote.command.split(', ').first %></td>
                 <td class="text-center hide-md"><%= emote.category.name %></td>
                 <td class="text-center" data-value="<%= price_sort_value(emote) %>"><%= market_link(emote) %></td>
+                <%= td_wishlist(emote) %>
                 <td class="text-center hide-xs" data-value="<%= rarity(emote, numeric: true) %>"><%= rarity(emote) %></td>
                 <td class="text-center" data-value="<%= sort_value(emote) %>"><%= emote.patch %></td>
                 <%= td_owned(emote) %>

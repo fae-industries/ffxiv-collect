@@ -96,6 +96,8 @@ class ApplicationController < ActionController::Base
         flash[:error] = t('alerts.character_set_to_private')
         return redirect_to root_path
       end
+
+      set_wishlist_ids
     elsif cookies[:character].present?
       @character = Character.find_by(id: cookies[:character])
 
@@ -120,5 +122,14 @@ class ApplicationController < ActionController::Base
 
   def display_announcements
     # flash.now[:success_fixed] = 'This is an announcement.'
+  end
+
+  private
+  def set_wishlist_ids
+    if verified?
+      @wishlist_ids = @character.wishes.map { |wish| "#{wish.collectable_type.downcase}-#{wish.collectable_id}"}
+    else
+      @wishlist_ids = []
+    end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_11_183016) do
   create_table "achievement_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.string "name_en", null: false
     t.string "name_de", null: false
@@ -482,6 +482,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_05_123350) do
     t.index ["character_id", "survey_record_id"], name: "character_id_and_survey_record_id", unique: true
     t.index ["character_id"], name: "index_character_survey_records_on_character_id"
     t.index ["survey_record_id"], name: "index_character_survey_records_on_survey_record_id"
+  end
+
+  create_table "character_wishes", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "collectable_id", null: false
+    t.string "collectable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id", "collectable_id", "collectable_type"], name: "idx_on_character_id_collectable_id_collectable_type_a5a7918bfd", unique: true
   end
 
   create_table "characters", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|

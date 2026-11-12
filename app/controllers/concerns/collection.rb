@@ -1,6 +1,8 @@
 module Collection
   extend ActiveSupport::Concern
 
+  include Wishlistable
+
   included do
     before_action :set_owned!, only: [:index, :type]
     before_action :set_ids!, on: :index

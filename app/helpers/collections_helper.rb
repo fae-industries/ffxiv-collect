@@ -163,14 +163,25 @@ module CollectionsHelper
     end
   end
 
-  def td_owned(collectable)
-    id = "#{collectable.class.to_s.underscore}-#{collectable.id}"
+  # Identifies a collectable by class and ID for caching logic
+  def td_id(collectable)
+    "#{collectable.class.to_s.underscore}-#{collectable.id}"
+  end
 
-    content_tag(:td, class: 'text-center check-ownership', data: { id: id, value: 0 }) do
+  def td_owned(collectable)
+    content_tag(:td, class: 'text-center check-ownership', data: { id: td_id(collectable), value: 0 }) do
       if collectable.class.automatic_collection?
         fa_icon('times')
       else
         check_box_tag(collectable.id, nil, class: 'own', data: { path: polymorphic_path(collectable, action: :add) })
+      end
+    end
+  end
+
+  def td_wishlist(collectable)
+    content_tag(:td, class: 'text-center wishlist', data: { wishlist_id: td_id(collectable) }) do
+      link_to(polymorphic_path(collectable, action: :wish), data: { toggle: 'tooltip' }, title: t('wishlist.add')) do
+        far_icon('heart')
       end
     end
   end

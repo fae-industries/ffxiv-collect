@@ -35,6 +35,7 @@
             <th scope="col" class="hide-xs"><%= t('source') %></th>
             <th scope="col" class="category text-center hide-xs"><%= t('category') %></th>
             <th scope="col" class="text-center"><%= fa_icon('dollar-sign') %></th>
+            <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
             <th scope="col" class="text-center hide-xs"><%= t('own') %></th>
             <th scope="col" class="text-center"><%= t('patch') %></th>
             <th scope="col" class="check-ownership"></th>
@@ -60,6 +61,7 @@
                 <td class="text-center" data-value="<%= price_sort_value(orchestrion) %>">
                   <%= market_link(orchestrion) %>
                 </td>
+                <%= td_wishlist(orchestrion) %>
                 <td class="text-center hide-xs" data-value="<%= rarity(orchestrion, numeric: true) %>">
                   <%= rarity(orchestrion) %>
                 </td>

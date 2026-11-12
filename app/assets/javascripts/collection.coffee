@@ -1,13 +1,43 @@
 $ ->
   return unless $('.collection').length || $('#filters').length
 
+  #region Utilities
+
+  # Update a tooltip with new text
+  updateTooltip = (element, text) ->
+    $(element).attr('data-original-title', text)
+    $(element).attr('title', text)
+
+  # Refresh the contents of a visible tooltip
+  refreshTooltip = (element) ->
+    $(element).tooltip('dispose')
+    $(element).tooltip('toggle')
+
+  toggleWishlist = (link) ->
+    icon = $(link).find('i')
+
+    if link.href.match('/wish')
+      path = link.href.replace('/wish', '/unwish')
+      tooltip = I18n.t('wishlist.remove')
+      icon.removeClass('far').addClass('fas')
+    else
+      path = link.href.replace('/unwish', '/wish')
+      tooltip = I18n.t('wishlist.add')
+      icon.removeClass('fas').addClass('far')
+
+    link.href = path
+    updateTooltip(link, tooltip)
+
+  #endregion
+
   #region Update cached table data with dynamic content
   data = $('#collection-data').data()
+  wishes = $('table.collection td[data-wishlist-id]')
 
   if data?.characterSelected
+    # Mark collectables as owned
     owned_ids = new Set(data.collectionIds.split(',').filter(Boolean))
 
-    # Mark collectables as owned based on the character's collection IDs
     $('table.collection td[data-id]').each ->
       return unless owned_ids.has(this.dataset.id)
 
@@ -25,6 +55,15 @@ $ ->
       icon = td.find('i')
       if icon.length
         icon.removeClass('fa-times').addClass('fa-check')
+
+    # Set collectable wishlist status
+    if data?.characterVerified
+      wishlist_ids = new Set(data.wishlistIds.split(',').filter(Boolean))
+
+      wishes.each ->
+        return unless wishlist_ids.has(this.dataset.wishlistId)
+
+        toggleWishlist($(this).find('a')[0])
 
     # Triple Triad
 
@@ -56,10 +95,16 @@ $ ->
       # And disable card toggling
       $('.card-toggle').removeClass('card-toggle')
 
+  # Do not render the checkbox column if no character is selected
   if !data?.characterSelected
-    # Hide checkbox column if no character is selected
-    $('.check-ownership').hide()
+    $('.check-ownership').remove()
     $('.card-toggle').removeClass('card-toggle')
+
+
+  # Do not render wishes unless a verified character is selected
+  if !data?.characterSelected || !data?.characterVerified
+    $('th.wishlist, td.wishlist').remove()
+    wishes.remove()
 
   # Hide collectables of the specified types
   hidden_types = Cookies.get('hidden_types')?.split(',') || []
@@ -149,8 +194,23 @@ $ ->
         alert(I18n.t('alerts.problem_updating'))
         location.reload()
     })
+  #endregion
 
+  #region Wishlist
+  $('td.wishlist a').click (e) ->
+    $.ajax({
+      type: 'POST',
+      url: this.href,
+      data: { authenticity_token: window._token },
+      error: ->
+        alert(I18n.t('alerts.problem_updating'))
+        location.reload()
+    })
 
+    toggleWishlist(this)
+    refreshTooltip(this)
+
+    e.preventDefault()
   #endregion
 
   #region Manual collection ownership toggle
