@@ -3,7 +3,7 @@ class SettingsController < ApplicationController
   before_action :set_user
 
   def edit
-    if @character.present? && !@character.verified_user?(@user)
+    unless verified?
       link = view_context.link_to(t('alerts.verify_ownership'), verify_character_path(@character))
       flash.now[:alert_fixed] = t('alerts.settings_not_verified', link: link)
     end
@@ -47,7 +47,7 @@ class SettingsController < ApplicationController
   end
 
   def update_character
-    if @character.present? && @character.verified_user?(current_user) && @character.update(character_params)
+    if verified? && @character.update(character_params)
       flash[:success] = t('alerts.settings_updated')
       redirect_to settings_path
     else

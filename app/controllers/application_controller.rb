@@ -17,14 +17,6 @@ class ApplicationController < ActionController::Base
     cookies[key] = { value: value, expires: 20.years.from_now, same_site: :lax }
   end
 
-  def verified?
-    @character&.verified_user?(current_user)
-  end
-
-  def verified_user?
-    user_signed_in? && @character&.present?
-  end
-
   def render_private_character_flash!(character)
     flash[:error] = t('alerts.private_character',
                       link: view_context.link_to(t('alerts.here'), verify_character_path(character)))
@@ -51,11 +43,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Verify that the user is signed in with a verified character selected
+  def verified?
+    @character&.verified_user?(current_user)
+  end
+
+  # Redirect back unless the user is signed in and verified as the selected character
   def verify_user!
-    unless user_signed_in? && @character&.verified_user?(current_user)
-      redirect_to_previous
-    end
+    redirect_to_previous unless verified?
   end
 
   def log_backtrace(exception)

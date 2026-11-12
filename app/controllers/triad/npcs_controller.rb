@@ -1,6 +1,8 @@
 class Triad::NPCsController < ApplicationController
   include ManualCollection
 
+  before_action :verify_user!, only: [:update_defeated]
+
   def index
     @location = params[:location]
     @rule = params[:rule]
@@ -51,10 +53,8 @@ class Triad::NPCsController < ApplicationController
   end
 
   def update_defeated
-    if @character&.verified_user?(current_user)
-      npc_ids = NPC.defeated_npcs(@character)
-      @character.set_npcs(npc_ids)
-      redirect_to npcs_path
-    end
+    npc_ids = NPC.defeated_npcs(@character)
+    @character.set_npcs(npc_ids)
+    redirect_to npcs_path
   end
 end

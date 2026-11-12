@@ -27,7 +27,7 @@ module PrivateCollection
     return unless @character.present?
 
     collections.each do |collection|
-      unless public_collection?(collection) || @character.verified_user?(current_user)
+      unless public_collection?(collection) || verified?
         if generic_page?
           flash[:error] = t('alerts.private_collection_not_verified_generic')
         else

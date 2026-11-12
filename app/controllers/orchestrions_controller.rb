@@ -3,8 +3,8 @@ class OrchestrionsController < ApplicationController
   include Tooltipable
 
   before_action :set_categories!, only: [:index, :select]
-  before_action :validate_user!, only: :select
   before_action :set_ids!, on: :select
+  before_action :verify_user!, only: [:select]
 
   def index
     @q = Orchestrion.ransack(params[:q])
@@ -32,11 +32,5 @@ class OrchestrionsController < ApplicationController
   private
   def set_categories!
     @categories = OrchestrionCategory.all.order(:order)
-  end
-
-  def validate_user!
-    unless verified_user? && @character.verified_user?(current_user)
-      redirect_to orchestrions_path
-    end
   end
 end
