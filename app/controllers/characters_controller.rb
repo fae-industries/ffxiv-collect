@@ -236,6 +236,10 @@ class CharactersController < ApplicationController
   end
 
   def wishlist
+    if @character == @profile && !@profile.verified_user?(current_user)
+      flash.now[:alert_fixed] = t('alerts.wishlist_not_verified')
+    end
+
     @source_types = SourceType.with_filters(cookies).ordered
     @wishes = @profile.wishes
     @models = @wishes.distinct.pluck(:collectable_type).map { |type| type.constantize }
