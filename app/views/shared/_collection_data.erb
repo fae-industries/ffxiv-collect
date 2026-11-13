@@ -1,6 +1,7 @@
+<% character = @profile || @character %>
 <div id="collection-data"
-  data-character-selected="<%= character_selected? %>"
-  data-character-verified="<%= verified? %>"
+  data-character-selected="<%= character.present? %>"
+  data-character-verified="<%= character&.verified_user?(current_user) %>"
   data-collection-ids="<%= @keyed_collection_ids&.join(',') %>"
   data-wishlist-ids="<%= @wishlist_ids&.join(',') %>"
 ></div>
