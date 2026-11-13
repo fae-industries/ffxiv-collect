@@ -13,17 +13,20 @@ $ ->
     $(element).tooltip('dispose')
     $(element).tooltip('toggle')
 
+  isWishlisted = (link) ->
+    link.href.match('/unwish')
+
   toggleWishlist = (link) ->
     icon = $(link).find('i')
 
-    if link.href.match('/wish')
-      path = link.href.replace('/wish', '/unwish')
-      tooltip = I18n.t('wishlist.remove')
-      icon.removeClass('far').addClass('fas')
-    else
+    if isWishlisted(link)
       path = link.href.replace('/unwish', '/wish')
       tooltip = I18n.t('wishlist.add')
       icon.removeClass('fas').addClass('far')
+    else
+      path = link.href.replace('/wish', '/unwish')
+      tooltip = I18n.t('wishlist.remove')
+      icon.removeClass('far').addClass('fas')
 
     link.href = path
     updateTooltip(link, tooltip)
@@ -218,15 +221,22 @@ $ ->
     collectable = $(this)
     updateCollection(collectable)
 
-    if !this.checked
-      path = collectable.data('path').replace('remove', 'add')
-      collectable.closest('tr').removeClass('owned')
-      collectable.closest('td').attr('data-value', 0)
-    else
+    if this.checked
+      # Collectable has been added
       path = collectable.data('path').replace('add', 'remove')
       collectable.closest('tr').addClass('owned')
       collectable.closest('td').attr('data-value', 1)
       collectable.closest('td').tooltip('enable')
+
+      # If the collectable is on the wishlist, remove it
+      wish = collectable.closest('tr').find('td.wishlist a')[0]
+      if isWishlisted(wish)
+        toggleWishlist(wish)
+    else
+      # Collectable has been removed
+      path = collectable.data('path').replace('remove', 'add')
+      collectable.closest('tr').removeClass('owned')
+      collectable.closest('td').attr('data-value', 0)
 
     collectable.data('path', path)
     restripe()

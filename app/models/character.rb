@@ -399,6 +399,7 @@ class Character < ApplicationRecord
 
     if new_mounts.present?
       Character.bulk_insert(character.id, CharacterMount, :mount, new_mounts)
+      character.wishes.where(collectable: new_mounts).delete_all
     end
 
     # Re-check the ranked count since sources can change, unless the collection is private
@@ -411,6 +412,7 @@ class Character < ApplicationRecord
 
     if new_minions.present?
       Character.bulk_insert(character.id, CharacterMinion, :minion, new_minions)
+      character.wishes.where(collectable: new_minions).delete_all
     end
 
     # Re-check the ranked count since sources can change, unless the collection is private
@@ -423,6 +425,7 @@ class Character < ApplicationRecord
 
     if new_facewear.present?
       Character.bulk_insert(character.id, CharacterFacewear, :facewear, new_facewear)
+      character.wishes.where(collectable: new_facewear).delete_all
     end
 
     # Emotes
@@ -430,6 +433,7 @@ class Character < ApplicationRecord
 
     if new_emotes.present?
       Character.bulk_insert(character.id, CharacterEmote, :emote, new_emotes)
+      character.wishes.where(collectable: new_emotes).delete_all
     end
 
     Character.find(character.id)

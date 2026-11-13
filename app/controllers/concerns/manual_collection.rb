@@ -11,6 +11,12 @@ module ManualCollection
   def add_collectable(collection, collectable)
     if verified?
       collection << collectable
+
+      # Remove obtained collectable from the character's wishlist
+      if wish = @character.wishes.find_by(collectable: collectable)
+        wish.destroy!
+      end
+
       head :no_content
     else
       head :forbidden
