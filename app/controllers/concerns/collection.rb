@@ -5,8 +5,8 @@ module Collection
 
   included do
     before_action :set_owned!, only: [:index, :type]
-    before_action :set_ids!, on: :index
-    before_action :set_prices!, on: :index
+    before_action :set_ids!, only: [:index]
+    before_action :set_prices!, only: [:index]
   end
 
   def ransack_with_patch_search(patches)

@@ -4,8 +4,8 @@ class AchievementsController < ApplicationController
 
   before_action -> { check_privacy!(:achievements) }
   before_action :verify_character!, only: :index
-  before_action :set_owned!, on: :items
-  before_action :set_ids!, on: [:type, :items]
+  before_action :set_owned!, only: [:search, :items]
+  before_action :set_ids!, only: [:index, :search, :type, :items]
   skip_before_action :set_prices!
 
   def index

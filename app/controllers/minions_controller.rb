@@ -3,7 +3,7 @@ class MinionsController < ApplicationController
   include Tooltipable
 
   before_action -> { check_privacy!(:minions) }, except: :tooltip
-  before_action :set_ids!, on: :verminion
+  before_action :set_ids!, only: [:index, :verminion]
 
   def index
     @q = Minion.summonable.ransack(params[:q])

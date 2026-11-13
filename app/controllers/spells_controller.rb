@@ -2,7 +2,7 @@ class SpellsController < ApplicationController
   include ManualCollection
   include Tooltipable
 
-  before_action :set_ids!, on: :battle
+  before_action :set_ids!, only: [:index, :battle]
   before_action :set_spells!, only: [:index, :battle]
   skip_before_action :set_prices!
 

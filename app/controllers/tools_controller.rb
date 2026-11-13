@@ -4,6 +4,8 @@ class ToolsController < ApplicationController
   before_action -> { check_privacy!(:mounts, :minions) }, only: [:gemstones, :materiel]
   before_action -> { check_privacy!(:mounts, :minions, :facewear, :emotes) }, only: [:market_board, :treasure]
 
+  before_action :set_prices!
+
   skip_before_action :set_owned!, :set_ids!
 
   def gemstones

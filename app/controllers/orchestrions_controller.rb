@@ -3,7 +3,7 @@ class OrchestrionsController < ApplicationController
   include Tooltipable
 
   before_action :set_categories!, only: [:index, :select]
-  before_action :set_ids!, on: :select
+  before_action :set_ids!, only: [:index, :select]
   before_action :verify_user!, only: [:select]
 
   def index
