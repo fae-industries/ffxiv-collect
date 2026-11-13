@@ -99,6 +99,7 @@ de:
     sign_in_to_track: "Du musst %{link} sein um manuelle Sammlungen benutzen zu können."
     signed_in: "eingeloggt"
     verify_ownership: "verifiziere bitte deinen Charakter"
+    wishlist_not_verified: "Um diese Wunschliste zu updaten, musst du verifizieren, dass es sich um deinen Charakter handelt."
   all:
     aspects: "Alle Elemente"
     data_centers: "Alle Datenzentren"
@@ -195,6 +196,7 @@ de:
     usable: "Charakter nutzbar"
     verified: "Verifiziert"
     verify: "Verifizierung des Charakters"
+    wishlist: "Charakter Wunschliste"
   click:
     add: "Auswählen um hinzuzufügen"
     remove: "Auswählen um zu entfernen"
@@ -433,8 +435,8 @@ de:
     user_decks: "Benutzer Decks"
     user_decks_tooltip: "Benutzer Decks, die zum Besiegen dieses NPCs erstellt wurden."
   occult_records:
-    title: "Kreszentia-Chronike"
     one: "Kreszentia-Chronik"
+    title: "Kreszentia-Chronike"
   of: "von"
   only:
     female: "Nur für Damen"
@@ -697,6 +699,13 @@ de:
     title: "Trabanten"
   view: "Ansehen"
   view_details: "Details anzeigen"
+  wishlist:
+    add: "Zur Wunschliste hinzufügen"
+    empty: "Dieser Charakter hat keine Gegenstände auf der Wunschliste."
+    header: "%{character}'s Wunschliste"
+    instructions: "Um einen Gegenstand deiner Wunschliste hinzuzufügen, klicke auf das Herz-Icon, das in den meisten Tabellen zu finden ist."
+    remove: "Von der Wunschliste entfernen"
+    title: "Wunschliste"
   "yes": "Ja"
   yokai:
     locations: "Orte der Legendären Medaillen"

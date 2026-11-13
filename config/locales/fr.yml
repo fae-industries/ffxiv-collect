@@ -99,6 +99,7 @@ fr:
     sign_in_to_track: "Vous devez être %{link} pour ajouter des éléments à votre collection."
     signed_in: "connecté"
     verify_ownership: "l'authentification de personnage"
+    wishlist_not_verified: "Vous ne pouvez modifier la liste de favoris que pour vos personnages vérifiés."
   all:
     aspects: "Tous les éléments"
     data_centers: "Tous les centres de données"
@@ -195,6 +196,7 @@ fr:
     usable: "Utilisable par le personnage"
     verified: "Vérifié"
     verify: "Vérifier le personnage"
+    wishlist: "Liste de favoris"
   click:
     add: "Cliquez pour ajouter"
     remove: "Cliquez pour supprimer"
@@ -433,8 +435,8 @@ fr:
     user_decks: "Decks utilisateur"
     user_decks_tooltip: "Les decks conçus par les utilisateurs pour être utilisés contre ce PNJ"
   occult_records:
-    title: "Calepin du croissant"
     one: "Calepin du croissant"
+    title: "Calepin du croissant"
   of: "de"
   only:
     female: "Réservé aux femmes"
@@ -698,6 +700,13 @@ fr:
     title: "Choc des mascottes"
   view: "Voir"
   view_details: "Voir les détails"
+  wishlist:
+    add: "Ajouter aux favoris"
+    empty: "Ce personnage n'a aucun élément favori."
+    header: "Liste de favoris de %{character}"
+    instructions: "Pour ajouter des éléments à votre liste de favoris, cliquez sur le cœur présent dans la plupart des tableaux."
+    remove: "Retirer des favoris"
+    title: "Favoris"
   "yes": "Oui"
   yokai:
     locations: "Emplacements des médailles légendaires"
