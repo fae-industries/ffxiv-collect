@@ -1,0 +1,76 @@
+<% title("#{@profile.name} (#{@profile.server}) - Wishlist") %>
+<% description('Character Wishlist') %>
+
+<% if @collectables.size > 0 %>
+  <%= render 'shared/collection_components' %>
+
+  <div class="collection-wrapper">
+    <div class="d-flex justify-content-center">
+      <div class="d-inline-flex flex-column">
+        <div class="d-flex flex-wrap justify-content-center">
+          <%= search_form_for(@q, url: character_wishlist_path(@profile), enforce_utf8: false,
+                              class: 'form form-inline search-form d-flex') do |f| %>
+            <%= f.search_field "#{Mount.current_locale_column(:name)}_cont", placeholder: t('name'), size: 40,
+              class: 'form-control form-control-sm flex-grow-1' %>
+            <%= f.search_field "sources_#{Source.current_locale_column(:text)}_cont", placeholder: t('source'), size: 40,
+              class: 'form-control form-control-sm flex-grow-1' %>
+            <%= f.collection_select :sources_type_id_eq, @source_types, :id, :name,
+              { include_blank: t('all.sources') }, class: 'form-control form-control-sm' %>
+            <%= f.submit t('search'), name: nil, class: 'btn btn-primary btn-sm mr-0' %>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-end mb-1">
+          <%= render 'shared/active_filters' %>
+        </div>
+        <table class="table table-striped table-sm shadow collection sortable">
+          <thead>
+            <tr>
+              <th scope="col" data-defaultsort="disabled"></th> <!-- Image -->
+              <th scope="col" data-defaultsort="disabled"></th> <!-- Icon -->
+              <th scope="col"><%= t('name') %></th>
+              <th scope="col" class="hide-xs"><%= t('source') %></th>
+              <th scope="col" class="text-center"><%= fa_icon('dollar-sign') %></th>
+              <th scope="col" class="wishlist" data-defaultsort="disabled"></th>
+              <th scope="col" class="text-center hide-xs"><%= t('own') %></th>
+              <th scope="col" class="text-center"><%= t('patch') %></th>
+              <th scope="col" class="check-ownership"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @collectables.each do |collectable| %>
+              <tr class="<%= collectable_classes(collectable) %>" data-type="<%= collectable.class %>">
+                <td><%= collectable_image_link(collectable) %></td>
+                <td><%= collectable_icon(collectable) %></td>
+                <td>
+                  <%= collectable_name_link(collectable) %>
+                  <%= gender_symbol(collectable.try(:gender)) %>
+                </td>
+                <td class="orchestrion-source hide-xs" data-value="<%= source_sort_value(collectable) %>">
+                  <%= sources(collectable) %>
+                </td>
+                <td class="text-center" data-value="<%= price_sort_value(collectable) %>">
+                  <%= market_link(collectable) %>
+                </td>
+                <%= td_wishlist(collectable) %>
+                <td class="text-center hide-xs"
+                  data-value="<%= rarity(collectable, percent: true, owned: @owned[collectable.class]) %>"
+                >
+                  <%= rarity(collectable, owned: @owned[collectable.class]) %>
+                </td>
+                <td class="text-center"><%= collectable.patch %></td>
+                <%= td_owned(collectable) %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="d-flex flex-column align-items-center mt-3">
+    <h3><%= t('wishlist.empty') %></h3>
+    <% if @character == @profile %>
+      <h5><%= t('wishlist.instructions') %></h5>
+    <% end %>
+  </div>
+<% end %>

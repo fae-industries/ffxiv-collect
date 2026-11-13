@@ -177,6 +177,8 @@ Rails.application.routes.draw do
   resources :achievements, only: [:index, :show]
 
   resources :characters, only: [:show, :destroy] do
+    get :wishlist
+
     member do
       get 'stats/recent', to: 'characters#stats_recent', as: :stats_recent
       get 'stats/rarity', to: 'characters#stats_rarity', as: :stats_rarity

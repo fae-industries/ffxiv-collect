@@ -32,8 +32,8 @@
       <% end %>
       <hr class="my-2">
       <%= link_to fa_icon('user', text: t('characters.character_profile')), character_path(@character), class: 'dropdown-item' %>
-      <%= link_to fa_icon('chart-bar', text: t('characters.stats')), stats_rarity_character_path(@character),
-        class: 'dropdown-item' %>
+      <%= link_to fa_icon('chart-bar', text: t('characters.stats')), stats_rarity_character_path(@character), class: 'dropdown-item' %>
+      <%= link_to fa_icon('birthday-cake', text: t('characters.wishlist')), character_wishlist_path(@character), class: 'dropdown-item' %>
       <%= link_to fa_icon('sync', text: t('characters.refresh')), refresh_character_path,
         method: :post, class: 'dropdown-item' %>
       <% if !@peeking && user_signed_in? && !verified? %>

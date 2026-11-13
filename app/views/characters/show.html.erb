@@ -22,6 +22,8 @@
 
           <%= link_to far_icon('chart-bar', text: t('characters.statistics')),
             stats_rarity_character_path(@profile), class: 'btn btn-success btn-sm' %>
+          <%= link_to fa_icon('birthday-cake', text: t('wishlist.title')),
+            character_wishlist_path(@profile), class: 'btn btn-primary btn-sm' %>
         </div>
       </div>
       <div class="card-body">

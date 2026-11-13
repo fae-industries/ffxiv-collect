@@ -1,12 +1,15 @@
 class CharactersController < ApplicationController
+  include Collection
+
   before_action :verify_signed_in!, only: [:verify, :validate, :destroy]
   before_action :set_search, only: [:search, :search_lodestone]
   before_action :set_selected, only: [:search_lodestone_id, :view, :select, :peek]
   after_action  :save_selected, only: [:select]
-  before_action :set_profile, only: [:show, :stats_recent, :stats_rarity, :verify, :validate]
+  before_action :set_profile, only: [:show, :stats_recent, :stats_rarity, :verify, :validate, :wishlist]
   before_action :set_stats_limit, only: [:stats_recent, :stats_rarity]
   before_action :set_verification_code, only: [:verify, :validate]
-  before_action :verify_privacy!, only: [:show, :stats_recent, :stats_rarity]
+  before_action :verify_privacy!, only: [:show, :stats_recent, :stats_rarity, :wishlist]
+  before_action :set_prices!, only: [:wishlist]
 
   COLLECTIONS = %w(achievements mounts minions hairstyles emotes orchestrions frames spells beasts bardings fashions
   facewear outfits armoires cards field_records survey_records occult_records).freeze
@@ -232,9 +235,37 @@ class CharactersController < ApplicationController
     render :verify
   end
 
+  def wishlist
+    @source_types = SourceType.with_filters(cookies).ordered
+    @wishes = @profile.wishes
+    @models = @wishes.distinct.pluck(:collectable_type).map { |type| type.constantize }
+
+    @owned = @models.each_with_object({}) do |model, h|
+      key = model.table_name
+
+      h[model] = {
+        count: Redis.current.hgetall("#{key}-count"),
+        percentage: Redis.current.hgetall(key)
+      }
+    end
+
+    @collectables = @models.flat_map do |model|
+      @q = model.where(id: @wishes.where(collectable_type: model).pluck(:collectable_id)).ransack(params[:q])
+
+      collectables = @q.result.available.include_sources.with_filters(cookies, @profile).ordered
+      collectables = collectables.summonable if model == Minion # Exclude variant minions
+      collectables
+    end
+
+    @keyed_collection_ids = @models.flat_map do |model|
+      collection = model.to_s.underscore
+      @profile.send("#{collection}_ids").map { |id| "#{collection}-#{id}"}
+    end
+  end
+
   private
   def set_profile
-    @profile = Character.find_by(id: params[:id])
+    @profile = Character.find_by(id: params[:id] || params[:character_id])
 
     unless @profile.present?
       flash[:error] = t('alerts.character_not_found')
