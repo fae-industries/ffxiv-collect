@@ -1,6 +1,12 @@
 <% title("#{@profile.name} (#{@profile.server}) - Wishlist") %>
 <% description('Character Wishlist') %>
 
+<div class="d-flex justify-content-center align-items-center mb-2">
+  <h4 class="mr-2"><%= t('wishlist.header', character: @profile.name) %></h4>
+  <%= link_to fa_icon('user', text: t('characters.profile')), character_path(@profile),
+      class: 'btn btn-secondary btn-sm' %>
+</div>
+
 <% if @collectables.size > 0 %>
   <%= render 'shared/collection_components' %>
 

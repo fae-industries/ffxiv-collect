@@ -3,7 +3,7 @@
 <div class="d-flex flex-wrap justify-content-between align-items-center mx-3">
   <h4 class="mr-2"><%= @profile.name %> (<%= @profile.server %>)</h4>
   <%= link_to fa_icon('user', text: t('characters.profile')), character_path(@profile),
-    class: 'btn btn-primary btn-sm mr-auto' %>
+    class: 'btn btn-secondary btn-sm mr-auto' %>
   <div class="d-flex flex-column align-items-end">
     <%= form_tag(request.path, method: :get, enforce_utf8: false, class: 'form mb-1', id: 'stat-limit') do %>
       <%= select_tag :limit, stat_limit_options(@limit), class: 'form-control form-control-sm' %>

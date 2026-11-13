@@ -689,6 +689,7 @@ en:
     instructions: "To add items to your wishlist, click the heart icon found in most tables."
     remove: "Remove from Wishlist"
     title: "Wishlist"
+    header: "%{character}'s Wishlist"
   "yes": "Yes"
   yokai:
     locations: "Legendary Medal Locations"
