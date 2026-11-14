@@ -118,3 +118,8 @@ shared:
         - Lamia
         - Leviathan
         - Ultros
+  universalis_regions:
+    eu: Europe
+    jp: Japan
+    na: North-America
+    oc: Oceania

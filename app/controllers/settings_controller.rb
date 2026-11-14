@@ -62,7 +62,7 @@ class SettingsController < ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:public, :pricing_data_center)
+    params.require(:character).permit(:public, :pricing_region)
   end
 
   def set_user

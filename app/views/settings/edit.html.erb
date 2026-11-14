@@ -60,8 +60,8 @@
               <%= f.label :public, t('settings.make_public'), class: 'form-check-label' %>
             </div>
             <div class="form-field">
-              <%= f.label :pricing_data_center, t('settings.pricing_data_center') %>
-              <%= f.select :pricing_data_center, data_center_options(@character),
+              <%= f.label :pricing_region, t('settings.pricing_region') %>
+              <%= f.select :pricing_region, pricing_region_options(@character),
                 { include_blank: t('characters.server') }, class: 'form-control' %>
             </div>
             <div class="text-right mt-3">

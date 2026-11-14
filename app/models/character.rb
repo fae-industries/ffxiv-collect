@@ -30,7 +30,7 @@
 #  orchestrions_count           :integer          default(0)
 #  outfits_count                :integer          default(0)
 #  portrait                     :string(255)
-#  pricing_data_center          :string(255)
+#  pricing_region               :string(255)
 #  public                       :boolean          default(TRUE)
 #  public_achievements          :boolean          default(FALSE)
 #  public_emotes                :boolean          default(FALSE)
@@ -179,6 +179,10 @@ class Character < ApplicationRecord
     Rails.application.config_for(:characters).data_centers[data_center.to_sym][:region]
   end
 
+  def universalis_region
+    Character.universalis_regions[region.to_sym].underscore
+  end
+
   def fetch!
     Character.fetch(id)
   end
@@ -240,17 +244,12 @@ class Character < ApplicationRecord
     Character.update_collectables!(character, data)
   end
 
-  def self.data_centers
-    servers_by_data_center.keys.sort.freeze
+  def self.universalis_regions
+    Rails.application.config_for(:characters).universalis_regions
   end
 
-  def self.data_centers_by_region
-    data_centers = { 'na' => [], 'eu' => [], 'jp' => [], 'oc' => [] }
-
-    Rails.application.config_for(:characters).data_centers
-      .each { |k, v| data_centers[v[:region]] << k.to_s }
-
-    data_centers.freeze
+  def self.data_centers
+    servers_by_data_center.keys.sort.freeze
   end
 
   def self.servers
@@ -260,6 +259,10 @@ class Character < ApplicationRecord
   def self.servers_by_data_center
     Rails.application.config_for(:characters).data_centers
       .each_with_object({}) { |(k, v), h| h[k.to_s] = v[:servers] }.freeze
+  end
+
+  def self.default_pricing_region
+    'north_america'.freeze
   end
 
   def self.leaderboards(characters:, metric:, data_center: nil, server: nil, limit: nil, rankings: false)

@@ -8,15 +8,15 @@ namespace :cache do
       Leve.where.not(item_id: nil).distinct.order(:item_id).pluck(:item_id)
     item_ids << 32830 # Add "Paint It X" which is missed due to multiple unlock IDs
 
-    Character.data_centers.each do |dc|
-      log("Updating prices for #{dc}")
-      key = "prices-#{dc.downcase}"
+    Character.universalis_regions.values.each do |region|
+      log("Updating prices for #{region}")
+      key = "prices-#{region.underscore}"
 
       Redis.current.set("#{key}-last-updated", Time.now.utc.to_formatted_s(:usec))
 
       item_ids.each_slice(100) do |ids|
         begin
-          url = "#{UNIVERSALIS_BASE_URL}/#{dc}/#{ids.join(',')}?listings=1&entries=0"
+          url = "#{UNIVERSALIS_BASE_URL}/#{region}/#{ids.join(',')}?listings=1&entries=0"
           response = RestClient.get(url, { params: { listings: 1, entries: 0 }, user_agent: USER_AGENT })
 
           prices = JSON.parse(response)['items'].map do |id, item|

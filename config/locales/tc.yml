@@ -448,7 +448,7 @@ tc:
     character: "角色設定"
     database: "資料庫連結"
     make_public: "將此角色的收藏設為公開"
-    pricing_data_center: "價格資料中心"
+    pricing_region: "價格資料中心"
     title: "設定"
     user: "使用者設定"
   show_all: "顯示全部"

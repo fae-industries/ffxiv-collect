@@ -188,8 +188,8 @@ module CollectionsHelper
 
   def tradeable(collectable)
     if collectable.tradeable?
-      data_center = @character&.data_center&.downcase || 'primal'
-      price = Redis.current.hget("prices-#{data_center}", collectable.item_id)
+      region = @character&.pricing_region || @character&.universalis_region || Character.default_pricing_region
+      price = Redis.current.hget("prices-#{region}", collectable.item_id)
 
       link_to(universalis_url(collectable[:item_id]), class: 'name', target: '_blank',
               data: { toggle: 'tooltip', html: true }, title: price_tooltip(collectable, price)) do

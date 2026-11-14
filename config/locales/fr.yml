@@ -518,7 +518,7 @@ fr:
     character: "Paramètres du personnage"
     database: "Liens de base de données"
     make_public: "Rendre les collections de ce personnage visibles par tous"
-    pricing_data_center: "Centre de données pour les comparaisons de prix"
+    pricing_region: "Centre de données pour les comparaisons de prix"
     title: "Paramètres"
     user: "Paramètres utilisateur"
     zen: "Masquer les classements"

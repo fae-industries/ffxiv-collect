@@ -517,7 +517,7 @@ de:
     character: "Charakter Einstellung"
     database: "Datenbank Links"
     make_public: "Setze die Charakter Sammlung öffentlich"
-    pricing_data_center: "Datenzentrum für Preisvergleiche"
+    pricing_region: "Datenzentrum für Preisvergleiche"
     title: "Einstellungen"
     user: "Benutzereinstellungen"
     zen: "Verstecke Ranglisten und Ränge"

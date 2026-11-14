@@ -54,8 +54,8 @@ module Collection
   end
 
   def set_prices!
-    data_center = @character&.pricing_data_center || @character&.data_center || 'Primal'
-    key = "prices-#{data_center.downcase}"
+    region = @character&.pricing_region || @character&.universalis_region || Character.default_pricing_region
+    key = "prices-#{region}"
     last_updated = Redis.current.get("#{key}-last-updated")
 
     @price_cache_key = "#{key}-#{last_updated}"
@@ -65,7 +65,7 @@ module Collection
         h[k.to_i] = JSON.parse(v)
       end
     rescue
-      Rails.logger.error("There was a problem retrieving Universalis prices for #{data_center}")
+      Rails.logger.error("There was a problem retrieving Universalis prices for #{region}")
       @prices = {}
     end
   end

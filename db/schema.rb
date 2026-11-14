@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_11_183016) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_14_153131) do
   create_table "achievement_categories", charset: "utf8", collation: "utf8_general_ci", force: :cascade do |t|
     t.string "name_en", null: false
     t.string "name_de", null: false
@@ -537,7 +537,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_11_183016) do
     t.boolean "public_minions", default: true
     t.boolean "public_facewear", default: true
     t.integer "facewear_count", default: 0
-    t.string "pricing_data_center"
+    t.string "pricing_region"
     t.integer "outfits_count", default: 0
     t.integer "occult_records_count", default: 0
     t.boolean "supporter", default: false

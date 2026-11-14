@@ -517,7 +517,7 @@ en:
     character: "Character Settings"
     database: "Database Links"
     make_public: "Make this character's collections publicly available"
-    pricing_data_center: "Pricing Data Center"
+    pricing_region: "Pricing Data Center"
     title: "Settings"
     user: "User Settings"
     zen: "Hide leaderboards and rankings"

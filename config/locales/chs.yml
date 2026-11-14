@@ -514,7 +514,7 @@ chs:
     character: "角色设置"
     database: "数据库链接"
     make_public: "公开此角色的收藏数据"
-    pricing_data_center: "大区定价"
+    pricing_region: "大区定价"
     title: "设置"
     user: "用户设置"
   show_all: "显示全部"

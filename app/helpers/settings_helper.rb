@@ -3,8 +3,12 @@ module SettingsHelper
     options_for_select([['Garland Tools', 'garland'], ['FFXIV Teamcraft', 'teamcraft']], selected)
   end
 
-  def data_center_options(character)
-    options_for_select(Character.data_centers, character.pricing_data_center)
+  def pricing_region_options(character)
+    options = Character.universalis_regions.values.map do |region|
+      [region.titleize, region.underscore]
+    end
+
+    options_for_select(options, character.pricing_region)
   end
 
   def identity_status(identities, provider)

@@ -83,15 +83,14 @@ class Api::CharactersController < ApiController
   end
 
   def set_prices
-    data_center = @character&.pricing_data_center || @character&.data_center || 'primal'
-    data_center.downcase!
+    region = @character&.pricing_region || @character&.universalis_region || Character.default_pricing_region
 
     begin
-      @prices = Redis.current.hgetall("prices-#{data_center}").each_with_object({}) do |(k, v), h|
+      @prices = Redis.current.hgetall("prices-#{region}").each_with_object({}) do |(k, v), h|
         h[k.to_i] = JSON.parse(v)
       end
     rescue
-      Rails.logger.error("There was a problem retrieving Universalis prices for #{data_center}")
+      Rails.logger.error("There was a problem retrieving Universalis prices for #{region}")
     end
   end
 end
