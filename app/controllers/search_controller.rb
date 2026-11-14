@@ -23,11 +23,11 @@ class SearchController < ApplicationController
 
     # Collect a distinct set of patches across all models
     @patches = @models.flat_map { |model| model.distinct.pluck(:patch) }.compact.uniq
-    search = ransack_with_patch_search(@patches)
+    @search = ransack_with_patch_search(@patches)
 
     @collectables = @models.flat_map do |model|
       # The search form needs a query, so we will eventually set it to the last search
-      @q = model.ransack(search)
+      @q = model.ransack(@search)
 
       collectables = @q.result.available.include_sources.with_filters(cookies, @character).ordered
       collectables = collectables.summonable if model == Minion # Exclude variant minions

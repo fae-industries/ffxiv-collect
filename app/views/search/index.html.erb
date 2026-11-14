@@ -25,7 +25,7 @@
           <%= f.collection_select :sources_type_id_eq, @source_types, :id, :name,
             { include_blank: t('all.sources') }, class: 'form-control form-control-sm' %>
           <%= f.select :patch_eq,
-            patch_options_for_select(@patches, params.dig(:q, :patch_eq) || params.dig(:q, :patch_start), expansions: true),
+            patch_options_for_select(@patches, @search[:patch_eq] || @search[:patch_start], expansions: true),
             {}, class: 'form-control form-control-sm' %>
           <%= f.submit t('search'), name: nil, class: 'btn btn-primary btn-sm mr-0' %>
         <% end %>
