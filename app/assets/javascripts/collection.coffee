@@ -14,7 +14,7 @@ $ ->
     $(element).tooltip('toggle')
 
   isWishlisted = (link) ->
-    link.href.match('/unwish')
+    link && link.href.match('/unwish')
 
   toggleWishlist = (link) ->
     icon = $(link).find('i')

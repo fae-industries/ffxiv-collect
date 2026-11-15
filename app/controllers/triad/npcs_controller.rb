@@ -2,6 +2,7 @@ class Triad::NPCsController < ApplicationController
   include ManualCollection
 
   before_action :verify_user!, only: [:update_defeated]
+  before_action :set_ids!, only: [:index, :show]
 
   def index
     @location = params[:location]
