@@ -77,7 +77,7 @@ namespace :minions do
     # Add the remaining data from the transient sheet
     ALL_LOCALES.each do |locale, h|
       XIVData.sheet('CompanionTransient', locale: locale).each do |minion|
-        next unless minions.has_key?(minion['#']) && minion['Description'].present?
+        next unless minions.has_key?(minion['#']) && (minion['Description'].present? || minion['SpecialActionDescription'].present?)
 
         data = minions[minion['#']]
         data.merge!("description_#{locale}" => sanitize_text(minion['Description']),
