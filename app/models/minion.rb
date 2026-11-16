@@ -66,6 +66,8 @@
 
 class Minion < ApplicationRecord
   include Collectable
+  scope :available, -> { where.not(id: unsummonable_ids).where.not(patch: nil) }
+
   translates :name, :description, :enhanced_description, :tooltip, :skill, :skill_description
 
   belongs_to :behavior, class_name: 'MinionBehavior'
