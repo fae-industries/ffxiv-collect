@@ -25,6 +25,7 @@ class Relic < ApplicationRecord
 
   translates :name
 
+  scope :available, -> { }
   scope :include_related, -> { includes(:type) }
   scope :ordered, -> { joins(:type).order('relic_types.category desc', expansion: :desc, order: :desc) }
 

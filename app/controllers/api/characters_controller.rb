@@ -38,7 +38,7 @@ class Api::CharactersController < ApiController
       return render json: { status: 403, error: 'Collection is set to private' }, status: :forbidden
     end
 
-    model = @collection.classify.constantize
+    model = @collection.classify.constantize.available
 
     # Titles need special handling since ownership is based on achievement ID
     if @collection == 'titles'
@@ -57,11 +57,6 @@ class Api::CharactersController < ApiController
       else
         @collectables = model.where.not(id: owned_ids)
       end
-    end
-
-    # Exclude unsummonable minion variants
-    if model == Minion
-      @collectables = @collectables.summonable
     end
 
     # Add scopes

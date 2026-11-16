@@ -10,7 +10,7 @@ class RandomController < ApplicationController
 
     while retries > 0
       model = COLLECTIONS.sample
-      ids = model == Minion ? Minion.summonable.ids : model.ids
+      ids = model.available.ids
 
       if !@character.present?
         return redirect_to polymorphic_path(model.find(ids.sample))
