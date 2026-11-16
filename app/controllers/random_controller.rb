@@ -10,13 +10,14 @@ class RandomController < ApplicationController
 
     while retries > 0
       model = COLLECTIONS.sample
+      ids = model.available.ids
 
       if !@character.present?
-        return redirect_to polymorphic_path(model.find(model.ids.sample))
+        return redirect_to polymorphic_path(model.find(ids.sample))
       end
 
       character_ids = @character.send("#{model.to_s.underscore}_ids")
-      unowned_ids = model.ids - character_ids
+      unowned_ids = ids - character_ids
 
       if unowned_ids.length > 0
         return redirect_to polymorphic_path(model.find(unowned_ids.sample))
