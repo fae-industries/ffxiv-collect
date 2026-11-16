@@ -174,7 +174,7 @@ module Lodestone
         data[:minions] = []
         data[:public_minions] = false
       else
-        data[:minions] = Minion.where(name_en: minions.map(&:text)).pluck(:id)
+        data[:minions] = Minion.summonable.where(name_en: minions.map(&:text)).pluck(:id)
         data[:public_minions] = true
       end
     rescue RestClient::NotFound

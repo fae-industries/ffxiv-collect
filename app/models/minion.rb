@@ -66,7 +66,7 @@
 
 class Minion < ApplicationRecord
   include Collectable
-  scope :available, -> { where.not(id: unsummonable_ids).where.not(patch: nil) }
+  scope :available, -> { summonable.where.not(patch: nil) }
 
   translates :name, :description, :enhanced_description, :tooltip, :skill, :skill_description
 
@@ -76,6 +76,7 @@ class Minion < ApplicationRecord
 
   scope :include_related, -> { include_sources.includes(:behavior, :race, :skill_type) }
   scope :ordered, -> { order(patch: :desc, order: :desc, id: :desc) }
+  scope :summonable, -> { where.not(id: unsummonable_ids) }
   scope :verminion,  -> { where.not(id: variant_ids) }
 
   def strengths
