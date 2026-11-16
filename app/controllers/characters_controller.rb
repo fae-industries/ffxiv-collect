@@ -23,7 +23,6 @@ class CharactersController < ApplicationController
       next unless @profile.send("#{collection}_count") > 0
 
       collectables = collection.classify.constantize.available.with_filters(cookies, @profile)
-      collectables = collectables.summonable if collection == 'minions'
 
       owned_ids = @profile.send("#{collection.singularize}_ids")
 
@@ -257,7 +256,6 @@ class CharactersController < ApplicationController
       @q = model.where(id: @wishes.where(collectable_type: model).pluck(:collectable_id)).ransack(params[:q])
 
       collectables = @q.result.available.include_sources.with_filters(cookies, @profile).ordered
-      collectables = collectables.summonable if model == Minion # Exclude variant minions
       collectables
     end
 

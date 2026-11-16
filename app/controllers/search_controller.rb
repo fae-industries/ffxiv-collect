@@ -30,7 +30,6 @@ class SearchController < ApplicationController
       @q = model.ransack(@search)
 
       collectables = @q.result.available.include_sources.with_filters(cookies, @character).ordered
-      collectables = collectables.summonable if model == Minion # Exclude variant minions
       collectables
     end
 

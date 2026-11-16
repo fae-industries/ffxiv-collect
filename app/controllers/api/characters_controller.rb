@@ -59,11 +59,6 @@ class Api::CharactersController < ApiController
       end
     end
 
-    # Exclude unsummonable minion variants
-    if model == Minion
-      @collectables = @collectables.summonable
-    end
-
     # Add scopes
     @collectables = @collectables.ordered.include_related.ordered
   end

@@ -6,7 +6,7 @@ class MinionsController < ApplicationController
   before_action :set_ids!, only: [:index, :verminion]
 
   def index
-    @q = Minion.summonable.ransack(params[:q])
+    @q = Minion.ransack(params[:q])
     @minions = @q.result.available.include_related.with_filters(cookies).ordered.distinct
     @types = source_types(:minion)
   end

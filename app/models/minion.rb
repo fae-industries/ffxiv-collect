@@ -76,7 +76,6 @@ class Minion < ApplicationRecord
 
   scope :include_related, -> { include_sources.includes(:behavior, :race, :skill_type) }
   scope :ordered, -> { order(patch: :desc, order: :desc, id: :desc) }
-  scope :summonable, -> { where.not(id: unsummonable_ids) }
   scope :verminion,  -> { where.not(id: variant_ids) }
 
   def strengths

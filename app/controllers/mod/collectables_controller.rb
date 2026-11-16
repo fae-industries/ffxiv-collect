@@ -10,7 +10,6 @@ class Mod::CollectablesController < ModController
     @missing_patch = params[:missing_patch]
 
     @collectables = @q.result.ordered.paginate(page: params[:page])
-    @collectables = @collectables.summonable if @model == Minion
     @collectables = @collectables.includes(sources: [:type, :related]) unless @skip_sources
 
     if @missing_source

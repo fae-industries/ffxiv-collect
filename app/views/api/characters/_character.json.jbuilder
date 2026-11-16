@@ -19,7 +19,6 @@ end
     json.count public_collection?(@character, collection.pluralize) ? character.send("#{collection.pluralize}_count") : 0
 
     collectables = collection.classify.constantize.available
-    collectables = collectables.summonable if collection == 'minion'
 
     json.total collectables.count
 
