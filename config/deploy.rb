@@ -8,7 +8,7 @@ set :default_env, { path: '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
 
 # rbenv
 set :rbenv_type, :user
-set :rbenv_ruby, '3.3.5'
+set :rbenv_ruby, '3.3.14'
 
 namespace :deploy do
   desc 'Create symlinks'
